@@ -1,0 +1,43 @@
+unit_id,pass1,pass2,arbitrated,reason
+2102938434,code feedback,question,code feedback,reports a concrete error from moving the retrieval code
+2173923183,direction to an agent,brief remark,brief remark,a bare bot mention with no instruction
+2156533406,code feedback,decision,decision,rules that it is already in devdeps
+2127404932,decision,brief remark,brief remark,defers the decision to someone else
+2208102269,code feedback,brief remark,code feedback,reports a defect in the translation
+2172966193,code feedback,decision,code feedback,explains the implementation constraint
+2218435793,code feedback,question,code feedback,explains how the configuration behaves
+2180602348,decision,brief remark,decision,rules on what is needed and commits to restoring it
+2242169176,code feedback,decision,decision,endorses the style and xamlroot setting as needed
+2217804710,code feedback,decision,code feedback,supports the claim with the actual signatures
+2112999170,decision,brief remark,decision,reports the triage outcome and what will be done
+2205488709,code feedback,decision,code feedback,technical rationale for the generated-code structure
+2132367700,code feedback,decision,code feedback,rationale about using hashes over tags
+2179690952,direction to an agent,question,question,"asks the agent to list callers, information rather than a change"
+2238918134,decision,code feedback,code feedback,endorses with a concrete technical improvement
+2230673351,decision,code feedback,decision,refutes the concern about the split behaviour
+2192595500,direction to an agent,decision,direction to an agent,instructs the agent not to act
+2101027615,direction to an agent,decision,direction to an agent,orders the old files to be deleted
+2106207014,code feedback,decision,code feedback,explains why the utility cannot be used
+2102194793,direction to an agent,brief remark,brief remark,a bare bot mention with no instruction
+2102557286,decision,code feedback,code feedback,endorses with the concrete normalization fix
+2212006523,code feedback,decision,code feedback,trade-off about an importable constant
+2175625650,code feedback,brief remark,code feedback,reports what the change required in the code
+2185018298,direction to an agent,code feedback,direction to an agent,instructs the agent with the target interface
+2223708272,decision,code feedback,decision,takes a position on what is sufficient
+2127268733,brief remark,decision,decision,takes a position on how the option is used
+2137145484,direction to an agent,question,direction to an agent,asks the agent to act on the thread
+2138906465,code feedback,decision,code feedback,design rationale about the global/local split
+2172533870,decision,brief remark,brief remark,procedural explanation about the merge
+2107804128,code feedback,brief remark,decision,rejects the proposed cause
+2231780696,direction to an agent,brief remark,brief remark,a bare bot mention with no instruction
+2193591628,code feedback,decision,code feedback,rationale for the immutability of the config
+2138278202,direction to an agent,code feedback,code feedback,disagrees with the technical reasoning and explains
+2215998734,code feedback,direction to an agent,direction to an agent,asks for the root cause to be fixed
+2102925982,direction to an agent,code feedback,direction to an agent,orders the change to apply to all files
+2097932542,direction to an agent,decision,decision,accepts the addition
+2150020817,direction to an agent,code feedback,code feedback,points to an existing implementation as an approach
+2110909629,code feedback,decision,code feedback,states how the query node behaves
+2100010661,question,decision,question,asks a maintainer to agree
+2191074335,code feedback,brief remark,code feedback,describes what the change fixes in the code
+2125769446,code feedback,brief remark,decision,corrects the factual point about the tooling
+2178524599,code feedback,direction to an agent,direction to an agent,"a bare imperative ordering a code change, without evaluation or rationale"

@@ -1,0 +1,19 @@
+{
+ "seed": 20260930,
+ "pilot_n": 50,
+ "pilot": {
+  "n": 50,
+  "kappa": 0.7433,
+  "observed": 0.8
+ },
+ "rest": {
+  "n": 266,
+  "kappa": 0.8472,
+  "observed": 0.8797
+ },
+ "all_double_coded": {
+  "n": 316,
+  "kappa": 0.8313,
+  "observed": 0.8671
+ }
+}

@@ -1,0 +1,358 @@
+id,code,rule_code
+1896229469,Improvement suggestion,change acknowledgment
+1896230351,Code-issue feedback,code-issue feedback
+1896235606,Code-issue feedback,code-issue feedback
+1896245271,Code-issue feedback,code-issue feedback
+1896256463,Code-issue feedback,code-issue feedback
+1938582422,Improvement suggestion,other
+1941678197,Improvement suggestion,other
+1941678664,Improvement suggestion,code-issue feedback
+1943554629,Improvement suggestion,improvement suggestion
+1945444019,Improvement suggestion,improvement suggestion
+1971784915,Improvement suggestion,code-issue feedback
+1980707118,Improvement suggestion,improvement suggestion
+1985928387,Improvement suggestion,code-issue feedback
+1986025658,Code-issue feedback,other
+1992937389,Improvement suggestion,code-issue feedback
+1992938064,Improvement suggestion,improvement suggestion
+1992938757,Improvement suggestion,improvement suggestion
+1992999121,Improvement suggestion,improvement suggestion
+1992999602,Improvement suggestion,code-issue feedback
+2002461482,Improvement suggestion,improvement suggestion
+2006488893,Code-issue feedback,code-issue feedback
+2033010796,Improvement suggestion,improvement suggestion
+2033010810,Improvement suggestion,improvement suggestion
+2035639071,Code-issue feedback,other
+2035639087,Improvement suggestion,other
+2035639107,Improvement suggestion,improvement suggestion
+2036074371,Improvement suggestion,agent instruction
+2036074444,Code-issue feedback,other
+2039122887,Improvement suggestion,improvement suggestion
+2040665943,Workflow/verification report,workflow/verification report
+2081290179,Improvement suggestion,improvement suggestion
+2081295350,Improvement suggestion,code-issue feedback
+2081295397,Improvement suggestion,improvement suggestion
+2093778112,Improvement suggestion,improvement suggestion
+2093929965,Improvement suggestion,improvement suggestion
+2094123152,Improvement suggestion,improvement suggestion
+2094172694,Improvement suggestion,improvement suggestion
+2094346351,Improvement suggestion,improvement suggestion
+2094625774,Improvement suggestion,improvement suggestion
+2094806091,Improvement suggestion,improvement suggestion
+2094809398,Improvement suggestion,improvement suggestion
+2094998335,Improvement suggestion,improvement suggestion
+2094998344,Improvement suggestion,improvement suggestion
+2095150586,Improvement suggestion,improvement suggestion
+2095223032,Improvement suggestion,improvement suggestion
+2095224732,Improvement suggestion,improvement suggestion
+2095470188,Improvement suggestion,code-issue feedback
+2095629027,Improvement suggestion,improvement suggestion
+2096022288,Improvement suggestion,improvement suggestion
+2096203835,Improvement suggestion,improvement suggestion
+2096801719,Improvement suggestion,agent instruction
+2097930461,Improvement suggestion,improvement suggestion
+2097986362,Improvement suggestion,improvement suggestion
+2098146498,Improvement suggestion,improvement suggestion
+2098400718,Improvement suggestion,improvement suggestion
+2098491979,Improvement suggestion,improvement suggestion
+2099194599,Improvement suggestion,code-issue feedback
+2099261758,Improvement suggestion,code-issue feedback
+2099268462,Improvement suggestion,improvement suggestion
+2099744046,Improvement suggestion,improvement suggestion
+2100721637,Improvement suggestion,improvement suggestion
+2101307338,Improvement suggestion,improvement suggestion
+2101377920,Improvement suggestion,improvement suggestion
+2101549139,Improvement suggestion,improvement suggestion
+2101921292,Improvement suggestion,improvement suggestion
+2102878529,Improvement suggestion,improvement suggestion
+2103652662,Improvement suggestion,clarification/question
+2103765282,Improvement suggestion,code-issue feedback
+2103792476,Clarification/question,other
+2103792484,Improvement suggestion,improvement suggestion
+2104178885,Improvement suggestion,improvement suggestion
+2104179998,Improvement suggestion,code-issue feedback
+2104183949,Improvement suggestion,code-issue feedback
+2105876549,Improvement suggestion,improvement suggestion
+2106366968,Change acknowledgment,agent instruction
+2106536306,Improvement suggestion,improvement suggestion
+2106545735,Improvement suggestion,improvement suggestion
+2107564328,Improvement suggestion,code-issue feedback
+2109241062,Improvement suggestion,code-issue feedback
+2110671418,Improvement suggestion,code-issue feedback
+2110675122,Improvement suggestion,improvement suggestion
+2110791802,Improvement suggestion,improvement suggestion
+2111505692,Improvement suggestion,improvement suggestion
+2111791866,Improvement suggestion,code-issue feedback
+2115613967,Improvement suggestion,improvement suggestion
+2115614200,Improvement suggestion,improvement suggestion
+2115615227,Improvement suggestion,code-issue feedback
+2115616719,Improvement suggestion,agent instruction
+2115617482,Improvement suggestion,code-issue feedback
+2115617500,Improvement suggestion,code-issue feedback
+2115679186,Improvement suggestion,improvement suggestion
+2115766885,Improvement suggestion,improvement suggestion
+2116621619,Improvement suggestion,improvement suggestion
+2116820249,Improvement suggestion,code-issue feedback
+2119371592,Improvement suggestion,code-issue feedback
+2122163741,Improvement suggestion,code-issue feedback
+2122164770,Improvement suggestion,agent instruction
+2122165602,Improvement suggestion,improvement suggestion
+2122168314,Improvement suggestion,code-issue feedback
+2124347566,Improvement suggestion,improvement suggestion
+2124347592,Improvement suggestion,agent instruction
+2125645475,Improvement suggestion,change acknowledgment
+2125677363,Improvement suggestion,improvement suggestion
+2126270634,Improvement suggestion,code-issue feedback
+2126272430,Improvement suggestion,improvement suggestion
+2126560019,Improvement suggestion,code-issue feedback
+2126986296,Improvement suggestion,code-issue feedback
+2127620728,Improvement suggestion,improvement suggestion
+2127732981,Improvement suggestion,code-issue feedback
+2127908619,Improvement suggestion,workflow/verification report
+2128048260,Improvement suggestion,improvement suggestion
+2130025668,Improvement suggestion,improvement suggestion
+2130799055,Improvement suggestion,code-issue feedback
+2130897852,Code-issue feedback,improvement suggestion
+2131284079,Other,improvement suggestion
+2131692708,Improvement suggestion,improvement suggestion
+2132023553,Improvement suggestion,code-issue feedback
+2132716281,Improvement suggestion,improvement suggestion
+2134416203,Improvement suggestion,clarification/question
+2134440696,Improvement suggestion,improvement suggestion
+2134564947,Clarification/question,clarification/question
+2134833136,Improvement suggestion,response to feedback
+2135714063,Improvement suggestion,improvement suggestion
+2136079532,Improvement suggestion,improvement suggestion
+2136607021,Improvement suggestion,improvement suggestion
+2136607027,Improvement suggestion,code-issue feedback
+2136735397,Improvement suggestion,code-issue feedback
+2136867812,Improvement suggestion,code-issue feedback
+2136882297,Improvement suggestion,improvement suggestion
+2136882308,Improvement suggestion,improvement suggestion
+2136899480,Improvement suggestion,improvement suggestion
+2137851354,Improvement suggestion,agent instruction
+2138333826,Change acknowledgment,code-issue feedback
+2138594658,Improvement suggestion,workflow/verification report
+2138733066,Improvement suggestion,workflow/verification report
+2140417505,Improvement suggestion,improvement suggestion
+2140621625,Other,improvement suggestion
+2140622618,Other,improvement suggestion
+2141191761,Improvement suggestion,code-issue feedback
+2141273485,Improvement suggestion,improvement suggestion
+2141296970,Improvement suggestion,improvement suggestion
+2141306746,Improvement suggestion,improvement suggestion
+2141306754,Improvement suggestion,code-issue feedback
+2141365161,Improvement suggestion,code-issue feedback
+2141801302,Improvement suggestion,code-issue feedback
+2141814425,Improvement suggestion,code-issue feedback
+2141841078,Other,agent instruction
+2142901873,Improvement suggestion,code-issue feedback
+2143265247,Workflow/verification report,response to feedback
+2143506647,Improvement suggestion,improvement suggestion
+2143753523,Improvement suggestion,code-issue feedback
+2144728135,Improvement suggestion,improvement suggestion
+2144897764,Improvement suggestion,code-issue feedback
+2145519477,Improvement suggestion,other
+2145579621,Code-issue feedback,other
+2145708297,Improvement suggestion,improvement suggestion
+2145712420,Workflow/verification report,agent instruction
+2146968087,Improvement suggestion,code-issue feedback
+2147365783,Improvement suggestion,improvement suggestion
+2147372868,Improvement suggestion,improvement suggestion
+2147373933,Improvement suggestion,improvement suggestion
+2147379054,Improvement suggestion,improvement suggestion
+2147486357,Improvement suggestion,improvement suggestion
+2148219751,Improvement suggestion,code-issue feedback
+2148806501,Improvement suggestion,improvement suggestion
+2148806512,Improvement suggestion,improvement suggestion
+2149167150,Improvement suggestion,code-issue feedback
+2150173010,Improvement suggestion,improvement suggestion
+2151079661,Improvement suggestion,response to feedback
+2151195416,Improvement suggestion,code-issue feedback
+2152035297,Improvement suggestion,improvement suggestion
+2152066561,Improvement suggestion,code-issue feedback
+2152129717,Improvement suggestion,change acknowledgment
+2152762331,Improvement suggestion,improvement suggestion
+2152987433,Improvement suggestion,improvement suggestion
+2153457193,Improvement suggestion,improvement suggestion
+2153571551,Improvement suggestion,improvement suggestion
+2154798067,Improvement suggestion,code-issue feedback
+2154883022,Improvement suggestion,code-issue feedback
+2156926086,Improvement suggestion,improvement suggestion
+2159390549,Improvement suggestion,improvement suggestion
+2159568921,Improvement suggestion,other
+2160103379,Improvement suggestion,improvement suggestion
+2160153522,Improvement suggestion,improvement suggestion
+2160222506,Improvement suggestion,improvement suggestion
+2162930286,Change acknowledgment,other
+2163521485,Improvement suggestion,code-issue feedback
+2164214587,Improvement suggestion,improvement suggestion
+2166044511,Improvement suggestion,improvement suggestion
+2166678788,Improvement suggestion,improvement suggestion
+2168071177,Code-issue feedback,other
+2168071179,Improvement suggestion,code-issue feedback
+2171310794,Improvement suggestion,improvement suggestion
+2172517089,Improvement suggestion,improvement suggestion
+2172517105,Improvement suggestion,improvement suggestion
+2172827437,Improvement suggestion,improvement suggestion
+2173578963,Improvement suggestion,improvement suggestion
+2173635764,Improvement suggestion,other
+2173635792,Improvement suggestion,improvement suggestion
+2173709919,Improvement suggestion,improvement suggestion
+2173709930,Improvement suggestion,improvement suggestion
+2173826489,Improvement suggestion,code-issue feedback
+2173937402,Improvement suggestion,code-issue feedback
+2174245414,Improvement suggestion,improvement suggestion
+2174532863,Improvement suggestion,workflow/verification report
+2175328975,Improvement suggestion,code-issue feedback
+2175328995,Improvement suggestion,code-issue feedback
+2175329041,Improvement suggestion,code-issue feedback
+2175687663,Improvement suggestion,code-issue feedback
+2176060777,Improvement suggestion,code-issue feedback
+2176146270,Improvement suggestion,improvement suggestion
+2176224199,Improvement suggestion,code-issue feedback
+2176628740,Improvement suggestion,code-issue feedback
+2176721115,Improvement suggestion,code-issue feedback
+2177386234,Improvement suggestion,improvement suggestion
+2178123425,Improvement suggestion,response to feedback
+2178760099,Improvement suggestion,other
+2181059035,Improvement suggestion,code-issue feedback
+2181117043,Improvement suggestion,improvement suggestion
+2182645573,Improvement suggestion,response to feedback
+2182645577,Improvement suggestion,code-issue feedback
+2182729659,Improvement suggestion,workflow/verification report
+2184098854,Code-issue feedback,code-issue feedback
+2185960918,Improvement suggestion,improvement suggestion
+2186105669,Improvement suggestion,other
+2186106100,Improvement suggestion,improvement suggestion
+2186106217,Improvement suggestion,code-issue feedback
+2186145659,Improvement suggestion,improvement suggestion
+2186254328,Improvement suggestion,code-issue feedback
+2187033240,Improvement suggestion,code-issue feedback
+2187221635,Improvement suggestion,code-issue feedback
+2187624595,Improvement suggestion,improvement suggestion
+2187625007,Improvement suggestion,improvement suggestion
+2187897506,Improvement suggestion,code-issue feedback
+2187967734,Improvement suggestion,code-issue feedback
+2188517394,Improvement suggestion,improvement suggestion
+2188518914,Improvement suggestion,code-issue feedback
+2188521066,Improvement suggestion,improvement suggestion
+2188521073,Improvement suggestion,improvement suggestion
+2188840321,Improvement suggestion,response to feedback
+2189147898,Improvement suggestion,improvement suggestion
+2189229817,Improvement suggestion,code-issue feedback
+2189229838,Improvement suggestion,code-issue feedback
+2189229883,Improvement suggestion,code-issue feedback
+2189284350,Improvement suggestion,improvement suggestion
+2189598475,Code-issue feedback,code-issue feedback
+2189598485,Improvement suggestion,code-issue feedback
+2189746758,Improvement suggestion,code-issue feedback
+2190410977,Improvement suggestion,response to feedback
+2190969093,Improvement suggestion,improvement suggestion
+2190984534,Improvement suggestion,code-issue feedback
+2194422567,Improvement suggestion,response to feedback
+2194422593,Improvement suggestion,code-issue feedback
+2196493138,Improvement suggestion,improvement suggestion
+2196965033,Improvement suggestion,workflow/verification report
+2198782488,Improvement suggestion,code-issue feedback
+2199484319,Improvement suggestion,improvement suggestion
+2199484332,Improvement suggestion,improvement suggestion
+2199508299,Improvement suggestion,code-issue feedback
+2200157322,Improvement suggestion,workflow/verification report
+2200939096,Improvement suggestion,improvement suggestion
+2201074595,Improvement suggestion,code-issue feedback
+2203091160,Improvement suggestion,code-issue feedback
+2203389375,Improvement suggestion,code-issue feedback
+2203389510,Improvement suggestion,code-issue feedback
+2204013349,Improvement suggestion,improvement suggestion
+2204939198,Improvement suggestion,improvement suggestion
+2204941545,Improvement suggestion,improvement suggestion
+2204993578,Improvement suggestion,code-issue feedback
+2204998608,Improvement suggestion,other
+2205033025,Improvement suggestion,code-issue feedback
+2207156422,Improvement suggestion,code-issue feedback
+2212443212,Improvement suggestion,code-issue feedback
+2212871139,Improvement suggestion,code-issue feedback
+2215895276,Improvement suggestion,code-issue feedback
+2215931197,Improvement suggestion,code-issue feedback
+2216335753,Improvement suggestion,code-issue feedback
+2217187543,Improvement suggestion,code-issue feedback
+2217281726,Improvement suggestion,other
+2217345654,Improvement suggestion,improvement suggestion
+2217475888,Improvement suggestion,other
+2217502780,Code-issue feedback,other
+2217502792,Improvement suggestion,improvement suggestion
+2217502793,Improvement suggestion,improvement suggestion
+2217614109,Improvement suggestion,code-issue feedback
+2217760705,Improvement suggestion,code-issue feedback
+2217936216,Improvement suggestion,improvement suggestion
+2219382174,Improvement suggestion,code-issue feedback
+2219497267,Improvement suggestion,code-issue feedback
+2220345068,Improvement suggestion,improvement suggestion
+2220345102,Improvement suggestion,improvement suggestion
+2220345115,Improvement suggestion,code-issue feedback
+2220350603,Improvement suggestion,improvement suggestion
+2220350687,Improvement suggestion,improvement suggestion
+2220350722,Improvement suggestion,improvement suggestion
+2221912020,Improvement suggestion,other
+2221999624,Code-issue feedback,code-issue feedback
+2222038511,Improvement suggestion,improvement suggestion
+2222116500,Improvement suggestion,improvement suggestion
+2222116508,Improvement suggestion,code-issue feedback
+2222135433,Improvement suggestion,other
+2222266085,Improvement suggestion,code-issue feedback
+2222448189,Improvement suggestion,workflow/verification report
+2222509102,Improvement suggestion,code-issue feedback
+2222569431,Improvement suggestion,code-issue feedback
+2225424412,Improvement suggestion,code-issue feedback
+2225487899,Improvement suggestion,code-issue feedback
+2226714859,Improvement suggestion,code-issue feedback
+2226714887,Improvement suggestion,code-issue feedback
+2226973690,Code-issue feedback,code-issue feedback
+2227082809,Improvement suggestion,code-issue feedback
+2228587768,Improvement suggestion,code-issue feedback
+2228592948,Code-issue feedback,code-issue feedback
+2230142076,Improvement suggestion,improvement suggestion
+2230309896,Improvement suggestion,improvement suggestion
+2230487555,Code-issue feedback,code-issue feedback
+2230869683,Improvement suggestion,code-issue feedback
+2230869693,Improvement suggestion,code-issue feedback
+2232957712,Improvement suggestion,workflow/verification report
+2232973930,Other,code-issue feedback
+2233047744,Improvement suggestion,improvement suggestion
+2234134001,Code-issue feedback,change acknowledgment
+2234754684,Improvement suggestion,code-issue feedback
+2235103134,Improvement suggestion,improvement suggestion
+2235460883,Improvement suggestion,code-issue feedback
+2236464832,Improvement suggestion,improvement suggestion
+2237205532,Improvement suggestion,code-issue feedback
+2237679605,Improvement suggestion,workflow/verification report
+2237812426,Improvement suggestion,workflow/verification report
+2238103560,Other,improvement suggestion
+2238458730,Improvement suggestion,improvement suggestion
+2239086199,Improvement suggestion,code-issue feedback
+2239488979,Improvement suggestion,improvement suggestion
+2239627960,Improvement suggestion,code-issue feedback
+2239864907,Improvement suggestion,code-issue feedback
+2239864920,Improvement suggestion,improvement suggestion
+2240178880,Improvement suggestion,code-issue feedback
+2240549951,Improvement suggestion,code-issue feedback
+2241454050,Code-issue feedback,change acknowledgment
+2241478646,Improvement suggestion,improvement suggestion
+2241577411,Improvement suggestion,code-issue feedback
+2241867842,Improvement suggestion,other
+2242241327,Improvement suggestion,code-issue feedback
+2242677059,Improvement suggestion,code-issue feedback
+2243693717,Improvement suggestion,improvement suggestion
+2244343612,Improvement suggestion,code-issue feedback
+2246399900,Improvement suggestion,improvement suggestion
+2264686259,Code-issue feedback,other
+2269097270,Improvement suggestion,workflow/verification report
+2269097275,Improvement suggestion,workflow/verification report
+2269097341,Improvement suggestion,code-issue feedback
+2269097358,Improvement suggestion,workflow/verification report
+2273492639,Improvement suggestion,code-issue feedback
+2273492667,Improvement suggestion,code-issue feedback
+2291457512,Code-issue feedback,improvement suggestion
+2344968952,Improvement suggestion,improvement suggestion
+2378670024,Code-issue feedback,change acknowledgment

@@ -1,0 +1,93 @@
+{
+ "round": "full samples: every coded unit double-coded blind (pilot, rest and completion waves), disagreements adjudicated (adjudication_log.csv)",
+ "strata": {
+  "same-inline": {
+   "n": 364,
+   "observed": 0.9093,
+   "kappa": 0.8212,
+   "pass2_rounds": {
+    "completion": 264,
+    "pilot": 50,
+    "rest": 50
+   },
+   "waves": {
+    "pilot": {
+     "n": 50,
+     "observed": 0.94,
+     "kappa": 0.8723
+    },
+    "remaining": {
+     "n": 314,
+     "observed": 0.9045,
+     "kappa": 0.8135
+    }
+   }
+  },
+  "cross-inline": {
+   "n": 357,
+   "observed": 0.9888,
+   "kappa": 0.943,
+   "pass2_rounds": {
+    "completion": 257,
+    "pilot": 50,
+    "rest": 50
+   },
+   "waves": {
+    "pilot": {
+     "n": 50,
+     "observed": 1.0,
+     "kappa": 1.0
+    },
+    "remaining": {
+     "n": 307,
+     "observed": 0.987,
+     "kappa": 0.9283
+    }
+   }
+  },
+  "same-summary": {
+   "n": 275,
+   "observed": 0.96,
+   "kappa": 0.9324,
+   "pass2_rounds": {
+    "completion": 175,
+    "pilot": 50,
+    "rest": 50
+   },
+   "waves": {
+    "pilot": {
+     "n": 50,
+     "observed": 0.9,
+     "kappa": 0.7874
+    },
+    "remaining": {
+     "n": 225,
+     "observed": 0.9733,
+     "kappa": 0.9553
+    }
+   }
+  },
+  "cross-summary": {
+   "n": 348,
+   "observed": 0.9195,
+   "kappa": 0.8767,
+   "pass2_rounds": {
+    "completion": 248,
+    "pilot": 50,
+    "rest": 50
+   },
+   "waves": {
+    "pilot": {
+     "n": 50,
+     "observed": 1.0,
+     "kappa": 1.0
+    },
+    "remaining": {
+     "n": 298,
+     "observed": 0.906,
+     "kappa": 0.8544
+    }
+   }
+  }
+ }
+}

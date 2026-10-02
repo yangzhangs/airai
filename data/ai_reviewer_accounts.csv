@@ -1,0 +1,59 @@
+user,system_identity,role
+Claude,Claude Code,AI reviewer
+Copilot,Copilot,AI reviewer
+agent-optibot[bot],Optibot,AI reviewer
+aikido-pr-checks[bot],Aikido,excluded automation
+amazon-q-developer[bot],Amazon Q,AI reviewer
+baz-reviewer[bot],Baz,AI reviewer
+callstackai[bot],CallstackAI,AI reviewer
+charliecreates[bot],Charlie,AI reviewer
+chatgpt-codex-connector[bot],Codex,AI reviewer
+claude[bot],Claude Code,AI reviewer
+codeant-ai[bot],CodeAnt,AI reviewer
+codefactor-io[bot],CodeFactor,excluded automation
+codegen-sh[bot],Codegen,AI reviewer
+coderabbitai[bot],CodeRabbit,AI reviewer
+codescene-delta-analysis[bot],CodeScene,excluded automation
+codex[bot],Codex,AI reviewer
+copilot-pull-request-reviewer[bot],Copilot,AI reviewer
+copilot-swe-agent[bot],Copilot,AI reviewer
+copilot[bot],Copilot,AI reviewer
+cubic-dev-ai[bot],Cubic Dev AI,AI reviewer
+cursor[bot],Cursor,AI reviewer
+cursoragent,Cursor,AI reviewer
+devin-ai-integration[bot],Devin,AI reviewer
+dust-agent[bot],Dust,AI reviewer
+ellipsis-dev[bot],Ellipsis,AI reviewer
+entelligence-ai-pr-reviews[bot],Entelligence,AI reviewer
+entelligence-ai[bot],Entelligence,AI reviewer
+gemini-code-assist[bot],Gemini Code Assist,AI reviewer
+giselles-ai[bot],Giselles,AI reviewer
+github-actions[bot],GitHub Actions,excluded automation
+github-advanced-security[bot],GitHub Advanced Security,excluded automation
+github-copilot[bot],Copilot,AI reviewer
+graphite-app[bot],Graphite,AI reviewer
+greptile-apps-staging[bot],Greptile,AI reviewer
+greptile-apps[bot],Greptile,AI reviewer
+hound[bot],Hound,excluded automation
+kilo-code-bot[bot],Kilo Code,AI reviewer
+kodus-ai[bot],Kodus,AI reviewer
+korbit-ai[bot],Korbit,AI reviewer
+lunary-bot,Lunary,AI reviewer
+macroscope-app[bot],Macroscope,AI reviewer
+matter-code-review[bot],Matter,AI reviewer
+propel-code-bot[bot],Propel,AI reviewer
+pullrequest[bot],PullRequest,AI reviewer
+qodo-merge-for-open-source[bot],Qodo,AI reviewer
+qodo-merge-pro[bot],Qodo,AI reviewer
+recurseml[bot],RecurseML,AI reviewer
+seer-by-sentry[bot],Seer,AI reviewer
+semgrep-code-getsentry[bot],Semgrep,excluded automation
+semgrep-code-zeta-chain[bot],Semgrep,excluded automation
+sourcery-ai[bot],Sourcery AI,AI reviewer
+starrocks-cr[bot],StarRocks,AI reviewer
+sweep-ai[bot],Sweep,AI reviewer
+tembo[bot],Tembo,AI reviewer
+vercel[bot],Vercel,excluded automation
+whatsapp-codereview-bot[bot],WhatsApp Code Review,AI reviewer
+windsurf-bot[bot],Windsurf,AI reviewer
+wispbit-ai[bot],Wispbit,AI reviewer
