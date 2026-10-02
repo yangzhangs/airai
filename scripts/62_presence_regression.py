@@ -8,8 +8,9 @@ Task-type controls are the ten substantive categories: the four PRs carrying
 the two rarest labels (other, revert; 0.1% of the curated PRs) are excluded, as
 they fall outside the task-type comparisons throughout the paper.
 
-The script prints the rows exactly as the manuscript rounds them and fails if
-any value drifts from the table, so the regression is reproducible from the
+The script prints the rows exactly as the manuscript rounds them (the second
+panel of the table lists the task-type terms) and checks the joint Wald test of
+the task controls quoted in the text, so the regression is reproducible from the
 package alone (statsmodels; the released variables are recomputed from the
 event and metadata tables).
 Run from the package root:  python3 scripts/62_presence_regression.py
@@ -51,6 +52,15 @@ ROWS = [
     ('Claude Code', 'C(agent)[T.Claude_Code]', 1.49, 0.79, 2.82, 0.33, 1.22, 0.222),
     ('Log stars', 'logstars', 1.07, 0.89, 1.28, 0.09, 0.70, 0.487),
     ('Calendar month', 'month', 1.15, 0.93, 1.42, 0.11, 1.28, 0.201),
+    ('chore', 'C(task_type)[T.chore]', 2.83, 1.18, 6.81, 0.45, 2.33, 0.020),
+    ('ci', 'C(task_type)[T.ci]', 1.20, 0.47, 3.04, 0.47, 0.38, 0.703),
+    ('docs', 'C(task_type)[T.docs]', 1.04, 0.54, 2.01, 0.34, 0.12, 0.904),
+    ('feat', 'C(task_type)[T.feat]', 1.20, 0.64, 2.24, 0.32, 0.58, 0.564),
+    ('fix', 'C(task_type)[T.fix]', 1.34, 0.73, 2.47, 0.31, 0.95, 0.344),
+    ('perf', 'C(task_type)[T.perf]', 0.51, 0.16, 1.65, 0.60, -1.13, 0.259),
+    ('refactor', 'C(task_type)[T.refactor]', 2.02, 0.97, 4.23, 0.38, 1.87, 0.062),
+    ('style', 'C(task_type)[T.style]', 2.23, 0.57, 8.77, 0.70, 1.15, 0.249),
+    ('test', 'C(task_type)[T.test]', 0.85, 0.47, 1.52, 0.30, -0.55, 0.579),
 ]
 
 print(f"N = {int(m.nobs)} PRs from {d.repo_name.nunique()} repositories")
@@ -65,4 +75,15 @@ for name, key, or_, lo, hi, se, z, p in ROWS:
     ok &= not bad
     print(f"{name:22s} {row[0]:7.2f} [{row[1]:5.2f}, {row[2]:5.2f}] {row[3]:5.2f} {row[4]:6.2f} "
           f"{row[5]:8.3f}   {'OK' if not bad else 'MISMATCH'}")
+terms = [x for x in m.params.index if x.startswith('C(task_type)')]
+idx = list(m.params.index)
+R = np.zeros((len(terms), len(m.params)))
+for i, x in enumerate(terms):
+    R[i, idx.index(x)] = 1
+w = m.wald_test(R, scalar=False)
+cjk = float(np.asarray(w.statistic).squeeze()); pjk = float(np.asarray(w.pvalue).squeeze())
+jk_ok = abs(cjk - 18.2) <= 0.3 and abs(pjk - 0.033) <= 0.002
+ok &= jk_ok
+print(f"{'task controls, joint':22s} {cjk:7.1f} {'':16s} {'':5s} {len(terms):6d} {pjk:8.3f}   "
+      f"{'OK' if jk_ok else 'MISMATCH'}")
 print('Table 3 reproduced.' if ok else 'MISMATCH against the manuscript; update the table or the script.')
