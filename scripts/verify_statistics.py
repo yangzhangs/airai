@@ -38,9 +38,11 @@ def chi(tab, label, paper):
 print('== inferential statistics ==')
 chi(pd.crosstab(prof.authoring_agent, conf3), 'config x agent (PRs)', '3,063.2 df=8 V=0.44')
 chi(pd.crosstab(prof.task[keep10], conf3[keep10]), 'config x task (PRs)', '115.5 df=18 V=0.08')
-chi(pd.crosstab(ev.authoring_agent, ev.actor), 'kind x agent (events)', '12,403.4 df=8 V=0.46')
-chi(pd.crosstab(ev.task_type[~ev.task_type.isin(['other', 'revert'])],
-                ev.actor[~ev.task_type.isin(['other', 'revert'])]), 'kind x task (events)', '370.0 df=18 V=0.08')
+_ai = ev[ev.actor != 'human']
+chi(pd.crosstab(_ai.authoring_agent, _ai.actor), 'same/cross x agent (events)', '10,480.3 df=4 V=0.95')
+_t = ev[~ev.task_type.isin(['other', 'revert'])]
+_t = _t[_t.actor != 'human']
+chi(pd.crosstab(_t.task_type, _t.actor), 'same/cross x task (events)', '247.2 df=9 V=0.15')
 t3 = pd.DataFrame([[6329, 657, 306, 0], [608, 2059, 1673, 61], [8976, 2438, 647, 4960]],
                   index=['same-system', 'cross-system', 'human'],
                   columns=['inline only', 'summary only', 'both', 'bare verdict'])
