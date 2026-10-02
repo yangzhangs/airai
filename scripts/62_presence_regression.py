@@ -75,6 +75,13 @@ for name, key, or_, lo, hi, se, z, p in ROWS:
     ok &= not bad
     print(f"{name:22s} {row[0]:7.2f} [{row[1]:5.2f}, {row[2]:5.2f}] {row[3]:5.2f} {row[4]:6.2f} "
           f"{row[5]:8.3f}   {'OK' if not bad else 'MISMATCH'}")
+llr = 2 * (m.llf - m.llnull)
+fit_ok = (abs(round(llr, 1) - 2178.1) <= 0.5 and int(m.df_model) == 17
+          and abs(round(m.prsquared, 2) - 0.36) <= 0.005)
+ok &= fit_ok
+print(f"{'model fit vs null':22s} LLR={llr:9.1f} {'':16s} df={int(m.df_model):3d} {'':8s}   "
+      f"paper 2,178.1 / 17 / pseudoR2 0.36   {'OK' if fit_ok else 'MISMATCH'}")
+
 terms = [x for x in m.params.index if x.startswith('C(task_type)')]
 idx = list(m.params.index)
 R = np.zeros((len(terms), len(m.params)))
