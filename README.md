@@ -96,7 +96,7 @@ python3 scripts/rq2/characteristics_statistics.py   # RQ2 statistics
 
 The scripts write the result table of each analysis into `data/rq2/`.
 
-## RQ3 - Human-in-the-Loop
+## RQ3 - Human Participation
 
 - **Reply frame and sampling** - `review_comments_final.csv` (reply flag; 1,787 replies).
 - **Human presence, verdicts, merge outcomes and timing (Table 4)** - `pr_review_profile.csv`, `review_events_final.csv`, `curated_pr_metadata.csv` (merge outcomes and timestamps).
