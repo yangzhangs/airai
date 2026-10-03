@@ -15,7 +15,6 @@ The study is built on [**AIDev**](https://huggingface.co/datasets/hao-li/AIDev),
 ```
 .
 ├── README.md
-├── ETHICS.md                            # Research-ethics and data-handling statement
 ├── .gitignore
 ├── codebooks/                           # The coding instruments behind the coded samples
 │   ├── review_functions_inline.md       # RQ2: inline-comment codebook (boundary rules, worked examples)
@@ -118,6 +117,6 @@ The three codebooks are the instruments behind the coded samples. The paper's fi
 
 ## Notes
 
-- **Text policy.** Review and comment text is not redistributed, except the short human-reply bodies in the RQ3 blind worksheet, with third-party account names pseudonymized; ethics and data handling are detailed in `ETHICS.md`.
+- **Data.** The study analyzes public GitHub data only. Review and comment text is not redistributed, except the short human-reply bodies in the RQ3 blind worksheet, with third-party account names pseudonymized.
 - **Identifiers only.** Comments appear as identifiers with lengths and reply flags, and reviews as a summary-text flag with its character count; no review text and no personal data beyond public GitHub logins are included.
 - **Source data.** All tables derive from the AIDev curated subset (33,596 PRs from 2,807 repositories with more than 100 stars); the raw tables are not redistributed.
