@@ -1,0 +1,21 @@
+{
+ "note": "every coded unit is double-coded blind; the adjudicated final is the coding of record",
+ "strata": {
+  "same-inline": {
+   "n": 364,
+   "kappa": 0.8212
+  },
+  "cross-inline": {
+   "n": 357,
+   "kappa": 0.943
+  },
+  "same-summary": {
+   "n": 275,
+   "kappa": 0.9324
+  },
+  "cross-summary": {
+   "n": 348,
+   "kappa": 0.8767
+  }
+ }
+}

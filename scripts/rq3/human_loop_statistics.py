@@ -142,16 +142,14 @@ for a, lab in [('human', 'human'), ('same-system', 'same'), ('cross-system', 'cr
 
 # ---- reply roles ----------------------------------------------------------
 print('\n== Reply roles')
-rf = pd.read_csv(DATA / 'rq3' / 'doublecoding' / 'roles_full_final.csv', comment='#')
-rb = pd.read_csv(DATA / 'rq3' / 'doublecoding' / 'roles_blind_full.csv', comment='#')
-d = rb.merge(rf, left_on='reply_id', right_on='unit_id')
+d = pd.read_csv(DATA / 'rq3' / 'doublecoding' / 'roles_full_coded.csv', comment='#')
 d['agent'] = d.pr_id.map(meta.agent)
 show('sampled human replies', len(d))
-sh = d.label.value_counts(normalize=True) * 100
+sh = d.final.value_counts(normalize=True) * 100
 for role in ['code feedback', 'direction to an agent', 'decision', 'brief remark', 'question']:
     show(f'{role} share (%)', round(sh[role], 1))
-cf = d[d.label == 'code feedback']; dr = d[d.label == 'direction to an agent']
-qu = d[d.label == 'question']; de = d[d.label == 'decision']; br = d[d.label == 'brief remark']
+cf = d[d.final == 'code feedback']; dr = d[d.final == 'direction to an agent']
+qu = d[d.final == 'question']; de = d[d.final == 'decision']; br = d[d.final == 'brief remark']
 show('code feedback units', len(cf))
 show('code feedback carrying a code span (%)', round(cf.reply_body.str.contains('`', regex=False).mean() * 100, 1))
 show('direction units', len(dr))
@@ -164,8 +162,8 @@ to_human = d.parent_review_pairing == 'human_review'
 show('direction answering a human comment', int((~dr.parent_review_pairing.ne('human_review')).sum()))
 show('replies to a human comment', int(to_human.sum()))
 hh = d[to_human]
-show('code feedback among replies to humans (%)', round((hh.label == 'code feedback').mean() * 100, 1))
-show('code feedback is the modal role among replies to humans', hh.label.mode()[0], '{:s}')
+show('code feedback among replies to humans (%)', round((hh.final == 'code feedback').mean() * 100, 1))
+show('code feedback is the modal role among replies to humans', hh.final.mode()[0], '{:s}')
 show('decision units', len(de))
 show('decisions answering an AI comment', int(de.parent_review_pairing.ne('human_review').sum()))
 show('question units', len(qu))

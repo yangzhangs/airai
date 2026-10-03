@@ -25,41 +25,17 @@ def kappa(a, b):
     return float((po - pe) / (1 - pe)), int(n)
 
 
-def coded(df):
-    return (list(df.pass1.str.strip().str.lower()),
-            list(df.pass2.str.strip().str.lower()))
-
-
-out = {'round': 'full samples: every coded unit double-coded blind '
-                '(pilot, rest and completion waves), disagreements adjudicated '
-                '(adjudication_log.csv)',
-       'strata': {}}
-for stratum, fn in [('same-inline', 'same_inline_sample_doublecoding.csv'),
-                    ('cross-inline', 'cross_inline_sample_doublecoding.csv'),
-                    ('same-summary', 'same_summary_sample_doublecoding.csv'),
-                    ('cross-summary', 'cross_summary_sample_doublecoding.csv')]:
+out = {'note': 'every coded unit is double-coded blind; the adjudicated final is '
+               'the coding of record', 'strata': {}}
+for stratum, fn in [('same-inline', 'same_inline_coded.csv'),
+                    ('cross-inline', 'cross_inline_coded.csv'),
+                    ('same-summary', 'same_summary_coded.csv'),
+                    ('cross-summary', 'cross_summary_coded.csv')]:
     d = pd.read_csv(DC / fn, comment='#')
     assert d.pass2.notna().all(), f'{fn}: every unit must be double-coded'
-    k, n = kappa(*coded(d))
+    k, n = kappa(list(d.pass1.str.strip().str.lower()), list(d.pass2.str.strip().str.lower()))
     print(f'{stratum:14s} n={n:3d}  kappa={k:.4f}')
-    waves = {}
-    for wname, mask in [('pilot', d['round'] == 'pilot'),
-                        ('remaining', d['round'].isin(['rest', 'completion']))]:
-        g = d[mask]
-        wk, wn = kappa(*coded(g))
-        waves[wname] = {'n': wn, 'kappa': round(wk, 4)}
-        print(f"{'':14s} {wname:10s} n={wn:3d}  kappa={wk:.4f}")
-    out['strata'][stratum] = {'n': n, 'kappa': round(k, 4),
-                              'pass2_rounds': {r: int(v) for r, v in
-                                               d['round'].value_counts().items()},
-                              'waves': waves}
+    out['strata'][stratum] = {'n': n, 'kappa': round(k, 4)}
 
-adj = pd.read_csv(DC / 'adjudication_log.csv', comment='#')
-print(f"\nadjudication log: {len(adj)} units")
-for stratum in out['strata']:
-    n = int((adj.stratum == stratum).sum())
-    if n:
-        print(f'  {stratum}: {n} units adjudicated')
-
-json.dump(out, open(DATA / 'rq2' / 'rq2_kappa_redrawn_samples.json', 'w'), indent=1)
-print('\nwrote data/rq2/rq2_kappa_redrawn_samples.json')
+json.dump(out, open(DATA / 'rq2' / 'rq2_kappa.json', 'w'), indent=1)
+print('\nwrote data/rq2/rq2_kappa.json')

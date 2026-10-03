@@ -24,36 +24,25 @@ This package supports the replication of our empirical study of AI-on-AI review 
 │   ├── rq1/
 │   │   └── ai_reviewer_accounts.csv     # 41-row account screening record (32 AI accounts)
 │   ├── rq2/
-│   │   ├── same_system_inline_coded.csv      # coded sample, 364 units
-│   │   ├── cross_system_inline_coded.csv     # coded sample, 357 units
-│   │   ├── same_system_summary_coded.csv     # coded sample, 275 units
-│   │   ├── cross_system_summary_coded.csv    # coded sample, 348 units
 │   │   ├── full_corpus_inline_rule_coded.csv # rule-coded inline corpus, 26,443 units
 │   │   ├── rq2_sample_shares.json            # per-stratum function shares
-│   │   ├── rq2_kappa_redrawn_samples.json    # agreement per stratum and wave
+│   │   ├── rq2_kappa.json                    # agreement per stratum
 │   │   └── doublecoding/
-│   │       ├── README.md                            # waves and agreement tables
-│   │       ├── same_inline_sample_doublecoding.csv   # 364 units: pass1, pass2, wave, adjudicated final
-│   │       ├── cross_inline_sample_doublecoding.csv  # 357 units, same columns
-│   │       ├── same_summary_sample_doublecoding.csv  # 275 units, same columns
-│   │       ├── cross_summary_sample_doublecoding.csv # 348 units, same columns
-│   │       └── adjudication_log.csv                  # the 79 arbitrated disagreements
+│   │       ├── README.md               # the double-coding record and agreement
+│   │       ├── same_inline_coded.csv   # 364 units: both annotations and the adjudicated final
+│   │       ├── cross_inline_coded.csv  # 357 units, same columns
+│   │       ├── same_summary_coded.csv  # 275 units, same columns
+│   │       └── cross_summary_coded.csv # 348 units, same columns
 │   └── rq3/
-│       ├── roles_pilot.csv              # first 50 replies (both annotators' labels)
-│       ├── roles_rest.csv               # the 266 remaining replies (both annotators' labels)
-│       ├── rq3_kappa_rounds.json        # agreement per round
+│       ├── rq3_kappa.json               # agreement over the reply sample
 │       └── doublecoding/
-│           ├── README.md                        # waves and agreement tables
-│           ├── roles_blind_full.csv             # the 316 replies as annotated (pseudonymized bodies)
-│           ├── roles_full_pass1.csv             # annotator 1 labels over the 316
-│           ├── roles_full_pass2.csv             # annotator 2 labels over the 316
-│           ├── roles_full_final.csv             # adjudicated labels of record
-│           └── roles_full_adjudication_log.csv  # the 42 arbitrated units
+│           ├── README.md            # the double-coding record and agreement
+│           └── roles_full_coded.csv # 316 replies: bodies, both annotations and the adjudicated final
 └── scripts/
     ├── rq1/prevalence_statistics.py     # RQ1 statistics
     ├── rq2/coding_agreement.py          # four-stratum coding agreement (kappa)
     ├── rq2/characteristics_statistics.py# RQ2 statistics
-    ├── rq3/reply_roles_agreement.py     # role-coding kappa and the pilot/remaining split
+    ├── rq3/reply_roles_agreement.py     # role-coding kappa
     ├── rq3/presence_regression.py       # the Table 3 logistic regression
     └── rq3/human_loop_statistics.py     # RQ3 statistics
 ```
@@ -77,7 +66,7 @@ python3 scripts/rq1/prevalence_statistics.py   # RQ1 statistics
 - **Review arrival time** - `review_events_final.csv` + `curated_pr_metadata.csv` (PR creation times).
 - **Review functions** - the four coded samples, the two function codebooks, `rq2_sample_shares.json`.
 - **Review type comparison and robustness** - the four coded samples plus `full_corpus_inline_rule_coded.csv` (joined to `review_comments_final.csv` for reviewer and authoring agent).
-- **Double-coding record** - `data/rq2/doublecoding/`: both blind passes over every coded unit, the wave per unit, and the adjudicated finals.
+- **Double-coding record** - `data/rq2/doublecoding/`: each coded unit with both annotations and the adjudicated final; a disagreement is visible where `pass1` and `pass2` differ.
 
 ```bash
 python3 scripts/rq2/coding_agreement.py             # four-stratum coding agreement (kappa)
@@ -86,15 +75,15 @@ python3 scripts/rq2/characteristics_statistics.py   # RQ2 statistics
 
 ## RQ3 - Human-in-the-Loop
 
-- **Reply frame and sampling** - `review_comments_final.csv` (reply flag; 1,787 replies), `roles_pilot.csv` and `roles_rest.csv` (the 50+266 split).
+- **Reply frame and sampling** - `review_comments_final.csv` (reply flag; 1,787 replies).
 - **Human presence, verdicts, merge outcomes and timing (Table 4)** - `pr_review_profile.csv`, `review_events_final.csv`, `curated_pr_metadata.csv` (merge outcomes and timestamps).
 - **Presence regression (Table 3)** - `pr_review_profile.csv` + `curated_pr_metadata.csv` + `review_events_final.csv`.
-- **Reply roles** - `roles_pilot.csv`, `roles_rest.csv`, `rq3_kappa_rounds.json`, and `data/rq3/doublecoding/`: the blind worksheet, both annotators' passes, the adjudicated labels of record, and the adjudication log.
+- **Reply roles** - `rq3_kappa.json` and `data/rq3/doublecoding/roles_full_coded.csv`: the reply bodies (pseudonymized) with both annotations and the adjudicated final.
 - **Role codebook** - `codebooks/reply_roles.md`.
 
 ```bash
 python3 scripts/rq3/presence_regression.py     # the Table 3 logistic regression
-python3 scripts/rq3/reply_roles_agreement.py   # role-coding kappa and the pilot/remaining split
+python3 scripts/rq3/reply_roles_agreement.py   # role-coding kappa
 python3 scripts/rq3/human_loop_statistics.py   # RQ3 statistics
 ```
 
@@ -111,6 +100,7 @@ The three codebooks are the instruments behind the coded samples. The paper's fi
 
 ## Notes
 
-- **Data.** The study analyzes public GitHub data only. Review and comment text is not redistributed, except the short human-reply bodies in the RQ3 blind worksheet, with third-party account names pseudonymized.
+- **Data.** The study analyzes public GitHub data only. Review and comment text is not redistributed, except the short human-reply bodies in `data/rq3/doublecoding/roles_full_coded.csv`, with third-party account names pseudonymized.
 - **Identifiers only.** Comments appear as identifiers with lengths and reply flags, and reviews as a summary-text flag with its character count; no review text and no personal data beyond public GitHub logins are included.
+- **Traceability.** The tables carry the AIDev identifiers (comment, review and pull-request ids, repository slugs); joined to the original AIDev tables they retrieve the full text of every coded unit, including the detail of each summary, inline comment and sampled reply.
 - **Source data.** All tables derive from the [AIDev](https://huggingface.co/datasets/hao-li/AIDev) curated subset (33,596 PRs from 2,807 repositories with more than 100 stars); the raw tables are not redistributed.

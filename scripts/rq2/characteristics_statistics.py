@@ -139,22 +139,16 @@ show('comment arrival on Copilot PRs, same (h)', round(cop[cop.owner_actor == 's
 
 # ---- review functions -----------------------------------------------------
 print('\n== Review functions')
-si = pd.read_csv(DATA / 'rq2' / 'same_system_inline_coded.csv', comment='#')
-ci = pd.read_csv(DATA / 'rq2' / 'cross_system_inline_coded.csv', comment='#')
-ss = pd.read_csv(DATA / 'rq2' / 'same_system_summary_coded.csv', comment='#')
-cs = pd.read_csv(DATA / 'rq2' / 'cross_system_summary_coded.csv', comment='#')
+DC = DATA / 'rq2' / 'doublecoding'
+si = pd.read_csv(DC / 'same_inline_coded.csv', comment='#')
+ci = pd.read_csv(DC / 'cross_inline_coded.csv', comment='#')
+ss = pd.read_csv(DC / 'same_summary_coded.csv', comment='#')
+cs = pd.read_csv(DC / 'cross_summary_coded.csv', comment='#')
 show('same-system inline sample', len(si))
 show('cross-system inline sample', len(ci))
 show('same-system summary sample', len(ss))
 show('cross-system summary sample', len(cs))
 show('coded units in total', len(si) + len(ci) + len(ss) + len(cs), '{:,}')
-wave_files = ['same_inline_sample_doublecoding.csv', 'cross_inline_sample_doublecoding.csv',
-              'same_summary_sample_doublecoding.csv', 'cross_summary_sample_doublecoding.csv']
-pilot_counts = [int((pd.read_csv(DATA / 'rq2' / 'doublecoding' / f, comment='#')['round'] == 'pilot').sum())
-                for f in wave_files]
-show('pilot units per stratum (four)', '/'.join(map(str, pilot_counts)), '{:s}')
-show('pilot units in total', sum(pilot_counts))
-
 FUNC = {
     'findings digest': 'Descriptive', 'change overview': 'Descriptive',
     'Explanation': 'Descriptive', 'explanation': 'Descriptive',
@@ -169,7 +163,7 @@ FUNC = {
     'clarification': 'Interactive/directive',
     'Other': 'Other', 'other': 'Other', 'platform notice': 'Other', 'review unavailable': 'Other',
 }
-leaves = pd.concat([si.code, ci.code, ss.summary_code, cs.code]).map(FUNC)
+leaves = pd.concat([si.final, ci.final, ss.final, cs.final]).map(FUNC)
 cats = leaves.value_counts()
 for c in ['Descriptive', 'Code-directed', 'Confirmatory', 'Interactive/directive', 'Other']:
     show(f'{c} units', int(cats[c]), '{:,}')
@@ -178,25 +172,25 @@ for c in ['Descriptive', 'Code-directed', 'Confirmatory', 'Interactive/directive
     show(f'{c} share (%)', round(sh[c], 1))
 show('descriptive+confirmatory share (%)', round(sh['Descriptive'] + sh['Confirmatory'], 1))
 ALIAS = {'verification report': 'workflow/verification report', 'clarification': 'clarification/question'}
-canon = pd.concat([si.code, ci.code, ss.summary_code, cs.code]).str.lower().replace(ALIAS)
+canon = pd.concat([si.final, ci.final, ss.final, cs.final]).str.lower().replace(ALIAS)
 E_RESIDUE = {'other', 'platform notice', 'review unavailable'}
 show('five function categories', len(cats))
 show('ten leaf sub-categories (A.1-D.2)', canon[~canon.isin(E_RESIDUE)].nunique())
-leafsh = pd.concat([si.code, ci.code, ss.summary_code, cs.code]).str.lower().value_counts(normalize=True) * 100
+leafsh = pd.concat([si.final, ci.final, ss.final, cs.final]).str.lower().value_counts(normalize=True) * 100
 for leaf in ['findings digest', 'change overview', 'explanation', 'improvement suggestion',
              'code-issue feedback', 'change acknowledgment', 'approval verdict', 'response to feedback']:
     show(f'leaf {leaf} share (%)', round(leafsh.get(leaf, 0), 1))
 show('leaf verification report share (%)', round(leafsh.get('workflow/verification report', 0) + leafsh.get('verification report', 0), 1))
 show('leaf clarification/question share (%)', round(leafsh.get('clarification/question', 0) + leafsh.get('clarification', 0), 1))
-for label, codes in [('same-inline', si.code), ('cross-inline', ci.code),
-                     ('same-summary', ss.summary_code), ('cross-summary', cs.code)]:
+for label, codes in [('same-inline', si.final), ('cross-inline', ci.final),
+                     ('same-summary', ss.final), ('cross-summary', cs.final)]:
     shares = codes.map(FUNC).value_counts(normalize=True) * 100
     print(f'{label:14s} shares: ' + '  '.join(f'{k} {v:.1f}' for k, v in shares.items()))
 
 # ---- review type comparison -----------------------------------------------
 print('\n== Review type comparison')
-summ_tab = pd.DataFrame({'same-system': ss.summary_code.map(FUNC).value_counts(),
-                         'cross-system': cs.code.map(FUNC).value_counts()}).fillna(0)
+summ_tab = pd.DataFrame({'same-system': ss.final.map(FUNC).value_counts(),
+                         'cross-system': cs.final.map(FUNC).value_counts()}).fillna(0)
 sm_sh = (summ_tab / summ_tab.sum() * 100).round(1)
 show('summary descriptive, same (%)', sm_sh.loc['Descriptive', 'same-system'])
 show('summary descriptive, cross (%)', sm_sh.loc['Descriptive', 'cross-system'])
@@ -206,8 +200,8 @@ chi2, p, dof, _ = chi2_contingency(summ_tab.T)
 show('summary function x type chi2', round(chi2, 1))
 show('summary function x type V', round(cramers_v(chi2, summ_tab.values.sum(), summ_tab.T), 2))
 show('summary function x type p', p, '{:.1e}')
-inl_tab = pd.DataFrame({'same-system': si.code.map(FUNC).value_counts(),
-                        'cross-system': ci.code.map(FUNC).value_counts()}).fillna(0)
+inl_tab = pd.DataFrame({'same-system': si.final.map(FUNC).value_counts(),
+                        'cross-system': ci.final.map(FUNC).value_counts()}).fillna(0)
 in_sh = (inl_tab / inl_tab.sum() * 100).round(1)
 show('inline confirmatory, same (%)', in_sh.loc['Confirmatory', 'same-system'])
 show('inline interactive, same (%)', in_sh.loc['Interactive/directive', 'same-system'])
@@ -221,20 +215,20 @@ show('inline function x type p', p, '{:.1e}')
 
 # ---- robustness -----------------------------------------------------------
 print('\n== Robustness (composition)')
-show('same-system confirmatory share (%)', round((si.code.map(FUNC) == 'Confirmatory').mean() * 100, 1))
+show('same-system confirmatory share (%)', round((si.final.map(FUNC) == 'Confirmatory').mean() * 100, 1))
 ci2 = ci.merge(cm[['id', 'pr_id']], on='id')
 ci2['agent'] = ci2.pr_id.map(sub.agent)
-ag = ci2.assign(cd=ci.code.map(FUNC) == 'Code-directed').groupby('agent').cd.agg(['mean', 'size']) * [100, 1]
+ag = ci2.assign(cd=ci.final.map(FUNC) == 'Code-directed').groupby('agent').cd.agg(['mean', 'size']) * [100, 1]
 show('cross code-directed, Codex units', int(ag.loc['OpenAI_Codex', 'size']))
 show('cross code-directed, Codex (%)', round(ag.loc['OpenAI_Codex', 'mean'], 1))
 show('cross code-directed, Claude units', int(ag.loc['Claude_Code', 'size']))
 show('cross code-directed, Claude (%)', round(ag.loc['Claude_Code', 'mean'], 1))
-pooled_cd = (ci.code.map(FUNC) == 'Code-directed').mean() * 100
+pooled_cd = (ci.final.map(FUNC) == 'Code-directed').mean() * 100
 show('cross code-directed, pooled (%)', round(pooled_cd, 1))
 show('cross code-directed, max deviation from pooled', round(abs(ag['mean'] - pooled_cd).max(), 1))
 cop_cross = ci.merge(cm[['id', 'user']], on='id').query("user == 'Copilot'")
 show('Copilot cross comments (n)', len(cop_cross))
-show('Copilot cross comments code-directed (%)', round((cop_cross.code.map(FUNC) == 'Code-directed').mean() * 100, 1))
+show('Copilot cross comments code-directed (%)', round((cop_cross.final.map(FUNC) == 'Code-directed').mean() * 100, 1))
 full = pd.read_csv(DATA / 'rq2' / 'full_corpus_inline_rule_coded.csv', comment='#', low_memory=False)
 CD = {'improvement suggestion', 'code-issue feedback', 'workflow/verification report'}
 cop = full[full.authoring_agent == 'Copilot']
