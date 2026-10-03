@@ -1,4 +1,4 @@
-# RQ3 double-coding artifacts (human reply roles, Section 3.3.2)
+# RQ3 double-coding artifacts (human reply roles)
 
 The coding instrument lives in `../../../codebooks/reply_roles.md`.
 
@@ -7,7 +7,7 @@ The coding instrument lives in `../../../codebooks/reply_roles.md`.
 | `roles_blind_full.csv` | the 316 sampled replies as the annotators saw them (no labels), with the reply bodies; third-party account names in the bodies are replaced by pseudonyms |
 | `roles_full_pass1.csv` / `roles_full_pass2.csv` | the two annotators' role labels over the full sample |
 | `roles_full_final.csv` | the adjudicated labels of record |
-| `roles_full_adjudication_log.csv` | arbitrator decisions with one-line reasons |
+| `roles_full_adjudication_log.csv` | the arbitration record (unit, both labels, arbitrated outcome) |
 
 The pilot/remaining split lives in `../roles_pilot.csv` (the first 50 replies
 drawn, seed 20260930, which fixed the role codebook) and `../roles_rest.csv`
@@ -23,18 +23,6 @@ in Section 3. Reproduce with `python3 scripts/rq3/reply_roles_agreement.py`
 The sample holds 316 replies, the size Cochran's rule gives for the 1,787-reply
 frame.
 
-### Decision rules at the contested boundaries
-
-The adjudication log records a rule-based reason for every executed decision.
-The recurring boundaries and the rules applied are:
-
-- **Acknowledgment vs. response.** A reply that explicitly references the
-  earlier point ("as requested", "applied your suggestion", "you're correct")
-  and reports the action it prompted is `Response to feedback`; a bare report
-  of an applied action is `Change acknowledgment`.
-- **Defense vs. action.** A unit that only justifies the current state of the
-  code is `Explanation`; a unit that reports or commits to an action is a
-  disposition of the review point.
 
 ## Final role distribution (n = 316, adjudicated)
 

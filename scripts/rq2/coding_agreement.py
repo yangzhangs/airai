@@ -1,14 +1,6 @@
 #!/usr/bin/env python3
-"""Recompute the RQ2 agreement figures from the full-sample double-coding files
-and check them against the values the paper reports.
-
-Every coded unit of the four strata is double-coded blind (the pilot, rest and
-completion waves recorded in data/rq2/doublecoding/*_sample_doublecoding.csv) and a
-third annotator arbitrated the disagreements (adjudication_log.csv). The method
-section quotes Cohen's kappa per stratum over the full samples; the pilot and
-remaining wave figures are released in the json for transparency. This script
-recomputes the overall and the wave figures, checks them, and rewrites
-data/rq2/rq2_kappa_redrawn_samples.json.
+"""Recompute the RQ2 coding agreement from the double-coding files, check it
+against the paper, and rewrite data/rq2/rq2_kappa_redrawn_samples.json.
 
 Run from the package root:  python3 scripts/rq2/coding_agreement.py
 """
@@ -63,24 +55,24 @@ for stratum, fn in [('same-inline', 'same_inline_sample_doublecoding.csv'),
                     ('cross-summary', 'cross_summary_sample_doublecoding.csv')]:
     d = pd.read_csv(DC / fn, comment='#')
     assert d.pass2.notna().all(), f'{fn}: every unit must be double-coded'
-    k, po, n = kappa(*coded(d))
+    k, _, n = kappa(*coded(d))
     pk, pn = PAPER_STRATA[stratum]
     match = (n == pn) and abs(k - pk) < 0.005
     ok &= match
-    print(f"{stratum:14s} n={n:3d} (expected {pn})  observed={po:.4f}  "
+    print(f"{stratum:14s} n={n:3d} (expected {pn})  "
           f"kappa={k:.4f} (expected {pk:.2f})  {'OK' if match else 'MISMATCH'}")
     waves = {}
     for wname, mask in [('pilot', d['round'] == 'pilot'),
                         ('remaining', d['round'].isin(['rest', 'completion']))]:
         g = d[mask]
-        wk, wpo, wn = kappa(*coded(g))
-        waves[wname] = {'n': wn, 'observed': round(wpo, 4), 'kappa': round(wk, 4)}
+        wk, _, wn = kappa(*coded(g))
+        waves[wname] = {'n': wn, 'kappa': round(wk, 4)}
         want = PAPER_WAVES[stratum][wname]
         wmatch = abs(wk - want) < 0.005
         ok &= wmatch
-        print(f"{'':14s} {wname:10s} n={wn:3d}  observed={wpo:.4f}  "
+        print(f"{'':14s} {wname:10s} n={wn:3d}  "
               f"kappa={wk:.4f} (released {want:.2f})  {'OK' if wmatch else 'MISMATCH'}")
-    out['strata'][stratum] = {'n': n, 'observed': round(po, 4), 'kappa': round(k, 4),
+    out['strata'][stratum] = {'n': n, 'kappa': round(k, 4),
                               'pass2_rounds': {r: int(v) for r, v in
                                                d['round'].value_counts().items()},
                               'waves': waves}

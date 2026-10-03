@@ -1,15 +1,8 @@
 #!/usr/bin/env python3
-"""Split the double-coded RQ3 human-reply roles into the pilot (the 50 replies
-that fixed the role codebook, as first drawn at seed 20260930) and the
-remaining replies, and report Cohen's kappa for each round (mirrors 57_ for
-RQ2). The sample now holds 316 replies (the Cochran size for the 1,787-reply
-frame; nine drawn in a completion wave from the raw table and folded into the released files),
-so the remaining round covers 266 replies while the pilot set stays fixed.
+"""Recompute the RQ3 role-coding agreement (pilot, remaining, full sample) and
+rewrite data/rq3/roles_pilot.csv, roles_rest.csv and rq3_kappa_rounds.json.
 
-Inputs: data/rq3/doublecoding/roles_full_pass1.csv and roles_full_pass2.csv
-        (the two independent passes) and data/rq3/roles_pilot.csv (the pilot
-        membership as first drawn).
-Writes data/rq3/roles_pilot.csv, data/rq3/roles_rest.csv, data/rq3/rq3_kappa_rounds.json.
+Run from the package root:  python3 scripts/rq3/reply_roles_agreement.py
 """
 import json
 from pathlib import Path
@@ -45,15 +38,15 @@ pilot = D[D.unit_id.astype('int64').isin(pilot_ids)]
 rest = D[~D.unit_id.astype('int64').isin(pilot_ids)]
 assert len(pilot) == 50 and len(rest) == 266
 
-kp, pop_, np_ = kappa(list(pilot.label_a), list(pilot.label_b))
-kr, por_, nr_ = kappa(list(rest.label_a), list(rest.label_b))
-kall, poall, nall = kappa(list(D.label_a), list(D.label_b))
+kp, _, np_ = kappa(list(pilot.label_a), list(pilot.label_b))
+kr, _, nr_ = kappa(list(rest.label_a), list(rest.label_b))
+kall, _, nall = kappa(list(D.label_a), list(D.label_b))
 
 report = {'seed': SEED, 'pilot_n': 50,
-          'pilot': {'n': np_, 'kappa': round(kp, 4), 'observed': round(pop_, 4)},
-          'rest': {'n': nr_, 'kappa': round(kr, 4), 'observed': round(por_, 4)},
-          'all_double_coded': {'n': nall, 'kappa': round(kall, 4), 'observed': round(poall, 4)}}
-print(f"pilot n={np_} kappa={kp:.3f} po={pop_:.3f} | rest n={nr_} kappa={kr:.3f} po={por_:.3f} | all n={nall} kappa={kall:.3f}")
+          'pilot': {'n': np_, 'kappa': round(kp, 4)},
+          'rest': {'n': nr_, 'kappa': round(kr, 4)},
+          'all_double_coded': {'n': nall, 'kappa': round(kall, 4)}}
+print(f"pilot n={np_} kappa={kp:.3f} | rest n={nr_} kappa={kr:.3f} | all n={nall} kappa={kall:.3f}")
 
 MARK_PILOT = "# RQ3 | role coding, pilot round (50 replies, first draw seed 20260930; both annotators\u2019 labels)\n"
 MARK_REST = "# RQ3 | role coding, remaining replies (266 of the 316-reply sample; both annotators\u2019 labels)\n"

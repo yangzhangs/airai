@@ -50,5 +50,5 @@ first draw: kappa 0.74 on the pilot (n = 50), 0.85 on the remaining replies
 `scripts/rq3/reply_roles_agreement.py`).
 
 The coded sample is `data/rq3/doublecoding/roles_full_final.csv` (316 rows); the
-waves and the per-unit adjudication reasons are documented in
+waves and the adjudication record are documented in
 `data/rq3/doublecoding/README.md` and the `roles_*` files next to it.

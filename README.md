@@ -39,77 +39,77 @@ The study is built on [**AIDev**](https://huggingface.co/datasets/hao-li/AIDev),
 │   │   ├── rq2_sample_shares.json            # per-stratum function shares
 │   │   ├── rq2_kappa_redrawn_samples.json    # agreement per stratum and wave
 │   │   └── doublecoding/
-│   │       ├── README.md                            # waves, boundary rules, agreement tables
+│   │       ├── README.md                            # waves and agreement tables
 │   │       ├── same_inline_sample_doublecoding.csv   # 364 units: pass1, pass2, wave, adjudicated final
 │   │       ├── cross_inline_sample_doublecoding.csv  # 357 units, same columns
 │   │       ├── same_summary_sample_doublecoding.csv  # 275 units, same columns
 │   │       ├── cross_summary_sample_doublecoding.csv # 348 units, same columns
-│   │       └── adjudication_log.csv                  # the 79 disagreements with one-line reasons
+│   │       └── adjudication_log.csv                  # the 79 arbitrated disagreements
 │   └── rq3/
 │       ├── roles_pilot.csv              # first 50 replies (both annotators' labels)
 │       ├── roles_rest.csv               # the 266 remaining replies (both annotators' labels)
 │       ├── rq3_kappa_rounds.json        # agreement per round
 │       └── doublecoding/
-│           ├── README.md                        # boundary rules and the final role distribution
+│           ├── README.md                        # the final role distribution
 │           ├── roles_blind_full.csv             # the 316 replies as annotated (pseudonymized bodies)
 │           ├── roles_full_pass1.csv             # annotator 1 labels over the 316
 │           ├── roles_full_pass2.csv             # annotator 2 labels over the 316
 │           ├── roles_full_final.csv             # adjudicated labels of record
-│           └── roles_full_adjudication_log.csv  # 42 arbitrated units with one-line reasons
+│           └── roles_full_adjudication_log.csv  # the 42 arbitrated units
 └── scripts/
-    ├── rq1/prevalence_statistics.py     # Section 3.1
+    ├── rq1/prevalence_statistics.py     # recomputes the RQ1 figures
     ├── rq2/coding_agreement.py          # four-stratum coding agreement
-    ├── rq2/characteristics_statistics.py# Section 3.2
+    ├── rq2/characteristics_statistics.py# recomputes the RQ2 figures
     ├── rq3/reply_roles_agreement.py     # role-coding agreement rounds
-    ├── rq3/presence_regression.py       # Table 3
-    └── rq3/human_loop_statistics.py     # Section 3.3
+    ├── rq3/presence_regression.py       # the Table 3 regression
+    └── rq3/human_loop_statistics.py     # recomputes the RQ3 figures
 ```
 
 
-## RQ1 - Prevalence of AI-on-AI Review (Section 3.1)
+## RQ1 - Prevalence
 
-- **Account identification (Section 2.2)** - `data/rq1/ai_reviewer_accounts.csv`: 40 candidates from the platform bot flag (31 kept as AI reviewers, 9 excluded as automation) plus 1 added by name inspection; 32 AI accounts in total.
-- **Reviewed PRs and review configurations (Section 3.1.1, Table 1)** - `curated_pr_metadata.csv`, `pr_review_profile.csv`, and for Table 1 also `review_events_final.csv`, `review_summary_meta.csv`, `review_comments_final.csv`.
-- **AI-on-AI review types and pairings (Sections 3.1.2-3.1.3)** - `review_events_final.csv`.
+- **Account identification** - `data/rq1/ai_reviewer_accounts.csv`: 40 candidates from the platform bot flag (31 kept as AI reviewers, 9 excluded as automation) plus 1 added by name inspection; 32 AI accounts in total.
+- **Reviewed PRs and review configurations (Table 1)** - `curated_pr_metadata.csv`, `pr_review_profile.csv`, and for Table 1 also `review_events_final.csv`, `review_summary_meta.csv`, `review_comments_final.csv`.
+- **AI-on-AI review types and pairings** - `review_events_final.csv`.
 
 ```bash
-python3 scripts/rq1/prevalence_statistics.py   # recomputes the Section 3.1 figures next to the released values
+python3 scripts/rq1/prevalence_statistics.py   # recomputes the RQ1 figures next to the released values
 ```
 
-## RQ2 - Characteristics of AI-on-AI Review (Section 3.2)
+## RQ2 - Characteristics
 
-- **Sampling design (Section 2.3)** - the four coded samples; the four populations and the Cochran sample sizes recomputed from `review_comments_final.csv` and `review_summary_meta.csv`.
+- **Sampling design** - the four coded samples; the four populations and the Cochran sample sizes recomputed from `review_comments_final.csv` and `review_summary_meta.csv`.
 - **Review form (Table 2)** - `review_events_final.csv` + `review_summary_meta.csv` + `review_comments_final.csv`.
 - **Review length** - `review_comments_final.csv` (comment lengths), `review_summary_meta.csv` (summary lengths).
 - **Review arrival time** - `review_events_final.csv` + `curated_pr_metadata.csv` (PR creation times).
-- **Review functions (Section 3.2.2)** - the four coded samples, the two function codebooks, `rq2_sample_shares.json`.
-- **Review type comparison and robustness (Section 3.2.3)** - the four coded samples plus `full_corpus_inline_rule_coded.csv` (joined to `review_comments_final.csv` for reviewer and authoring agent).
-- **Double-coding record (Section 2.3)** - `data/rq2/doublecoding/`: the two blind passes over every coded unit, the wave per unit, the adjudicated final, and all 79 disagreements with a one-line reason each; the README there documents the boundary rules.
+- **Review functions** - the four coded samples, the two function codebooks, `rq2_sample_shares.json`.
+- **Review type comparison and robustness** - the four coded samples plus `full_corpus_inline_rule_coded.csv` (joined to `review_comments_final.csv` for reviewer and authoring agent).
+- **Double-coding record** - `data/rq2/doublecoding/`: both blind passes over every coded unit, the wave per unit, and the adjudicated finals.
 
 ```bash
 python3 scripts/rq2/coding_agreement.py             # per-stratum and wave kappa next to the released values
-python3 scripts/rq2/characteristics_statistics.py   # recomputes the Section 3.2 figures next to the released values
+python3 scripts/rq2/characteristics_statistics.py   # recomputes the RQ2 figures next to the released values
 ```
 
-## RQ3 - Human-in-the-Loop (Section 3.3)
+## RQ3 - Human-in-the-Loop
 
-- **Reply frame and sampling (Section 2.4)** - `review_comments_final.csv` (reply flag; 1,787 replies), `roles_pilot.csv` and `roles_rest.csv` (the 50+266 split).
-- **Human presence, verdicts and timing (Section 3.3.1, Table 4)** - `pr_review_profile.csv`, `review_events_final.csv`, `curated_pr_metadata.csv` (merge outcomes and timestamps).
+- **Reply frame and sampling** - `review_comments_final.csv` (reply flag; 1,787 replies), `roles_pilot.csv` and `roles_rest.csv` (the 50+266 split).
+- **Human presence, verdicts, merge outcomes and timing (Table 4)** - `pr_review_profile.csv`, `review_events_final.csv`, `curated_pr_metadata.csv` (merge outcomes and timestamps).
 - **Presence regression (Table 3)** - `pr_review_profile.csv` + `curated_pr_metadata.csv` + `review_events_final.csv`.
-- **Reply roles (Section 3.3.2)** - `roles_pilot.csv`, `roles_rest.csv`, `rq3_kappa_rounds.json`, and `data/rq3/doublecoding/`: the blind worksheet, both annotators' passes, the adjudicated labels of record, and the 42-unit adjudication log; the README there documents the boundary rules and the final role distribution.
+- **Reply roles** - `roles_pilot.csv`, `roles_rest.csv`, `rq3_kappa_rounds.json`, and `data/rq3/doublecoding/`: the blind worksheet, both annotators' passes, the adjudicated labels of record, and the adjudication log.
 - **Role codebook** - `codebooks/reply_roles.md`.
 
 ```bash
 python3 scripts/rq3/presence_regression.py     # Table 3 (repository-clustered SEs) and the joint task-control test
 python3 scripts/rq3/reply_roles_agreement.py   # agreement rounds and the pilot/remaining split
-python3 scripts/rq3/human_loop_statistics.py   # recomputes the Section 3.3 figures next to the released values
+python3 scripts/rq3/human_loop_statistics.py   # recomputes the RQ3 figures next to the released values
 ```
 
 ---
 
 ## Codebooks
 
-The three codebooks are the instruments behind the coded samples. The paper's five functions and ten leaves (Section 3.2.2) aggregate the per-form label sets of the two function codebooks, which differ by written form: the overview and digest labels and the approval verdict arise on summaries only, and change acknowledgment on inline comments only.
+The three codebooks are the instruments behind the coded samples. The paper's five functions and ten leaves aggregate the per-form label sets of the two function codebooks, which differ by written form: the overview and digest labels and the approval verdict arise on summaries only, and change acknowledgment on inline comments only.
 
 ## Software Requirements
 

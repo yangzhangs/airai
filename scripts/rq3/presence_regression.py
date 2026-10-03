@@ -1,20 +1,11 @@
 #!/usr/bin/env python3
-"""Fit the logistic regression of human presence behind Table 3 and Table 3's
-text (Section 3.3): human presence ~ same-system + cross-system + authoring
-agent + task type + log(stars) + calendar month, with repository-clustered
-standard errors, on the 4,386 AI-on-AI reviewed PRs (Section 2.4).
+"""Refit the Table 3 logistic regression from data/common (repository-clustered
+standard errors) and compare the fitted coefficients against the values in the
+paper; the script exits nonzero on any mismatch.
 
-Task-type controls are the ten substantive categories: the four PRs carrying
-the two rarest labels (other, revert; 0.1% of the curated PRs) are excluded, as
-they fall outside the task-type comparisons throughout the paper.
-
-The script prints the rows exactly as the manuscript rounds them (including the
-intercept; the second panel of the table lists the task-type terms) and checks the joint Wald test of
-the task controls quoted in the text, so the regression is reproducible from the
-package alone (statsmodels; the released variables are recomputed from the
-event and metadata tables).
 Run from the package root:  python3 scripts/rq3/presence_regression.py
 """
+import sys
 from pathlib import Path
 
 import numpy as np
@@ -43,6 +34,8 @@ m = smf.logit('human ~ any_same + any_cross + C(agent) + C(task_type) + logstars
               data=d).fit(cov_type='cluster', cov_kwds={'groups': d.repo_name}, disp=0, maxiter=300)
 assert m.mle_retvals.get('converged'), 'the model must converge on the released tables'
 
+# expected values from the paper; the model is fitted below from the released
+# tables and every row compares the fitted coefficients against them
 ROWS = [
     ('(Intercept)', 'Intercept', 0.13, 0.01, 1.18, 1.13, -1.81, 0.070),
     ('Same-system review', 'any_same[T.True]', 1.10, 0.51, 2.34, 0.39, 0.24, 0.812),
@@ -94,4 +87,6 @@ jk_ok = abs(cjk - 18.2) <= 0.3 and abs(pjk - 0.033) <= 0.002
 ok &= jk_ok
 print(f"{'task controls, joint':22s} {cjk:7.1f} {'':16s} {'':5s} {len(terms):6d} {pjk:8.3f}   "
       f"{'OK' if jk_ok else 'MISMATCH'}")
-print('Table 3 reproduced.' if ok else 'MISMATCH against the manuscript; update the table or the script.')
+if not ok:
+    sys.exit('MISMATCH against the manuscript; update the table or the script.')
+print('Table 3 reproduced.')
