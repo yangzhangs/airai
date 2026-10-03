@@ -6,7 +6,7 @@ This instrument codes inline code-review comments posted by AI review bots on
 AI-authored pull requests. Each comment receives exactly one code from the list
 below.
 
-Labels:
+## The labels:
 
 1. `Improvement suggestion`
 2. `Code-issue feedback`
