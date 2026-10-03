@@ -3,14 +3,14 @@
 and check them against the values the paper reports.
 
 Every coded unit of the four strata is double-coded blind (the pilot, rest and
-completion waves recorded in data/doublecoding/*_sample_doublecoding.csv) and a
+completion waves recorded in data/rq2/doublecoding/*_sample_doublecoding.csv) and a
 third annotator arbitrated the disagreements (adjudication_log.csv). The method
 section quotes Cohen's kappa per stratum over the full samples; the pilot and
 remaining wave figures are released in the json for transparency. This script
 recomputes the overall and the wave figures, checks them, and rewrites
-data/rq2_kappa_redrawn_samples.json.
+data/rq2/rq2_kappa_redrawn_samples.json.
 
-Run from the package root:  python3 scripts/rq2_agreement.py
+Run from the package root:  python3 scripts/rq2/coding_agreement.py
 """
 import json
 from pathlib import Path
@@ -18,8 +18,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-DATA = Path(__file__).resolve().parent.parent / 'data'
-DC = DATA / 'doublecoding'
+DATA = Path(__file__).resolve().parents[2] / 'data'
+DC = DATA / 'rq2' / 'doublecoding'
 
 PAPER_WAVES = {   # per-stratum wave kappa, released in the json
     'same-inline':    {'pilot': 0.87, 'remaining': 0.81},
@@ -61,7 +61,7 @@ for stratum, fn in [('same-inline', 'same_inline_sample_doublecoding.csv'),
                     ('cross-inline', 'cross_inline_sample_doublecoding.csv'),
                     ('same-summary', 'same_summary_sample_doublecoding.csv'),
                     ('cross-summary', 'cross_summary_sample_doublecoding.csv')]:
-    d = pd.read_csv(DC / fn)
+    d = pd.read_csv(DC / fn, comment='#')
     assert d.pass2.notna().all(), f'{fn}: every unit must be double-coded'
     k, po, n = kappa(*coded(d))
     pk, pn = PAPER_STRATA[stratum]
@@ -85,14 +85,14 @@ for stratum, fn in [('same-inline', 'same_inline_sample_doublecoding.csv'),
                                                d['round'].value_counts().items()},
                               'waves': waves}
 
-adj = pd.read_csv(DC / 'adjudication_log.csv')
+adj = pd.read_csv(DC / 'adjudication_log.csv', comment='#')
 print(f"\nadjudicated disagreements on record: {len(adj)}")
 for stratum in PAPER_STRATA:
     n = int((adj.stratum == stratum).sum()) if 'stratum' in adj.columns else 0
     if n:
         print(f"  {stratum}: {n} units adjudicated, finals applied to the coded samples")
 
-json.dump(out, open(DATA / 'rq2_kappa_redrawn_samples.json', 'w'), indent=1)
-print('\nwrote data/rq2_kappa_redrawn_samples.json')
+json.dump(out, open(DATA / 'rq2' / 'rq2_kappa_redrawn_samples.json', 'w'), indent=1)
+print('\nwrote data/rq2/rq2_kappa_redrawn_samples.json')
 assert ok, 'kappa values do not match the paper'
 print('all agreement figures match the paper.')

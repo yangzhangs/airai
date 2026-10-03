@@ -1,3 +1,4 @@
+# RQ2 | same-system summary sample, 275 units, label column summary_code
 review_id,pr_id,user,user_type,state,submitted_at,reviewer_system,authoring_agent,actor_kind,summary_code
 2852009275,3074963659,copilot-pull-request-reviewer[bot],Bot,COMMENTED,2025-05-19T21:11:53Z,Copilot,Copilot,same-system,change overview
 2852459483,3075506913,copilot-pull-request-reviewer[bot],Bot,COMMENTED,2025-05-20T03:45:00Z,Copilot,Copilot,same-system,change overview

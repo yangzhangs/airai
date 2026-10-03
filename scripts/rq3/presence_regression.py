@@ -13,7 +13,7 @@ intercept; the second panel of the table lists the task-type terms) and checks t
 the task controls quoted in the text, so the regression is reproducible from the
 package alone (statsmodels; the released variables are recomputed from the
 event and metadata tables).
-Run from the package root:  python3 scripts/presence_regression.py
+Run from the package root:  python3 scripts/rq3/presence_regression.py
 """
 from pathlib import Path
 
@@ -21,7 +21,7 @@ import numpy as np
 import pandas as pd
 import statsmodels.formula.api as smf
 
-DATA = Path(__file__).resolve().parent.parent / 'data'
+DATA = Path(__file__).resolve().parents[2] / 'data' / 'common'
 
 prof = pd.read_csv(DATA / 'pr_review_profile.csv')
 meta = pd.read_csv(DATA / 'curated_pr_metadata.csv')

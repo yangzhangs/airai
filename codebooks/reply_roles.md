@@ -1,3 +1,5 @@
+*Instrument for RQ3 (human reply roles; Sections 2.4 and 3.3.2).*
+
 # Codebook — human-reply role coding (five roles)
 
 Scope: the human replies on the AI-on-AI reviewed PRs, where a human reply is a
@@ -44,9 +46,9 @@ were labeled under it. Assign EXACTLY one role to each reply.
 
 Coding ran in two rounds over the 316 replies, with the pilot set fixed at its
 first draw: kappa 0.74 on the pilot (n = 50), 0.85 on the remaining replies
-(n = 266), 0.83 pooled (`data/rq3_kappa_rounds.json`; regenerate with
-`scripts/reply_roles_agreement.py`).
+(n = 266), 0.83 pooled (`data/rq3/rq3_kappa_rounds.json`; regenerate with
+`scripts/rq3/reply_roles_agreement.py`).
 
-The coded sample is `data/doublecoding/roles_full_final.csv` (316 rows); the
+The coded sample is `data/rq3/doublecoding/roles_full_final.csv` (316 rows); the
 waves and the per-unit adjudication reasons are documented in
-`data/doublecoding/README.md` and the `roles_*` files next to it.
+`data/rq3/doublecoding/README.md` and the `roles_*` files next to it.

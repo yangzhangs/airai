@@ -1,3 +1,4 @@
+# RQ2 | adjudication log: all 79 recorded disagreements with a one-line reason per unit
 id,stratum,pass1,pass2,final,reason
 2913113499,cross-system summary,findings digest,verification report,verification report,"the comment relays the outcome of its own check of the channel outputs (R5), not an enumeration of defects"
 2931190563,cross-system summary,other,findings digest,findings digest,"the body states a code finding (no oversize path; fallback unreachable), which the findings digest covers"

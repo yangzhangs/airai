@@ -1,0 +1,43 @@
+# RQ1 | AI-account identification: 40 candidate accounts from the platform bot flag (31 kept as AI reviewers, 9 excluded as automation) plus 1 account added by name inspection; 32 AI accounts in total (Section 2.2)
+user,source,role,system_identity
+agent-optibot[bot],bot flag,AI reviewer,Optibot
+amazon-q-developer[bot],bot flag,AI reviewer,Amazon Q
+callstackai[bot],bot flag,AI reviewer,CallstackAI
+charliecreates[bot],bot flag,AI reviewer,Charlie
+claude[bot],bot flag,AI reviewer,Claude Code
+codeant-ai[bot],bot flag,AI reviewer,CodeAnt
+coderabbitai[bot],bot flag,AI reviewer,CodeRabbit
+copilot-pull-request-reviewer[bot],bot flag,AI reviewer,Copilot
+copilot-swe-agent[bot],bot flag,AI reviewer,Copilot
+cubic-dev-ai[bot],bot flag,AI reviewer,Cubic Dev AI
+cursor[bot],bot flag,AI reviewer,Cursor
+dust-agent[bot],bot flag,AI reviewer,Dust
+ellipsis-dev[bot],bot flag,AI reviewer,Ellipsis
+entelligence-ai-pr-reviews[bot],bot flag,AI reviewer,Entelligence
+gemini-code-assist[bot],bot flag,AI reviewer,Gemini Code Assist
+giselles-ai[bot],bot flag,AI reviewer,Giselles
+graphite-app[bot],bot flag,AI reviewer,Graphite
+greptile-apps[bot],bot flag,AI reviewer,Greptile
+kodus-ai[bot],bot flag,AI reviewer,Kodus
+korbit-ai[bot],bot flag,AI reviewer,Korbit
+matter-code-review[bot],bot flag,AI reviewer,Matter
+propel-code-bot[bot],bot flag,AI reviewer,Propel
+pullrequest[bot],bot flag,AI reviewer,PullRequest
+qodo-merge-for-open-source[bot],bot flag,AI reviewer,Qodo
+qodo-merge-pro[bot],bot flag,AI reviewer,Qodo
+recurseml[bot],bot flag,AI reviewer,RecurseML
+seer-by-sentry[bot],bot flag,AI reviewer,Seer
+sourcery-ai[bot],bot flag,AI reviewer,Sourcery AI
+starrocks-cr[bot],bot flag,AI reviewer,StarRocks
+windsurf-bot[bot],bot flag,AI reviewer,Windsurf
+wispbit-ai[bot],bot flag,AI reviewer,Wispbit
+aikido-pr-checks[bot],bot flag,excluded automation,Aikido
+codefactor-io[bot],bot flag,excluded automation,CodeFactor
+codescene-delta-analysis[bot],bot flag,excluded automation,CodeScene
+github-actions[bot],bot flag,excluded automation,GitHub Actions
+github-advanced-security[bot],bot flag,excluded automation,GitHub Advanced Security
+hound[bot],bot flag,excluded automation,Hound
+semgrep-code-getsentry[bot],bot flag,excluded automation,Semgrep
+semgrep-code-zeta-chain[bot],bot flag,excluded automation,Semgrep
+vercel[bot],bot flag,excluded automation,Vercel
+lunary-bot,name inspection,AI reviewer,Lunary

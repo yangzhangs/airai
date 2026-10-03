@@ -1,3 +1,5 @@
+*Instrument for RQ2 (review-function coding; Sections 2.3 and 3.2).*
+
 # Codebook v2 — inline review-comment coding (refined decision rules)
 
 You are annotating **inline code-review comments** posted by AI review bots on

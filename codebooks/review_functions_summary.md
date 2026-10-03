@@ -1,3 +1,5 @@
+*Instrument for RQ2 (review-function coding; Sections 2.3 and 3.2).*
+
 # Codebook — review-summary coding (12 leaf labels, lowercase as in the package)
 
 Use EXACTLY these labels for the `summary` strata:
