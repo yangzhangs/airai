@@ -8,8 +8,8 @@ Task-type controls are the ten substantive categories: the four PRs carrying
 the two rarest labels (other, revert; 0.1% of the curated PRs) are excluded, as
 they fall outside the task-type comparisons throughout the paper.
 
-The script prints the rows exactly as the manuscript rounds them (the second
-panel of the table lists the task-type terms) and checks the joint Wald test of
+The script prints the rows exactly as the manuscript rounds them (including the
+intercept; the second panel of the table lists the task-type terms) and checks the joint Wald test of
 the task controls quoted in the text, so the regression is reproducible from the
 package alone (statsmodels; the released variables are recomputed from the
 event and metadata tables).
@@ -44,6 +44,7 @@ m = smf.logit('human ~ any_same + any_cross + C(agent) + C(task_type) + logstars
 assert m.mle_retvals.get('converged'), 'the model must converge on the released tables'
 
 ROWS = [
+    ('(Intercept)', 'Intercept', 0.13, 0.01, 1.18, 1.13, -1.81, 0.070),
     ('Same-system review', 'any_same[T.True]', 1.10, 0.51, 2.34, 0.39, 0.24, 0.812),
     ('Cross-system review', 'any_cross[T.True]', 0.56, 0.24, 1.27, 0.42, -1.39, 0.165),
     ('Copilot', 'C(agent)[T.Copilot]', 23.74, 8.67, 64.94, 0.51, 6.17, None),
