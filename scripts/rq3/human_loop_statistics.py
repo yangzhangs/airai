@@ -26,6 +26,7 @@ DATA = Path(__file__).resolve().parents[2] / 'data'
 prof = pd.read_csv(DATA / 'common' / 'pr_review_profile.csv', low_memory=False)
 meta = pd.read_csv(DATA / 'common' / 'curated_pr_metadata.csv', low_memory=False).set_index('id')
 ev = pd.read_csv(DATA / 'common' / 'review_events_final.csv', low_memory=False)
+cm = pd.read_csv(DATA / 'common' / 'review_comments_final.csv', low_memory=False)
 sub = meta.reindex(prof.pr_id)
 prof['authoring_agent'] = sub.agent.values
 prof['is_merged'] = sub.is_merged.values
@@ -46,8 +47,14 @@ def check(name, paper, got, fmt='{:g}'):
         FAILS.append(name)
 
 
+# ---- sampling design (Sec. 2.4) -------------------------------------------
+n0 = 1.96 ** 2 * 0.25 / 0.05 ** 2   # Cochran (1977), as in Sec. 2.3
+frame = cm[cm.is_human_reply & cm.pr_id.isin(set(AI.pr_id))]
+check('human replies in the frame', 1787, len(frame), '{:,}')
+check('Cochran sample for the reply frame', 316, round(n0 / (1 + (n0 - 1) / 1787)))
+
 # ---- human presence -------------------------------------------------------
-print('== Human presence')
+print('\n== Human presence')
 only_ai = AI[~AI.any_human]
 check('AI-on-AI PRs', 4386, len(AI), '{:,}')
 check('AI-only reviewed PRs', 1983, len(only_ai), '{:,}')
@@ -91,6 +98,7 @@ check('human-review PRs with a verdict share (%)', 76.7, round(hp.mean() * 100, 
 check('PRs with both human verdicts', 284, len(set(hap) & set(hch)))
 aiv = E[(E.actor != 'human') & (va | vc)].pr_id.unique()
 check('PRs with an AI verdict', 103, len(aiv))
+check('AI-verdict share of AI-on-AI PRs (%)', 2.3, round(len(aiv) / len(AI) * 100, 1))
 
 # ---- merge outcomes -------------------------------------------------------
 print('\n== Merge outcomes')
@@ -105,6 +113,7 @@ check('no-verdict human PRs merged (%)', 38.1, round(no_verdict.is_merged.mean()
 check('no-verdict human PRs merged (n)', 213, int(no_verdict.is_merged.sum()), '{:,}')
 both = set(hap) & set(hch)
 check('request-changes with approval merge (%)', 78.5, round(AI[AI.pr_id.isin(both)].is_merged.mean() * 100, 1))
+check('request-changes without approval PRs (n)', 245, len(set(hch) - both))
 check('request-changes without approval merge (%)', 25.3, round(AI[AI.pr_id.isin(set(hch) - both)].is_merged.mean() * 100, 1))
 ap = E[(E.actor == 'human') & va].copy()
 ap['merged_at'] = ap.pr_id.map(meta.merged_at)

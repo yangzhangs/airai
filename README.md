@@ -93,7 +93,7 @@ python3 scripts/rq2/coding_agreement.py             # prints per-stratum and wav
 python3 scripts/rq2/characteristics_statistics.py   # recomputes the Section 3.2 figures next to the released values
 ```
 
-`characteristics_statistics.py` covers the review forms (Table 2), the comment and summary length statistics, the arrival-time statistics, the five-function taxonomy with its ten leaves, the per-type comparisons with their chi-square tests, and the composition robustness checks (per-agent shares and the rule-coded full-corpus contrast).
+`characteristics_statistics.py` covers the sampling design (the four populations and the Cochran sample sizes), the review forms (Table 2), the comment and summary length statistics, the arrival-time statistics, the five-function taxonomy with its ten leaves, the per-type comparisons with their chi-square tests, and the composition robustness checks (per-agent shares and the rule-coded full-corpus contrast).
 
 ---
 
@@ -112,7 +112,7 @@ python3 scripts/rq3/presence_regression.py     # Table 3 (repository-clustered S
 python3 scripts/rq3/human_loop_statistics.py   # recomputes the Section 3.3 figures next to the released values
 ```
 
-`human_loop_statistics.py` covers human presence, the verdict counts (Table 4), the merge outcomes, the timing statistics, and the reply roles with their textual checks (code spans, handles, question marks, addressee).
+`human_loop_statistics.py` covers the human-reply frame (1,787) with its Cochran sample size, human presence, the verdict counts (Table 4), the merge outcomes, the timing statistics, and the reply roles with their textual checks (code spans, handles, question marks, addressee).
 
 ---
 

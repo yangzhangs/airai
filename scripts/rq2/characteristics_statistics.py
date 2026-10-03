@@ -54,8 +54,20 @@ def r_rb(a, b):
     return U.statistic, 2 * U.statistic / (len(a) * len(b)) - 1
 
 
+# ---- sampling design (Sec. 2.3) -------------------------------------------
+print('== Sampling design')
+n0 = 1.96 ** 2 * 0.25 / 0.05 ** 2   # Cochran (1977): 95% confidence, 5% margin, p=0.5
+pop_inline = cm.owner_actor.value_counts()
+pop_summ = EV[EV.has_summary].actor.value_counts()
+check('same-system inline population', 7005, int(pop_inline['same-system']), '{:,}')
+check('cross-system inline population', 5130, int(pop_inline['cross-system']), '{:,}')
+check('same-system summary population', 963, int(pop_summ['same-system']), '{:,}')
+check('cross-system summary population', 3732, int(pop_summ['cross-system']), '{:,}')
+for N, want in [(7005, 364), (5130, 357), (963, 275), (3732, 348)]:
+    check(f'Cochran sample for N={N:,}', want, round(n0 / (1 + (n0 - 1) / N)))
+
 # ---- review form (Table 2) ------------------------------------------------
-print('== Review form')
+print('\n== Review form')
 tab = EV.groupby(['actor', 'form']).size().unstack(fill_value=0)
 row = tab.loc['same-system']
 check('same-system inline only', 6329, row['inline only'], '{:,}')
@@ -77,6 +89,11 @@ check('column totals summary only', 5154, int(tab['summary only'].sum()), '{:,}'
 check('column totals both', 2626, int(tab['both'].sum()), '{:,}')
 check('column totals verdict-only', 5021, int(tab['verdict-only'].sum()), '{:,}')
 ai = EV[EV.actor != 'human']
+check('AI-on-AI inline-only events', 6937, int(ai.form.eq('inline only').sum()), '{:,}')
+check('AI-on-AI with-summary events', 4695, int(ai.form.isin(['both', 'summary only']).sum()), '{:,}')
+check('AI-on-AI with written content (n)', 11632, int(ai.form.ne('verdict-only').sum()), '{:,}')
+check('human with written content (n)', 12061, int(EV[EV.actor == 'human'].form.ne('verdict-only').sum()), '{:,}')
+check('human events in the corpus', 17021, int((EV.actor == 'human').sum()), '{:,}')
 check('AI-on-AI inline-only share (%)', 59.3, round((ai.form == 'inline only').mean() * 100, 1))
 check('AI-on-AI with-summary share (%)', 40.2, round(ai.form.isin(['both', 'summary only']).mean() * 100, 1))
 check('AI-on-AI with written content (%)', 99.5, round(ai.form.ne('verdict-only').mean() * 100, 1))
@@ -85,7 +102,11 @@ chi2, p, dof, _ = chi2_contingency(tab)
 check('form x actor chi2', 13166.9, round(chi2, 1), '{:,.1f}')
 check('form x actor df', 6, dof)
 check('form x actor V', 0.48, round(cramers_v(chi2, len(EV), tab), 2))
+check('form x actor p<0.001', True, p < 0.001)
+check('same-system inline-only share (%)', 86.8, round(tab.loc['same-system', 'inline only'] / tab.loc['same-system'].sum() * 100, 1))
 check('same-system with-summary share (%)', 13.2, round((tab.loc['same-system', 'both'] + tab.loc['same-system', 'summary only']) / tab.loc['same-system'].sum() * 100, 1))
+check('human inline-only share (%)', 52.7, round(tab.loc['human', 'inline only'] / tab.loc['human'].sum() * 100, 1))
+check('human with-summary share (%)', 18.1, round((tab.loc['human', 'both'] + tab.loc['human', 'summary only']) / tab.loc['human'].sum() * 100, 1))
 check('cross-system with-summary share (%)', 84.8, round((tab.loc['cross-system', 'both'] + tab.loc['cross-system', 'summary only']) / tab.loc['cross-system'].sum() * 100, 1))
 
 # ---- review length --------------------------------------------------------
@@ -103,6 +124,7 @@ g = [cm[cm.owner_actor == a].char_length.values.astype(float) for a in ['cross-s
 H = kruskal(*g)
 check('comment length Kruskal-Wallis H', 10180.1, round(H.statistic, 1), '{:,.1f}')
 check('comment length KW df', 2, len(g) - 1)
+check('comment length KW p<0.001', True, H.pvalue < 0.001)
 ps = [mannwhitneyu(g[i], g[j], alternative='two-sided').pvalue for i, j in [(0, 1), (0, 2), (1, 2)]]
 check('comment pairwise p all below Bonferroni', True, all(p < 0.05 / 3 for p in ps))
 
@@ -131,6 +153,7 @@ check('inline inside first hour, human (%)', 24.0, fh['human'])
 g = [E_inl[E_inl.actor == a].wait.dropna().values.astype(float) for a in ['cross-system', 'same-system', 'human']]
 H = kruskal(*g)
 check('inline arrival Kruskal-Wallis H', 1475.2, round(H.statistic, 1), '{:,.1f}')
+check('inline arrival KW p<0.001', True, H.pvalue < 0.001)
 check('inline arrival |r| cross vs same', 0.49, round(abs(r_rb(g[0], g[1])[1]), 2))
 check('inline arrival |r| cross vs human', 0.49, round(abs(r_rb(g[0], g[2])[1]), 2))
 tt = {a: round((E_inl[E_inl.actor == a].wait > 24).mean() * 100, 1) for a in m}
@@ -148,6 +171,7 @@ check('summary inside first hour, human (%)', 28.4, fh['human'])
 g = [E_sum[E_sum.actor == a].wait.dropna().values.astype(float) for a in ['cross-system', 'same-system', 'human']]
 H = kruskal(*g)
 check('summary arrival Kruskal-Wallis H', 1734.7, round(H.statistic, 1), '{:,.1f}')
+check('summary arrival KW p<0.001', True, H.pvalue < 0.001)
 check('summary arrival |r| cross vs same', 0.43, round(abs(r_rb(g[0], g[1])[1]), 2))
 check('summary arrival |r| cross vs human', 0.57, round(abs(r_rb(g[0], g[2])[1]), 2))
 # the Copilot example is read per inline comment on Copilot-authored PRs
@@ -167,6 +191,12 @@ check('same-system inline sample', 364, len(si))
 check('cross-system inline sample', 357, len(ci))
 check('same-system summary sample', 275, len(ss))
 check('cross-system summary sample', 348, len(cs))
+wave_files = ['same_inline_sample_doublecoding.csv', 'cross_inline_sample_doublecoding.csv',
+              'same_summary_sample_doublecoding.csv', 'cross_summary_sample_doublecoding.csv']
+pilot_counts = [int((pd.read_csv(DATA / 'rq2' / 'doublecoding' / f, comment='#')['round'] == 'pilot').sum())
+                for f in wave_files]
+check('pilot units per stratum (four)', '50/50/50/50', '/'.join(map(str, pilot_counts)), '{:s}')
+check('pilot units in total', 200, sum(pilot_counts))
 
 FUNC = {
     'findings digest': 'Descriptive', 'change overview': 'Descriptive',
@@ -189,6 +219,11 @@ check('Code-directed units', 382, int(cats['Code-directed']), '{:,}')
 check('Confirmatory units', 306, int(cats['Confirmatory']), '{:,}')
 check('Interactive/directive units', 91, int(cats['Interactive/directive']), '{:,}')
 check('Other units', 40, int(cats['Other']), '{:,}')
+check('five function categories', 5, len(cats))
+ALIAS = {'verification report': 'workflow/verification report', 'clarification': 'clarification/question'}
+canon = pd.concat([si.code, ci.code, ss.summary_code, cs.code]).str.lower().replace(ALIAS)
+E_RESIDUE = {'other', 'platform notice', 'review unavailable'}
+check('ten leaf sub-categories (A.1-D.2)', 10, canon[~canon.isin(E_RESIDUE)].nunique())
 sh = leaves.value_counts(normalize=True) * 100
 for c, v in [('Descriptive', 39.1), ('Code-directed', 28.4), ('Confirmatory', 22.8), ('Interactive/directive', 6.8), ('Other', 3.0)]:
     check(f'{c} share (%)', v, round(sh[c], 1))
@@ -223,6 +258,7 @@ check('summary confirmatory, same (%)', 5.1, sm_sh.loc['Confirmatory', 'same-sys
 chi2, p, dof, _ = chi2_contingency(summ_tab.T)
 check('summary function x type chi2', 23.7, round(chi2, 1))
 check('summary function x type V', 0.20, round(cramers_v(chi2, summ_tab.values.sum(), summ_tab.T), 2))
+check('summary function x type p<0.001', True, p < 0.001)
 inl_tab = pd.DataFrame({'same-system': si.code.map(FUNC).value_counts(),
                         'cross-system': ci.code.map(FUNC).value_counts()}).fillna(0)
 in_sh = (inl_tab / inl_tab.sum() * 100).round(1)
@@ -234,6 +270,7 @@ check('inline confirmatory, cross (%)', 0.8, in_sh.loc['Confirmatory', 'cross-sy
 chi2, p, dof, _ = chi2_contingency(inl_tab.T)
 check('inline function x type chi2', 594.3, round(chi2, 1))
 check('inline function x type V', 0.91, round(cramers_v(chi2, inl_tab.values.sum(), inl_tab.T), 2))
+check('inline function x type p<0.001', True, p < 0.001)
 
 # ---- robustness checks ----------------------------------------------------
 print('\n== Robustness (composition)')
