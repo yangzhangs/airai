@@ -10,7 +10,7 @@ remaining wave figures are released in the json for transparency. This script
 recomputes the overall and the wave figures, checks them, and rewrites
 data/rq2_kappa_redrawn_samples.json.
 
-Run from the package root:  python3 scripts/57_rq2_agreement.py
+Run from the package root:  python3 scripts/rq2_agreement.py
 """
 import json
 from pathlib import Path

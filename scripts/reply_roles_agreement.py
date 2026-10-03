@@ -3,7 +3,7 @@
 that fixed the role codebook, as first drawn at seed 20260930) and the
 remaining replies, and report Cohen's kappa for each round (mirrors 57_ for
 RQ2). The sample now holds 316 replies (the Cochran size for the 1,787-reply
-frame; nine drawn in the completion wave of scripts/69 and coded in scripts/70),
+frame; nine drawn in a completion wave from the raw table and folded into the released files),
 so the remaining round covers 266 replies while the pilot set stays fixed.
 
 Inputs: data/doublecoding/roles_full_pass1.csv and roles_full_pass2.csv

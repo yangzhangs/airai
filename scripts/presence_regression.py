@@ -13,7 +13,7 @@ intercept; the second panel of the table lists the task-type terms) and checks t
 the task controls quoted in the text, so the regression is reproducible from the
 package alone (statsmodels; the released variables are recomputed from the
 event and metadata tables).
-Run from the package root:  python3 scripts/62_presence_regression.py
+Run from the package root:  python3 scripts/presence_regression.py
 """
 from pathlib import Path
 

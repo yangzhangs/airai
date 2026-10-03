@@ -15,9 +15,10 @@ replies quoted in the paper carry pseudonymized names.
 ## Data handling
 
 - **Text policy.** Review and comment text is not redistributed, with one
-  exception: the role-coding worksheets carry the short human-reply bodies they
-  label, as they are needed to interpret the role codes. The excerpts quoted in
-  the paper are reproduced for research purposes, with the repliers' names
+  exception: the role-coding worksheet carries the short human-reply bodies it
+  labels, as they are needed to interpret the role codes. Third-party account
+  names inside those bodies are replaced by pseudonyms, and the excerpts quoted
+  in the paper are reproduced for research purposes with the repliers' names
   pseudonymized.
 - **No personal data.** The released tables carry public GitHub identifiers
   only: repository slugs, pull-request and comment ids, and the public logins of

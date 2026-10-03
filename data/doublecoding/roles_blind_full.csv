@@ -55,7 +55,7 @@ So given all that, seems like it makes more sense to have the API calls made fro
 2140479702,3134796755,cross_review,Keep things simple bro
 2174067176,3174281934,human_review,@copilot undo the changes in this file
 2105504501,3078366765,human_review,"And use the face that this is set to null to determine that a check needs to be performed, then the ""_canUseXXXXStorage"" can simply use !!_verifiedXXX.v to determine if it can access and for the explicit case of utlDisableStorage it cause use _verifiedXXXXStorage = createCachedValue(null)"
-2166035674,3167450477,human_review,"@hoshinotsuyoshi Sorry, this comment was not submitted. Please check if you want."
+2166035674,3167450477,human_review,"@user-09 Sorry, this comment was not submitted. Please check if you want."
 2127423274,3102019273,human_review,"I wasn't referring to an empty line. It looks like you added ""bool hasClr;"", but it doesn't appear to be used anywhere."
 2182169132,3194483657,human_review,That's right. I hope you will give it a try!
 2112463889,3098035626,cross_review,It should always be there as we prepare it during the build process
@@ -71,7 +71,7 @@ You can break early here instead of continuing since the list is built in ascend
 2176165238,3189972179,human_review,Is this addressed?
 2134854867,3127795243,human_review,"My mistake, that should have been IDE0046 not IDE0028"
 2190959380,3078444990,human_review,They don't
-2237676025,3103367606,human_review,@DanL0 
+2237676025,3103367606,human_review,@user-05 
 2156533406,3159305613,cross_review,already is in devdeps..
 2199950145,3218486387,human_review,@copilot it's still failing. Any more tricks you can suggest?
 2212003887,3231720206,human_review,"Initially I was thinking about keeping the database checks logic inside [ConfigurationService.java](https://github.com/camunda/camunda/pull/35372/files/5d6a8654938c31920bc241e832a74ee7b7fe4049#diff-3cf87b6fa58733fe460cfe4e51e5d1c7d840f3d9fa322ea84dc8f72682269d58) for consistency but actually, if we know we should fail-early when in no-db, then we might as well not override anything and just throw and error here  directly 🤔 
@@ -81,7 +81,7 @@ You can break early here instead of continuing since the list is built in ascend
 2215537232,3242375510,human_review,We have other two changelogs with the same issue. Could you fix it?
 2098696688,3075563001,human_review,"undefined is not true, so aren't we good?"
 2095092096,3071822317,human_review,Nice edit
-2127404932,3115409265,human_review,"Also, I'm actually not sure if we want to runTests for this leg or not... I will defer that decision to @MiYanni, but I don't see why that'd change.. so maybe we don't want that."
+2127404932,3115409265,human_review,"Also, I'm actually not sure if we want to runTests for this leg or not... I will defer that decision to @user-16, but I don't see why that'd change.. so maybe we don't want that."
 2208102269,3186218830,human_review,It didn't translate properly
 2133243401,3126215556,cross_review,"done, can you please check"
 2172966193,3143758141,human_review,"It is not that simple to implement, it requires using the router within the handler."
@@ -95,7 +95,7 @@ You can break early here instead of continuing since the list is built in ascend
 2134557773,3128117880,cross_review,"no, its difficult, we will use ajex false for the moment. Please ignore"
 2212403870,3231720206,human_review,"Ah true, nvm this."
 2139541138,3135639537,human_review,@copilot can you figure out why its not detecting the process exiting? Is there a race condition?
-2183406696,3155815373,human_review,@ludfjig do you feel good with the changes made here?
+2183406696,3155815373,human_review,@user-13 do you feel good with the changes made here?
 2169701329,3078444990,human_review,Please follow the same pattern as the others. It is a var not a config option.
 2209635832,3234328843,human_review,Well I meant remove the entire dependency. Why are we adding a dependency when there's other ways to create a Subject for testing. Look at other test files.
 2180668156,3194895472,human_review,"based on discussion above, I think this should instead be changed to CHECK-NOT: internal error 99999"
@@ -161,15 +161,15 @@ func WithTimeout(parent Context, timeout time.Duration) (Context, CancelFunc) {
 2102150341,3077405928,cross_review,I don't apply the suggestion to keep consistency with other commands
 2133241309,3126215556,cross_review,"done, can you please check"
 2158075996,3160615563,human_review,ok so actually keep this please. I didn't know `->` was valid
-2112999170,3085487490,human_review,"@LilithHafner raised this question to triage - there were no strong objections to duplicating the info. I'll add the link, but otherwise am planning to go ahead with this. We can always delete it later if the consensus swings the other way."
+2112999170,3085487490,human_review,"@user-12 raised this question to triage - there were no strong objections to duplicating the info. I'll add the link, but otherwise am planning to go ahead with this. We can always delete it later if the consensus swings the other way."
 2169567219,3176451317,human_review,"It seems it can't, let me make a new comment"
 2205488709,3224573846,self_review,This is intentional because the emitter is generated code and this file is code that runs in the generator itself. We need the helper class defined in both places since we don't really have a way to turn source code in the repo to generated assets.
-2240834520,3200033873,human_review,That's my guess. Looks like it's in the first commit so probably just didn't get cleaned out during @bw4sz's reset and recommit.
+2240834520,3200033873,human_review,That's my guess. Looks like it's in the first commit so probably just didn't get cleaned out during @user-03's reset and recommit.
 2132367700,3124811802,human_review,the reasoning is we're using hashes as they're harder to forge than tags
 2146712137,3145625420,human_review,Используй bean Resources для локализации сообщения об ошибке. Предоставь текст на двух языках. 
 2121573895,3110009700,human_review,@copilot Can we log a debug message here using the `logger` member variable? Check `isVerboseLoggable`.
 2202531014,3225203739,human_review,"+1, please keep in mind of the translation consistency across different `*.po` files"
-2216302505,3241986884,human_review,"@davidfowl you can add the --arch flag regardless of the SDK version - that's what I was trying to illustrate, though poorly."
+2216302505,3241986884,human_review,"@user-06 you can add the --arch flag regardless of the SDK version - that's what I was trying to illustrate, though poorly."
 2127424671,3102019273,human_review,"oh, I see. it's used as an out parameter in GetClrProcesses, but isn't used after. Consider using a discard instead."
 2118069777,3105703473,human_review,"Yeah, it's a bug. We shouldn't be returning ""localhost:3000"" when asking for subdomains."
 2181927237,3198063528,human_review,"Isn't that equivalent?
@@ -188,17 +188,17 @@ And the new implementation builds a set of extensions that are present in the au
 2104733871,3082320330,human_review,"But why? What’s wrong about assert in this case? They can both fail independently, right?"
 2238918134,3260577723,cross_review,"Copilot is right. When there are multiple urls, it would be more efficient to collect all the data into a vec so that it can be reused "
 2099607771,3079170931,human_review,check the files under pkg/webhook to see if any validations could be replaced by CEL annotation.
-2230673351,3260577723,human_review,"What do you mean, it will just fo a split_by ' '. This should work. @Kerollmops explicitly asked for a space separated instead of coma separated. I do agree than coma separated would be more suited. "
+2230673351,3260577723,human_review,"What do you mean, it will just fo a split_by ' '. This should work. @user-10 explicitly asked for a space separated instead of coma separated. I do agree than coma separated would be more suited. "
 2142149679,3099658013,human_review,"I have plan to update deb related filenames in a separate PR.
 
-@fatmelon is that possible we separate image prebuild to a separate yml workflow?"
+@user-07 is that possible we separate image prebuild to a separate yml workflow?"
 2173112610,3161638137,human_review,"*sigh*
 
 So when you said ""just throw"" you apparently meant something else 😅
 
 I had this just using the value without validating it when publishing before I did this, and logging a warning. Where are we then?"
 2129688567,3078439427,human_review,"Is this just redundant? Could it be that memberName already formatted here? I haven't run it, so it might not be the case, but we should definitely add some tests with a camel cased PropertyNamingPolicy and a capitalized first letter in the [JsonPropertyName] attribute."
-2218439550,3231720206,human_review,"@buccarel `CAMUNDA_DATABASE_TYPE` already exists and is used in monorepo components like Operate/Tasklist, I was wondering if Optimize could also use that or not since it's not part of the single app?"
+2218439550,3231720206,human_review,"@user-02 `CAMUNDA_DATABASE_TYPE` already exists and is used in monorepo components like Operate/Tasklist, I was wondering if Optimize could also use that or not since it's not part of the single app?"
 2180644575,3196547980,human_review,Creating a BinaryData will result in allocations. Using BinaryContent.Create(IPersistableModel) will use shared buffer to avoid allocations - https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/core/System.ClientModel/src/Message/BinaryContent.cs#L224
 2173008856,3177155948,human_review,"CurrentPrincipalType should return `auth.LoginType`
 
@@ -209,7 +209,7 @@ And rename
 2172531870,3182915267,human_review,"> Why is it safe to assume the caller wants to log to stdout?
 
 for testing I think this is a safe enough assumption"
-2104855541,3071076936,human_review,@will-holley I'm not following? That's to fetch search params out of the existing URL right?. I'm building a new URL for a request.
+2104855541,3071076936,human_review,@user-20 I'm not following? That's to fetch search params out of the existing URL right?. I'm building a new URL for a request.
 2212320024,3227441495,human_review,Crazy
 2098032666,3075291570,human_review,Or just use the useSettings hook
 2158251116,3154760858,human_review,"So, version [1.101](https://code.visualstudio.com/updates/v1_101) of VS Code was released on June 12th, and after upgrading to this version, the Azure MCP Server now works fine in my Ubuntu VM. I tried it out with a fresh VM, installing everything again, and it worked fine too. This issue was likely caused by the previous VS Code version before June 12th and not by our MCP Server. 
@@ -226,7 +226,7 @@ In that case, changes made by copilot on the npm/wrapper directory might not be 
 I appreciate more what you're suggesting around unifying these implementations - this query abstraction ends up doing more work than really necessary.
 "
 2143144729,3134438774,human_review,Why do you need null logger? just dont log
-2170409363,3170054434,human_review,"@m-nash @KrzysztofCwalina 
+2170409363,3170054434,human_review,"@user-14 @user-11 
 https://github.com/Azure/azure-sdk-for-net/blob/d767015fe8e96912dc08039243f0040cb7a938dc/sdk/core/System.ClientModel/src/ModelReaderWriter/IPersistableModel.cs#L28
 https://github.com/Azure/azure-sdk-for-net/blob/d767015fe8e96912dc08039243f0040cb7a938dc/sdk/core/System.ClientModel/src/ModelReaderWriter/IJsonModel.cs#L32
 in the IJsonModel APIs, we return `T` instead of `T?`. What is the intention behind this behavior? 
@@ -256,7 +256,7 @@ Aspire is full of opinionated defaults, and I think it's a pretty valid opinion 
 
 So the default works just fine.
 
-@rootulp can you tell copilot (I'm out of tokens) to remove the flag from the documentation, I guess it's cleaner that way and only power users can check the flags and use it."
+@user-18 can you tell copilot (I'm out of tokens) to remove the flag from the documentation, I guess it's cleaner that way and only power users can check the flags and use it."
 2114835043,3101243147,human_review,@copilot please update the PR title and description to reflect only the final implementation of this fix.
 2101027615,3080751824,human_review,We should delete the old files...
 2184780493,3199867865,human_review,"@copilot
@@ -289,8 +289,8 @@ https://docs.github.com/en/copilot/using-github-copilot/coding-agent/about-assig
 > Limits the permissions in access tokens used by Copilot. Pushes are only allowed to branches beginning with copilot/. Copilot cannot push to the main or master branches.
 
 So I feel more confident that this will not change."
-2151119663,3143758141,human_review,"@ReneWerner87 What if we remove the handler param, and require the middleware to be used with `app.Use()` ?"
-2106207014,3078707207,human_review,"@ReneWerner87 Can't use utils, since it won't render the users string"
+2151119663,3143758141,human_review,"@user-17 What if we remove the handler param, and require the middleware to be used with `app.Use()` ?"
+2106207014,3078707207,human_review,"@user-17 Can't use utils, since it won't render the users string"
 2240771551,3270923404,human_review,fixed!
 2102194793,3076043127,human_review,@copilot 
 2102557286,3081466449,cross_review,"I think Gemini made a good point here. The normalization approach expects there could be trailing `/`, so `/` should be removed before the `/api` check."
@@ -345,9 +345,9 @@ there's a built in `equals` method on buffers.
 
 But I think I also know how to make the Solana options checking slightly simpler.
 
-Thanks for flagging this @DanL0 !"
+Thanks for flagging this @user-05 !"
 2107408308,3090993724,human_review,"None of this code is necessary. Just parse the the URL contained in the environment variable and check for a scheme there. If """" then use ""http""."
-2172963892,3143758141,human_review,"@ReneWerner87 Man, how about making it handle /api/user/ as matching /api/user/123 and similar paths? That would solve it and be intuitive, as long as it's documented.
+2172963892,3143758141,human_review,"@user-17 Man, how about making it handle /api/user/ as matching /api/user/123 and similar paths? That would solve it and be intuitive, as long as it's documented.
 
 ```
 app.Use(timeout.NewWithConfig(timeout.Config{
@@ -396,12 +396,12 @@ public interface IPersistentComponentStateSerializer<T> : IPersistentComponentSe
 2138704051,3117952456,human_review,Removed and excluded
 2218999636,3235010382,human_review,Worked after VS restart.
 2191081892,3078444990,human_review,I can do that but actually found these logs very helpful when trying to grok the state during a given turn.
-2168314887,3177623179,cross_review,"@toyamarinyon It seems that process.env.VAULT_SECRET is not being used, so could you please just fix this?"
+2168314887,3177623179,cross_review,"@user-19 It seems that process.env.VAULT_SECRET is not being used, so could you please just fix this?"
 2194767023,3196812180,human_review,"I think this is actually _technically_ right, but I agree it looks weird. The weirdness comes from the `OpenPathCommand` having the initializer list, and then the `CommandContextItem` _also_ having it's own initializer list. 
 
 maybe it would look less weird if the command was initialized on its own line, but also, 🤷 "
 2127268733,3118009864,human_review,"~Hm... Maybe I'm wrong. But from what I've seen in my experience, it's usually used as a command-line option since the timeout may depend on the environment.~"
-2161671646,3167462922,human_review,@ChrisKujawa you need to obtain a Copilot license from the Camunda org ([ref](https://confluence.camunda.com/pages/viewpage.action?pageId=245401394&spaceKey=HAN&title=Usage%2Bof%2BCopilot%2BAI%2Btools%2Bwithin%2BEngineering)) so that the AI agent reacts to your commands.
+2161671646,3167462922,human_review,@user-04 you need to obtain a Copilot license from the Camunda org ([ref](https://confluence.camunda.com/pages/viewpage.action?pageId=245401394&spaceKey=HAN&title=Usage%2Bof%2BCopilot%2BAI%2Btools%2Bwithin%2BEngineering)) so that the AI agent reacts to your commands.
 2205581363,3209849522,human_review,"It looks like you ignored this comment. Can you use the `:::` directive for code snippets?
 "
 2137145484,3132362063,human_review,@copilot could you help?
@@ -488,7 +488,7 @@ instead of
 use std::path::{Path, PathBuf};
 ```"
 2142150611,3099658013,human_review,"confirmed with users, they don't need arm64 support"
-2245970312,3256596335,human_review,@hemarina Curious to see if this is an expected change for you.
+2245970312,3256596335,human_review,@user-08 Curious to see if this is an expected change for you.
 2231780696,3200033873,human_review,@copilot 
 2237129800,3210800471,human_review,This is available at compile time so it's safe
 2197875913,3215730319,human_review,"slogdet doesn't support any lower precision dtypes than fp32, it's errored at a higher level. i checked manually."
@@ -510,7 +510,7 @@ c.Request().URI().SetHost(""john.doe.google.com"")
 require.Empty(t, c.Subdomains(-1), ""negative offset should return empty slice"")
 ```"
 2165152957,3172933734,human_review,"Still wrong, go back to your prior commit. Check if `symbol.parent.parent` is `undefined` when you're looking at the incoming symbol - that will tell you if the symbol is declared in a scope that is in the global scope"
-2240790000,3254714553,human_review,@ArcturusZhang please retain these tests and just let them build against the existing generated version of the pageable libraries to avoid excessive churn.
+2240790000,3254714553,human_review,@user-01 please retain these tests and just let them build against the existing generated version of the pageable libraries to avoid excessive churn.
 2237132698,3268184875,human_review,"We could also include instructions to use go-sqlcmd to create a new sql container. https://learn.microsoft.com/en-us/sql/tools/sqlcmd/quickstart-sqlcmd-create-container?view=sql-server-ver17
 
 For windows it is as easy as: (similar commands exist for mac and linux)
@@ -558,7 +558,7 @@ This is a desired code."
 2126964514,3117915292,cross_review,Not for now
 2154819974,3156963474,human_review,I think you can just remove this test. 
 2201343931,3223349599,human_review,"Wait, maybe the PR I was going before the last GA merged? I thought we punted it and this was the attempt to restart. Let's me investigate"
-2100010661,3079684446,human_review,IMO we shouldn't allow the option of exposing it externally. @marrobi do you agree?
+2100010661,3079684446,human_review,IMO we shouldn't allow the option of exposing it externally. @user-15 do you agree?
 2141755976,3138540332,human_review,Got it 👍  Thank you
 2125160120,3111618330,human_review,"Clarification: CONTAINERS removed by default, not volumes."
 2097677684,3076267770,human_review,@Copilot Address this comment please.
@@ -577,7 +577,7 @@ This is a desired code."
 2183687964,3199870832,human_review,You're right!
 2231876414,3200033873,human_review,just testing the most common blurs.
 2097368267,3070601228,human_review,They're basically identical. Reading one is fine. and actually the .claude/CLAUDE.md is the 'user-specific' version that I shuoldn't have committed so removing that now. Will address the comments you made thanks!
-2107936453,3090578689,human_review,"@davidfowl whist it is true that podman does specifically have a daemon, it can run with a socket, and also with a machine that has its own socket. I do a bit to work out what the correct socket is to plug into the machine [here](https://github.com/altavec/aspire/blob/8f5b5368b9b42408c361193e41545b5a1b51d597/src/Shared/ContainerResources.cs#L193) (this can take into account the rootlessness of the runtime as well)"
+2107936453,3090578689,human_review,"@user-06 whist it is true that podman does specifically have a daemon, it can run with a socket, and also with a machine that has its own socket. I do a bit to work out what the correct socket is to plug into the machine [here](https://github.com/altavec/aspire/blob/8f5b5368b9b42408c361193e41545b5a1b51d597/src/Shared/ContainerResources.cs#L193) (this can take into account the rootlessness of the runtime as well)"
 2121799465,3111015937,human_review,Never mind. The current code looks good
 2146035789,3141889094,human_review,"Try running the integration test agian, I think I fixed the environment issue. lmk if you hit another issue"
 2150956498,3150510293,human_review,"good idea! btw, can we just pass the options to halmos.config?

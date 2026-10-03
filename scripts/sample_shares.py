@@ -28,7 +28,7 @@ Category mapping (the 5 functions of the paper's taxonomy):
                            = other + review unavailable + platform notice      (summaries)
 
 Writes the shares rounded to one decimal, exactly as the manuscript quotes them.
-Run from the package root:  python3 scripts/56_sample_shares.py
+Run from the package root:  python3 scripts/sample_shares.py
 """
 import json
 from pathlib import Path

@@ -45,7 +45,7 @@ were labeled under it. Assign EXACTLY one role to each reply.
 Coding ran in two rounds over the 316 replies, with the pilot set fixed at its
 first draw: kappa 0.74 on the pilot (n = 50), 0.85 on the remaining replies
 (n = 266), 0.83 pooled (`data/rq3_kappa_rounds.json`; regenerate with
-`scripts/58_rq3_roles_pilot_split.py`).
+`scripts/reply_roles_agreement.py`).
 
 The coded sample is `data/doublecoding/roles_full_final.csv` (316 rows); the
 waves and the per-unit adjudication reasons are documented in
