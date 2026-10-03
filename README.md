@@ -11,9 +11,9 @@ This package supports the replication of our empirical study of AI-on-AI review 
 ├── README.md
 ├── .gitignore
 ├── codebooks/                           # The coding instruments behind the coded samples
-│   ├── review_functions_inline.md       # RQ2: inline-comment codebook (boundary rules, worked examples)
-│   ├── review_functions_summary.md      # RQ2: summary codebook (boundary notes)
-│   └── reply_roles.md                   # RQ3: human-reply role codebook (5 roles, boundary rules)
+│   ├── review_functions_inline.md       # RQ2: inline-comment codebook
+│   ├── review_functions_summary.md      # RQ2: summary codebook
+│   └── reply_roles.md                   # RQ3: human-reply role codebook
 ├── data/
 │   ├── common/                          # Tables shared by all RQs (no RQ marker)
 │   │   ├── curated_pr_metadata.csv      # 33,596 curated PRs (agent, dates, task, stars, merge)
@@ -43,7 +43,7 @@ This package supports the replication of our empirical study of AI-on-AI review 
 │       ├── roles_rest.csv               # the 266 remaining replies (both annotators' labels)
 │       ├── rq3_kappa_rounds.json        # agreement per round
 │       └── doublecoding/
-│           ├── README.md                        # the final role distribution
+│           ├── README.md                        # waves and agreement tables
 │           ├── roles_blind_full.csv             # the 316 replies as annotated (pseudonymized bodies)
 │           ├── roles_full_pass1.csv             # annotator 1 labels over the 316
 │           ├── roles_full_pass2.csv             # annotator 2 labels over the 316

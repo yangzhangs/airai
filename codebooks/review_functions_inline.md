@@ -1,13 +1,12 @@
-*Instrument for RQ2 (review-function coding; Sections 2.3 and 3.2).*
+*Instrument for RQ2 (inline review comments).*
 
-# Codebook v2 — inline review-comment coding (refined decision rules)
+# Inline review-comment coding
 
-You are annotating **inline code-review comments** posted by AI review bots on
-AI-authored pull requests. For each comment, assign **exactly one code** from the
-list below. Work unit by unit; read at most the first 4,000 characters of a body
-(the dominant intent is always in the head of these comments).
+This instrument codes inline code-review comments posted by AI review bots on
+AI-authored pull requests. Each comment receives exactly one code from the list
+below.
 
-Use EXACTLY these code labels (spelling matters):
+Labels:
 
 1. `Improvement suggestion`
 2. `Code-issue feedback`
@@ -55,8 +54,8 @@ Use EXACTLY these code labels (spelling matters):
 ## Decision procedure
 
 Apply the rules in this order; the **first rule that matches wins**. When several
-rules match, code the comment's **dominant intent** (the main point it spends its
-length on), and use the rule order only to break ties.
+rules match, code by the comment's **dominant intent**, using the rule order only
+to break ties.
 
 - **R1.** Body is empty/whitespace, or contains no review-relevant content
   (pure emoji, greeting, noise) → `Other`.
@@ -109,7 +108,7 @@ length on), and use the rule order only to break ties.
   running more tests; a recommendation to add tests to the *change* is
   `Improvement suggestion`.
 
-## Worked examples (canonical)
+## Worked examples
 
 - "style: accentColor should follow theme like other colors instead of being
   hardcoded" → `Improvement suggestion` (defect + concrete alternative).
@@ -126,17 +125,3 @@ length on), and use the rule order only to break ties.
   change?" → `Clarification/question`.
 - "Bugbot free trial expires on August 7, 2025" → `Platform notice`.
 - "" (empty) → `Other`.
-
-## Mapping to the paper's function taxonomy
-
-The paper aggregates these codes into five review functions (Section 3.2.2):
-[A] Descriptive groups `Explanation`; [B] Code-directed groups `Improvement
-suggestion`, `Code-issue feedback` and `Workflow/verification report`; [C]
-Confirmatory groups `Change acknowledgment`; [D] Interactive/directive groups
-`Response to feedback` and `Clarification/question`; [E] Other collects
-`Platform notice` and the residue. `Agent instruction` is defined in the
-instrument, but no unit in the coded samples carries it, and it is not a leaf
-of the paper's taxonomy. Each written form is coded
-with the subset of labels its content admits: the overview and digest labels
-(A.1, A.2) and the approval verdict (C.2) arise on summaries only, and the
-change acknowledgment (C.1) on inline comments only.
