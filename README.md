@@ -8,10 +8,7 @@ This package supports the replication of our empirical study of AI-on-AI review:
 
 ## The AIDev dataset
 
-The study is built on **AIDev**, the largest public collection of pull requests (PRs) autonomously authored by AI coding agents on GitHub. The original release aggregates 932,791 agent-authored PRs produced by five coding agents (OpenAI Codex, Devin, GitHub Copilot, Cursor, and Claude Code) across 116,211 repositories with 72,189 developers; its curated subset (repositories with more than 100 stars) is enriched with the review activity around those PRs, and this package releases the derived tables and coding artifacts our study uses. The raw AIDev tables are not redistributed here.
-
-- **Dataset (download and documentation):** https://huggingface.co/datasets/hao-li/AIDev
-- **Paper:** *AIDev: Studying AI Coding Agents on GitHub* (MSR 2026), DOI 10.1145/3793302.3797249; see also *The Rise of AI Teammates in Software Engineering (SE) 3.0* (arXiv:2507.15003).
+The study is built on [**AIDev**](https://huggingface.co/datasets/hao-li/AIDev), the largest public collection of pull requests (PRs) autonomously authored by AI coding agents on GitHub. The original release aggregates 932,791 agent-authored PRs produced by five coding agents (OpenAI Codex, Devin, GitHub Copilot, Cursor, and Claude Code) across 116,211 repositories with 72,189 developers; its curated subset (repositories with more than 100 stars) is enriched with the review activity around those PRs, and this package releases the derived tables and coding artifacts our study uses. The raw AIDev tables are not redistributed here.
 
 ---
 
