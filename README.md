@@ -2,11 +2,11 @@
 
 ## Overview
 
-This package supports the replication of our empirical study of AI-on-AI review on the curated AIDev subset: the derived tables, the coded samples with their double-coding and adjudication records, the three codebooks, and one statistics script per RQ that recomputes the figures of Sections 3.1-3.3 next to the released values.
+This package supports the replication of our empirical study of AI-on-AI review on the curated AIDev subset: the derived tables, the coded samples with their double-coding records, the three codebooks, and statistic scripts.
 
 ## The AIDev dataset
 
-The study is built on [**AIDev**](https://huggingface.co/datasets/hao-li/AIDev), the largest public collection of pull requests (PRs) autonomously authored by AI coding agents on GitHub. The original release aggregates 932,791 agent-authored PRs produced by five coding agents (OpenAI Codex, Devin, GitHub Copilot, Cursor, and Claude Code) across 116,211 repositories with 72,189 developers; its curated subset (repositories with more than 100 stars) is enriched with the review activity around those PRs, and this package releases the derived tables and coding artifacts our study uses. The raw AIDev tables are not redistributed here.
+The study is built on [**AIDev**](https://huggingface.co/datasets/hao-li/AIDev), a large public collection of pull requests (PRs) autonomously authored by AI coding agents on GitHub. The original release aggregates 932,791 agent-authored PRs produced by five coding agents (OpenAI Codex, Devin, GitHub Copilot, Cursor, and Claude Code) across 116,211 repositories with 72,189 developers; its curated subset (repositories with more than 100 stars) is enriched with the review activity around those PRs, and this package releases the derived tables and coding artifacts our study uses. The raw AIDev tables are not redistributed here.
 
 ---
 
@@ -65,9 +65,6 @@ The study is built on [**AIDev**](https://huggingface.co/datasets/hao-li/AIDev),
     └── rq3/human_loop_statistics.py     # Section 3.3
 ```
 
-Every RQ-specific CSV opens with one `#`-comment line naming its RQ; read them with `comment='#'` (the released scripts do). `data/common/` tables carry no marker; JSON files are identified by folder.
-
----
 
 ## RQ1 - Prevalence of AI-on-AI Review (Section 3.1)
 
