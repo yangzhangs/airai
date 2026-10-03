@@ -30,6 +30,5 @@ Full-sample agreement (Cohen's kappa), as quoted in Section 3:
 | cross-system summaries | 0.88 | 348 |
 
 Reproduce with `python3 scripts/rq2/coding_agreement.py` (prints the pilot,
-remaining and full-sample figures next to the released values and rewrites
-`../rq2_kappa_redrawn_samples.json`).
+remaining and full-sample kappa and rewrites `../rq2_kappa_redrawn_samples.json`).
 

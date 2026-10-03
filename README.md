@@ -2,13 +2,7 @@
 
 ## Overview
 
-This package supports the replication of our empirical study of AI-on-AI review on the curated AIDev subset: the derived tables, the coded samples with their double-coding records, the three codebooks, and statistic scripts.
-
-## The AIDev dataset
-
-The study is built on [**AIDev**](https://huggingface.co/datasets/hao-li/AIDev), a large public collection of pull requests (PRs) autonomously authored by AI coding agents on GitHub. The original release aggregates 932,791 agent-authored PRs produced by five coding agents (OpenAI Codex, Devin, GitHub Copilot, Cursor, and Claude Code) across 116,211 repositories with 72,189 developers; its curated subset (repositories with more than 100 stars) is enriched with the review activity around those PRs, and this package releases the derived tables and coding artifacts our study uses. The raw AIDev tables are not redistributed here.
-
----
+This package supports the replication of our empirical study of AI-on-AI review on the curated AIDev subset: the derived tables, the coded samples with their double-coding records, the three codebooks, and statistics scripts.
 
 ## Directory Structure
 
@@ -56,12 +50,12 @@ The study is built on [**AIDev**](https://huggingface.co/datasets/hao-li/AIDev),
 │           ├── roles_full_final.csv             # adjudicated labels of record
 │           └── roles_full_adjudication_log.csv  # the 42 arbitrated units
 └── scripts/
-    ├── rq1/prevalence_statistics.py     # recomputes the RQ1 figures
-    ├── rq2/coding_agreement.py          # four-stratum coding agreement
-    ├── rq2/characteristics_statistics.py# recomputes the RQ2 figures
-    ├── rq3/reply_roles_agreement.py     # role-coding agreement rounds
-    ├── rq3/presence_regression.py       # the Table 3 regression
-    └── rq3/human_loop_statistics.py     # recomputes the RQ3 figures
+    ├── rq1/prevalence_statistics.py     # RQ1 statistics
+    ├── rq2/coding_agreement.py          # four-stratum coding agreement (kappa)
+    ├── rq2/characteristics_statistics.py# RQ2 statistics
+    ├── rq3/reply_roles_agreement.py     # role-coding kappa and the pilot/remaining split
+    ├── rq3/presence_regression.py       # the Table 3 logistic regression
+    └── rq3/human_loop_statistics.py     # RQ3 statistics
 ```
 
 
@@ -72,7 +66,7 @@ The study is built on [**AIDev**](https://huggingface.co/datasets/hao-li/AIDev),
 - **AI-on-AI review types and pairings** - `review_events_final.csv`.
 
 ```bash
-python3 scripts/rq1/prevalence_statistics.py   # recomputes the RQ1 figures next to the released values
+python3 scripts/rq1/prevalence_statistics.py   # RQ1 statistics
 ```
 
 ## RQ2 - Characteristics
@@ -86,8 +80,8 @@ python3 scripts/rq1/prevalence_statistics.py   # recomputes the RQ1 figures next
 - **Double-coding record** - `data/rq2/doublecoding/`: both blind passes over every coded unit, the wave per unit, and the adjudicated finals.
 
 ```bash
-python3 scripts/rq2/coding_agreement.py             # per-stratum and wave kappa next to the released values
-python3 scripts/rq2/characteristics_statistics.py   # recomputes the RQ2 figures next to the released values
+python3 scripts/rq2/coding_agreement.py             # four-stratum coding agreement (kappa)
+python3 scripts/rq2/characteristics_statistics.py   # RQ2 statistics
 ```
 
 ## RQ3 - Human-in-the-Loop
@@ -99,9 +93,9 @@ python3 scripts/rq2/characteristics_statistics.py   # recomputes the RQ2 figures
 - **Role codebook** - `codebooks/reply_roles.md`.
 
 ```bash
-python3 scripts/rq3/presence_regression.py     # Table 3 (repository-clustered SEs) and the joint task-control test
-python3 scripts/rq3/reply_roles_agreement.py   # agreement rounds and the pilot/remaining split
-python3 scripts/rq3/human_loop_statistics.py   # recomputes the RQ3 figures next to the released values
+python3 scripts/rq3/presence_regression.py     # the Table 3 logistic regression
+python3 scripts/rq3/reply_roles_agreement.py   # role-coding kappa and the pilot/remaining split
+python3 scripts/rq3/human_loop_statistics.py   # RQ3 statistics
 ```
 
 ---
@@ -119,4 +113,4 @@ The three codebooks are the instruments behind the coded samples. The paper's fi
 
 - **Data.** The study analyzes public GitHub data only. Review and comment text is not redistributed, except the short human-reply bodies in the RQ3 blind worksheet, with third-party account names pseudonymized.
 - **Identifiers only.** Comments appear as identifiers with lengths and reply flags, and reviews as a summary-text flag with its character count; no review text and no personal data beyond public GitHub logins are included.
-- **Source data.** All tables derive from the AIDev curated subset (33,596 PRs from 2,807 repositories with more than 100 stars); the raw tables are not redistributed.
+- **Source data.** All tables derive from the [AIDev](https://huggingface.co/datasets/hao-li/AIDev) curated subset (33,596 PRs from 2,807 repositories with more than 100 stars); the raw tables are not redistributed.

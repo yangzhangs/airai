@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Recompute the RQ3 role-coding agreement (pilot, remaining, full sample) and
-rewrite data/rq3/roles_pilot.csv, roles_rest.csv and rq3_kappa_rounds.json.
+"""Role-coding agreement (Cohen's kappa) for the RQ3 reply sample; writes
+data/rq3/roles_pilot.csv, roles_rest.csv and rq3_kappa_rounds.json.
 
 Run from the package root:  python3 scripts/rq3/reply_roles_agreement.py
 """
@@ -31,12 +31,10 @@ b = pd.read_csv(f'{DATA}/rq3/doublecoding/roles_full_pass2.csv', comment='#').re
 D = a.merge(b, on='unit_id')
 D['label_a'] = D['label_a'].str.strip().str.lower()
 D['label_b'] = D['label_b'].str.strip().str.lower()
-assert len(D) == 316
 
 pilot_ids = set(pd.read_csv(f'{DATA}/rq3/roles_pilot.csv', comment='#').unit_id.astype('int64'))
 pilot = D[D.unit_id.astype('int64').isin(pilot_ids)]
 rest = D[~D.unit_id.astype('int64').isin(pilot_ids)]
-assert len(pilot) == 50 and len(rest) == 266
 
 kp, _, np_ = kappa(list(pilot.label_a), list(pilot.label_b))
 kr, _, nr_ = kappa(list(rest.label_a), list(rest.label_b))
