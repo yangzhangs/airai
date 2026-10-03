@@ -153,6 +153,8 @@ line('inline arrival medians, hours', f'cross {gi[0].median():.2f}, same {gi[1].
      '0.2 / 5.4 / 12.6 (H=1,475.2)')
 line('inside the first hour', f'cross {(gi[0]<1).mean()*100:.1f}%, same {(gi[1]<1).mean()*100:.1f}%, '
      f'human {(gi[2]<1).mean()*100:.1f}%', '62.5 / 21.3 / 24.0%')
+line('tail over a day', f'human {(gi[2]>24).mean()*100:.1f}%, same {(gi[1]>24).mean()*100:.1f}%, '
+     f'cross {(gi[0]>24).mean()*100:.1f}%', 'human 37.5 / same 29.7 / cross 17.3%')
 # the Copilot example in the paper is computed per inline comment (cm.created_at)
 com = cm.merge(prof[['pr_id', 'authoring_agent']], on='pr_id', how='left')
 com = com.merge(meta[['created_at']].rename(columns={'created_at': 'pc'}), left_on='pr_id', right_index=True, how='left')
