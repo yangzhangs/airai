@@ -1,25 +1,12 @@
-# Artifact for "When AI Reviews AI: An Empirical Study of AI Code Reviews on AI-Authored Pull Requests"
+# Artifact
 
 ## Overview
 
-This package supports the replication of an empirical study of AI-on-AI code
-review: the review that AI-authored pull requests receive from AI systems. The
-study analyzes 8,047 reviewed AI-authored PRs and the 28,714 review events they
-carry, separating *same-system* review (the reviewing system matches the PR's
-authoring agent, e.g., Copilot reviewing a Copilot-authored PR) from
-*cross-system* review; codes samples of the review text across four strata (364
-and 357 inline comments, 275 and 348 summaries, 1,344 units in total) into a
-five-category function taxonomy; and codes 316 sampled human replies into five
-participation roles. Every statistic quoted in the paper is recomputed from the
-released tables by `scripts/verify_statistics.py`.
-
-The package contains the curated tables, the coded samples with their
-double-coding artifacts, the three coding instruments (codebooks), and the
-verification scripts. Review-comment text is not redistributed (GitHub content
+This package supports the replication of our empirical study of AI-on-AI review. The package contains the curated tables, the coded samples with their
+double-coding artifacts, the three coding instruments (codebooks), etc. Review-comment text is not redistributed (GitHub content
 policy), with one exception: the role-coding worksheets carry the short
 human-reply bodies they label. Comments elsewhere are provided as identifiers
-with lengths and reply flags and can be re-fetched from GitHub/AIDev with the
-included recipes.
+with lengths and reply flags and can be re-fetched from GitHub/AIDev.
 
 ---
 
