@@ -1,0 +1,95 @@
+# RQ1 | reviewer-author pairings
+metric,value
+Copilot-to-Copilot events,"6,867"
+Cursor-to-Cursor events,424
+Claude-to-Claude events,1
+Copilot share of same-system (%),94.2
+Copilot-to-Copilot share of all AI-on-AI (%),58.7
+Claude Code events as reviewer,55
+reviewing systems in cross-system,30
+cross-system pairings,67
+Copilot on OpenAI_Codex events,898
+CodeRabbit on OpenAI_Codex events,752
+Cursor on Devin events,519
+Gemini on OpenAI_Codex events,259
+six largest pairings share (%),62.9
+singleton pairings (of the tail),15
+tail pairings,61
+Copilot cross-system events,"1,190"
+Copilot share of cross-system (%),27
+CodeRabbit cross-system events,"1,029"
+CodeRabbit share of cross-system (%),23.4
+cross-system on OpenAI_Codex (%),55.4
+cross-system on Devin (%),26.4
+cross-system on Cursor (%),11.4
+cross-system on Copilot (%),1.2
+pairing: Copilot -> Copilot,6867
+pairing: Cursor -> Cursor,424
+pairing: Claude Code -> Claude_Code,1
+pairing: Copilot -> OpenAI_Codex,898
+pairing: CodeRabbit -> OpenAI_Codex,752
+pairing: Cursor -> Devin,519
+pairing: Gemini Code Assist -> OpenAI_Codex,259
+pairing: Ellipsis -> OpenAI_Codex,180
+pairing: Copilot -> Devin,159
+pairing: Greptile -> Devin,146
+pairing: Cursor -> OpenAI_Codex,122
+pairing: Gemini Code Assist -> Cursor,118
+pairing: CodeRabbit -> Cursor,107
+pairing: CodeRabbit -> Claude_Code,99
+pairing: Copilot -> Cursor,82
+pairing: Entelligence -> Devin,79
+pairing: Graphite -> Devin,71
+pairing: Sourcery AI -> OpenAI_Codex,68
+pairing: CodeRabbit -> Devin,58
+pairing: Greptile -> OpenAI_Codex,54
+pairing: Copilot -> Claude_Code,51
+pairing: Ellipsis -> Cursor,49
+pairing: Cursor -> Claude_Code,47
+pairing: Cubic Dev AI -> Cursor,39
+pairing: Graphite -> OpenAI_Codex,31
+pairing: Seer -> Cursor,30
+pairing: Ellipsis -> Devin,30
+pairing: Cubic Dev AI -> OpenAI_Codex,29
+pairing: Claude Code -> Devin,28
+pairing: Cubic Dev AI -> Devin,28
+pairing: Cursor -> Copilot,28
+pairing: RecurseML -> Devin,25
+pairing: Gemini Code Assist -> Claude_Code,25
+pairing: Greptile -> Cursor,25
+pairing: Claude Code -> Cursor,20
+pairing: Kodus -> OpenAI_Codex,14
+pairing: CodeRabbit -> Copilot,13
+pairing: Gemini Code Assist -> Devin,12
+pairing: Kodus -> Cursor,10
+pairing: Sourcery AI -> Cursor,10
+pairing: Greptile -> Copilot,9
+pairing: Ellipsis -> Claude_Code,8
+pairing: Qodo -> OpenAI_Codex,7
+pairing: Graphite -> Cursor,7
+pairing: PullRequest -> OpenAI_Codex,6
+pairing: Claude Code -> OpenAI_Codex,6
+pairing: Lunary -> OpenAI_Codex,6
+pairing: Greptile -> Claude_Code,4
+pairing: Cubic Dev AI -> Claude_Code,4
+pairing: Wispbit -> OpenAI_Codex,3
+pairing: Windsurf -> Cursor,3
+pairing: Graphite -> Claude_Code,2
+pairing: Amazon Q -> Devin,2
+pairing: Propel -> Devin,2
+pairing: Qodo -> Copilot,2
+pairing: CallstackAI -> Devin,1
+pairing: Charlie -> OpenAI_Codex,1
+pairing: CodeAnt -> OpenAI_Codex,1
+pairing: Gemini Code Assist -> Copilot,1
+pairing: Dust -> OpenAI_Codex,1
+pairing: Graphite -> Copilot,1
+pairing: Giselles -> OpenAI_Codex,1
+pairing: Matter -> OpenAI_Codex,1
+pairing: Korbit -> Cursor,1
+pairing: RecurseML -> Cursor,1
+pairing: Optibot -> Devin,1
+pairing: StarRocks -> Cursor,1
+pairing: Sourcery AI -> Claude_Code,1
+pairing: Windsurf -> Claude_Code,1
+pairing: Windsurf -> Devin,1

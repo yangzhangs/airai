@@ -1,0 +1,14 @@
+# RQ2 | composition robustness checks
+metric,value
+same-system confirmatory share (%),64.8
+"cross code-directed, Codex units",193
+"cross code-directed, Codex (%)",94.8
+"cross code-directed, Claude units",45
+"cross code-directed, Claude (%)",100
+"cross code-directed, pooled (%)",96.9
+"cross code-directed, max deviation from pooled",3.1
+Copilot cross comments (n),95
+Copilot cross comments code-directed (%),98.9
+rule-coded Copilot-authored same code-directed (%),15.2
+rule-coded Copilot-authored cross code-directed (%),80.9
+rule-coded Fisher p,4.1e-23

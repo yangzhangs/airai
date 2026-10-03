@@ -1,0 +1,22 @@
+# RQ2 | length statistics and tests
+metric,value
+cross-system comment median (chars),575
+"cross-system comments >1,000 chars (%)",38.5
+same-system comment median (chars),163
+"same-system comments >1,000 chars (%)",0.8
+human comment median (chars),77
+"human comments >1,000 chars (%)",0.7
+AI-on-AI comment median (chars),233
+comment length Kruskal-Wallis H,"10,180.1"
+comment length KW df,2
+comment length KW p,0.0e+00
+"comment pairwise p, cross vs same",0.0e+00
+"comment pairwise p, cross vs human",0.0e+00
+"comment pairwise p, same vs human",0.0e+00
+cross-system summary median (chars),1968
+same-system summary median (chars),1723
+human summary median (chars),46
+summary p cross vs same,7.8e-07
+summary |r| cross vs same,0.1
+summary |r| cross vs human,0.93
+summary |r| same vs human,0.91

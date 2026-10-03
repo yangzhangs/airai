@@ -1,0 +1,33 @@
+# RQ1 | review configurations, shares and association tests
+metric,value
+humans alone,"3,661"
+humans and AI together,"2,403"
+AI alone,"1,983"
+with at least one AI review,"4,386"
+AI-only share (%),24.6
+humans-alone share (%),45.5
+humans-and-AI share (%),29.9
+at-least-one-AI share (%),54.5
+configuration x agent chi2,"3,063.2"
+configuration x agent df,8
+configuration x agent V,0.44
+configuration x agent p,0.0e+00
+"AI-only share, Copilot (%)",3.8
+"AI-only share, Codex (%)",49.6
+"human-only share, Devin (%)",73.9
+"AI-on-AI share, min among four (%)",61.4
+"AI-on-AI share, max among four (%)",65.9
+"AI-on-AI share, Devin (%)",26.1
+"with-humans share, Copilot (%)",60.1
+configuration x task chi2,115.5
+configuration x task df,18
+configuration x task V,0.08
+configuration x task p,2.9e-16
+"AI-only share, ci (%)",13.6
+"AI-only share, refactor (%)",18.3
+"AI-only share, chore (%)",19.1
+"AI-only share, test (%)",29.1
+"AI-only share, feat (%)",28.6
+"AI-only share, docs (%)",25.8
+"human-only share, build (%)",40.9
+"human-only share, ci (%)",63.6

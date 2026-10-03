@@ -1,0 +1,17 @@
+# RQ2 | per-type function shares and tests
+metric,value
+"summary descriptive, same (%)",89.1
+"summary descriptive, cross (%)",77.3
+"summary confirmatory, cross (%)",15.2
+"summary confirmatory, same (%)",5.1
+summary function x type chi2,23.7
+summary function x type V,0.2
+summary function x type p,9.1e-05
+"inline confirmatory, same (%)",64.8
+"inline interactive, same (%)",24.2
+"inline code-directed, same (%)",8
+"inline code-directed, cross (%)",96.9
+"inline confirmatory, cross (%)",0.8
+inline function x type chi2,594.3
+inline function x type V,0.91
+inline function x type p,2.7e-127

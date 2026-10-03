@@ -1,0 +1,23 @@
+# RQ3 | merge outcomes
+metric,value
+approval PRs merged (%),87.2
+approval PRs merged (n),"1,394"
+request-changes PRs merged (%),53.9
+request-changes PRs merged (n),285
+no-verdict human PRs,559
+no-verdict human PRs merged (%),38.1
+no-verdict human PRs merged (n),213
+request-changes with approval merge (%),78.5
+request-changes without approval PRs (n),245
+request-changes without approval merge (%),25.3
+human approvals before the merge (%),99.8
+AI-only PRs merged (%),65.2
+AI-only PRs merged (n),"1,292"
+"AI-only merge, Copilot (%)",48.1
+"AI-only merge, Codex (%)",71.9
+"AI-only merge, agent range",48.1-71.9
+unreviewed curated PRs,"25,549"
+unreviewed curated merge (%),71.1
+merged AI-on-AI PRs,"2,961"
+merged with no human verdict,"1,505"
+merged with no human verdict share (%),50.8

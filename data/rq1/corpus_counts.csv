@@ -1,0 +1,7 @@
+# RQ1 | corpus size
+metric,value
+curated PRs,"33,596"
+curated repositories,"2,807"
+reviewed PRs,"8,047"
+reviewed repositories,"1,410"
+review events,"28,714"

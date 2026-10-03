@@ -1,0 +1,17 @@
+# RQ3 | event timing: medians, first events, tails
+metric,value
+"event arrival median, cross (h)",0.1
+"event arrival median, same (h)",4.7
+"event arrival median, human (h)",16.2
+event arrival Kruskal-Wallis H,"3,670.5"
+event arrival KW p,0.0e+00
+first event cross-system (%),53.8
+first event human (%),33.8
+first event same-system (%),12.4
+"median first event, cross (h)",0.04
+"median first event, same (h)",1.2
+"median first event, human (h)",1.8
+AI first among human-carrying PRs (%),38.2
+"tail >24h, human (%)",40.7
+"tail >24h, same (%)",28.9
+"tail >24h, cross (%)",14

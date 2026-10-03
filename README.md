@@ -22,11 +22,24 @@ This package supports the replication of our empirical study of AI-on-AI review 
 │   │   ├── review_summary_meta.csv      # 28,714 events: summary-text flag + character count
 │   │   └── pr_review_profile.csv        # 8,047 reviewed PRs: configuration + substance
 │   ├── rq1/
-│   │   └── ai_reviewer_accounts.csv     # 41-row account screening record (32 AI accounts)
+│   │   ├── ai_reviewer_accounts.csv     # 41-row account screening record (32 AI accounts)
+│   │   ├── corpus_counts.csv            # corpus size
+│   │   ├── table1_agent_activity.csv    # Table 1
+│   │   ├── configuration_analysis.csv   # configuration shares and tests
+│   │   ├── review_type_analysis.csv     # review-type shares and tests
+│   │   ├── pairings.csv                 # reviewer-author pairings
+│   │   └── accounts_summary.csv         # account screening counts
 │   ├── rq2/
 │   │   ├── full_corpus_inline_rule_coded.csv # rule-coded inline corpus, 26,443 units
 │   │   ├── rq2_sample_shares.json            # per-stratum function shares
 │   │   ├── rq2_kappa.json                    # agreement per stratum
+│   │   ├── sampling_design.csv               # populations and Cochran sample sizes
+│   │   ├── table2_review_forms.csv           # Table 2
+│   │   ├── length_analysis.csv               # length statistics and tests
+│   │   ├── arrival_analysis.csv              # arrival-time statistics and tests
+│   │   ├── taxonomy.csv                      # function taxonomy counts and shares
+│   │   ├── type_comparison.csv               # per-type function shares and tests
+│   │   ├── robustness_composition.csv        # composition robustness checks
 │   │   └── doublecoding/
 │   │       ├── README.md               # the double-coding record and agreement
 │   │       ├── same_inline_coded.csv   # 364 units: both annotations and the adjudicated final
@@ -35,6 +48,13 @@ This package supports the replication of our empirical study of AI-on-AI review 
 │   │       └── cross_summary_coded.csv # 348 units, same columns
 │   └── rq3/
 │       ├── rq3_kappa.json               # agreement over the reply sample
+│       ├── sampling_design.csv          # the reply frame and its Cochran sample size
+│       ├── presence.csv                 # human presence
+│       ├── verdicts.csv                 # review verdicts (Table 4)
+│       ├── merge_outcomes.csv           # merge outcomes
+│       ├── timing.csv                   # event timing
+│       ├── reply_roles.csv              # reply roles and textual checks
+│       ├── table3_regression.csv        # the Table 3 logistic regression
 │       └── doublecoding/
 │           ├── README.md            # the double-coding record and agreement
 │           └── roles_full_coded.csv # 316 replies: bodies, both annotations and the adjudicated final
@@ -58,6 +78,8 @@ This package supports the replication of our empirical study of AI-on-AI review 
 python3 scripts/rq1/prevalence_statistics.py   # RQ1 statistics
 ```
 
+The script writes the result table of each analysis into `data/rq1/`.
+
 ## RQ2 - Characteristics
 
 - **Sampling design** - the four coded samples; the four populations and the Cochran sample sizes recomputed from `review_comments_final.csv` and `review_summary_meta.csv`.
@@ -73,6 +95,8 @@ python3 scripts/rq2/coding_agreement.py             # four-stratum coding agreem
 python3 scripts/rq2/characteristics_statistics.py   # RQ2 statistics
 ```
 
+The scripts write the result table of each analysis into `data/rq2/`.
+
 ## RQ3 - Human-in-the-Loop
 
 - **Reply frame and sampling** - `review_comments_final.csv` (reply flag; 1,787 replies).
@@ -86,6 +110,8 @@ python3 scripts/rq3/presence_regression.py     # the Table 3 logistic regression
 python3 scripts/rq3/reply_roles_agreement.py   # role-coding kappa
 python3 scripts/rq3/human_loop_statistics.py   # RQ3 statistics
 ```
+
+The scripts write the result table of each analysis into `data/rq3/`.
 
 ---
 

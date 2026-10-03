@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""RQ2 statistics.
+"""RQ2 statistics; writes the result tables in data/rq2/.
 
 Run from the package root:  python3 scripts/rq2/characteristics_statistics.py
 """
@@ -25,8 +25,35 @@ wait = lambda created, later: (pd.to_datetime(later, utc=True) - pd.to_datetime(
 EV['wait'] = wait(sub.created_at.reindex(EV.pr_id).values, EV.submitted_at)
 
 
+OUT = DATA / 'rq2'
+
+
+class _Result:
+    """One long-format metric/value table per analysis, written on demand."""
+
+    def __init__(self):
+        self.rows = []; self.path = None; self.note = ''
+
+    def start(self, filename, note):
+        self.write()
+        self.path = OUT / filename; self.note = note; self.rows = []
+
+    def write(self):
+        if not self.path:
+            return
+        with open(self.path, 'w') as f:
+            f.write(f'# RQ2 | {self.note}\n')
+            pd.DataFrame(self.rows, columns=['metric', 'value']).to_csv(f, index=False)
+        self.path = None
+
+
+R = _Result()
+
+
 def show(name, value, fmt='{:g}'):
-    print(f'{name:52s} {fmt.format(value):>14s}')
+    v = fmt.format(value)
+    print(f'{name:52s} {v:>14s}')
+    R.rows.append((name, v))
 
 
 def cramers_v(chi2, n, table):
@@ -39,6 +66,7 @@ def r_rb(a, b):
 
 
 # ---- sampling design ------------------------------------------------------
+R.start('sampling_design.csv', 'the four coded populations and the Cochran sample sizes')
 print('== Sampling design')
 n0 = 1.96 ** 2 * 0.25 / 0.05 ** 2   # Cochran: 95% confidence, 5% margin, p=0.5
 pop_inline = cm.owner_actor.value_counts()
@@ -53,6 +81,7 @@ for N in pops:
     show(f'Cochran sample for N={N:,}', round(n0 / (1 + (n0 - 1) / N)))
 
 # ---- review form (Table 2) ------------------------------------------------
+R.start('table2_review_forms.csv', 'review forms, Table 2')
 print('\n== Review form')
 tab = EV.groupby(['actor', 'form']).size().unstack(fill_value=0)
 for actor in ['same-system', 'cross-system', 'human']:
@@ -82,6 +111,7 @@ show('human inline-only share (%)', round(tab.loc['human', 'inline only'] / tab.
 show('human with-summary share (%)', round((tab.loc['human', 'both'] + tab.loc['human', 'summary only']) / tab.loc['human'].sum() * 100, 1))
 
 # ---- review length --------------------------------------------------------
+R.start('length_analysis.csv', 'length statistics and tests')
 print('\n== Review length')
 med = {a: int(cm[cm.owner_actor == a].char_length.median()) for a in ['cross-system', 'same-system', 'human']}
 for a in ['cross-system', 'same-system', 'human']:
@@ -108,6 +138,7 @@ show('summary |r| cross vs human', round(abs(r_rb(L('cross-system'), L('human'))
 show('summary |r| same vs human', round(abs(r_rb(L('same-system'), L('human'))[1]), 2))
 
 # ---- review arrival time (event level) ------------------------------------
+R.start('arrival_analysis.csv', 'arrival-time statistics and tests')
 print('\n== Review arrival time')
 E_inl, E_sum = EV[EV.has_inline], EV[EV.has_summary]
 SHORT = {'cross-system': 'cross', 'same-system': 'same', 'human': 'human'}
@@ -138,6 +169,7 @@ show('comment arrival on Copilot PRs, cross (h)', round(cop[cop.owner_actor == '
 show('comment arrival on Copilot PRs, same (h)', round(cop[cop.owner_actor == 'same-system'].wait.median(), 1))
 
 # ---- review functions -----------------------------------------------------
+R.start('taxonomy.csv', 'review-function taxonomy: counts and shares')
 print('\n== Review functions')
 DC = DATA / 'rq2' / 'doublecoding'
 si = pd.read_csv(DC / 'same_inline_coded.csv', comment='#')
@@ -188,6 +220,7 @@ for label, codes in [('same-inline', si.final), ('cross-inline', ci.final),
     print(f'{label:14s} shares: ' + '  '.join(f'{k} {v:.1f}' for k, v in shares.items()))
 
 # ---- review type comparison -----------------------------------------------
+R.start('type_comparison.csv', 'per-type function shares and tests')
 print('\n== Review type comparison')
 summ_tab = pd.DataFrame({'same-system': ss.final.map(FUNC).value_counts(),
                          'cross-system': cs.final.map(FUNC).value_counts()}).fillna(0)
@@ -214,6 +247,7 @@ show('inline function x type V', round(cramers_v(chi2, inl_tab.values.sum(), inl
 show('inline function x type p', p, '{:.1e}')
 
 # ---- robustness -----------------------------------------------------------
+R.start('robustness_composition.csv', 'composition robustness checks')
 print('\n== Robustness (composition)')
 show('same-system confirmatory share (%)', round((si.final.map(FUNC) == 'Confirmatory').mean() * 100, 1))
 ci2 = ci.merge(cm[['id', 'pr_id']], on='id')
@@ -237,3 +271,5 @@ same_cd = int(same_n.code.isin(CD).sum()); cross_cd = int(cross_n.code.isin(CD).
 show('rule-coded Copilot-authored same code-directed (%)', round(same_cd / len(same_n) * 100, 1))
 show('rule-coded Copilot-authored cross code-directed (%)', round(cross_cd / len(cross_n) * 100, 1))
 show('rule-coded Fisher p', fisher_exact([[same_cd, len(same_n) - same_cd], [cross_cd, len(cross_n) - cross_cd]])[1], '{:.1e}')
+
+R.write()
