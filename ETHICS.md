@@ -19,7 +19,8 @@ replies quoted in the paper carry pseudonymized names.
   labels, as they are needed to interpret the role codes. Third-party account
   names inside those bodies are replaced by pseudonyms, and the excerpts quoted
   in the paper are reproduced for research purposes with the repliers' names
-  pseudonymized.
+  pseudonymized. Reviews themselves are represented by a summary-text flag and
+  a character count, never by text.
 - **No personal data.** The released tables carry public GitHub identifiers
   only: repository slugs, pull-request and comment ids, and the public logins of
   the reviewing accounts. No names, email addresses, or other personal data are

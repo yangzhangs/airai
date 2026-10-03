@@ -27,6 +27,7 @@ The study is built on [**AIDev**](https://huggingface.co/datasets/hao-li/AIDev),
 │   │   ├── curated_pr_metadata.csv      # The 33,596 curated AIDev PRs (id, agent, dates, task, stars)
 │   │   ├── review_events_final.csv      # The 28,714 review events with actor labels
 │   │   ├── review_comments_final.csv    # The 26,443 inline comments on the 8,047 reviewed PRs
+│   │   ├── review_summary_meta.csv      # Summary-text flag and character count per review event
 │   │   └── pr_review_profile.csv        # Per-PR review configuration and substance (8,047 rows)
 │   ├── rq1/
 │   │   └── ai_reviewer_accounts.csv     # AI-account identification and screening record (41 rows)
@@ -35,6 +36,7 @@ The study is built on [**AIDev**](https://huggingface.co/datasets/hao-li/AIDev),
 │   │   ├── cross_system_inline_coded.csv    # Cross-system inline sample (357)
 │   │   ├── same_system_summary_coded.csv    # Same-system summary sample (275)
 │   │   ├── cross_system_summary_coded.csv   # Cross-system summary sample (348)
+│   │   ├── full_corpus_inline_rule_coded.csv # Rule-coded full inline corpus (26,443)
 │   │   ├── rq2_sample_shares.json           # Per-stratum function shares
 │   │   ├── rq2_kappa_redrawn_samples.json   # Four-stratum double-coding agreement
 │   │   └── doublecoding/                    # pass1/pass2/wave/final per stratum + the 79-disagreement log
@@ -44,11 +46,15 @@ The study is built on [**AIDev**](https://huggingface.co/datasets/hao-li/AIDev),
 │       ├── rq3_kappa_rounds.json            # Role-coding agreement rounds
 │       └── doublecoding/                    # Role-coding passes, adjudication log, blind worksheet
 └── scripts/
+    ├── rq1/
+    │   └── prevalence_statistics.py     # Table 1, the review configurations and their association tests
     ├── rq2/
-    │   └── coding_agreement.py          # Recomputes the four-stratum coding agreement
+    │   ├── coding_agreement.py          # Recomputes the four-stratum coding agreement
+    │   └── characteristics_statistics.py # Forms, lengths, arrival times, taxonomy and the robustness checks
     └── rq3/
         ├── reply_roles_agreement.py     # Recomputes the role-coding agreement rounds
-        └── presence_regression.py       # Fits the Table 3 model and the task-control test
+        ├── presence_regression.py       # Fits the Table 3 model and the task-control test
+        └── human_loop_statistics.py     # Presence, verdicts, merge outcomes, timing and reply roles
 ```
 
 **Reading the files.** Every RQ-specific CSV opens with a single `#`-comment line naming its RQ; read these with `comment='#'` (the released scripts do). JSON files cannot carry comments, so their RQ is in the folder and file name. The shared tables in `data/common/` carry no marker, and no marker is needed for them.
@@ -59,7 +65,15 @@ The study is built on [**AIDev**](https://huggingface.co/datasets/hao-li/AIDev),
 
 **Data.** The shared tables above, plus `data/rq1/ai_reviewer_accounts.csv`, the screening record behind Section 2.2: 40 candidate accounts found through the platform's bot flag (31 kept as AI reviewers, 9 excluded as automation tools such as CI/CD and code-scanning accounts), plus one further account added by inspecting accounts whose names contain `bot`; 32 AI accounts in total, each mapped to a system identity (one vendor's products are reduced to one identity).
 
-**Results.** The RQ1 figures are counts and association tests over these tables: 8,047 reviewed PRs of 33,596 curated, carrying 28,714 review events, of which 11,693 are AI-on-AI reviews (54.5% of the reviewed PRs; 24.6% reviewed by AI alone; same-system 62.4%). No script is needed for these counts.
+**Results.** The RQ1 figures are counts and association tests over these tables: 8,047 reviewed PRs of 33,596 curated, carrying 28,714 review events, of which 11,693 are AI-on-AI reviews (54.5% of the reviewed PRs; 24.6% reviewed by AI alone; same-system 62.4%).
+
+**Reproduce.**
+
+```bash
+python3 scripts/rq1/prevalence_statistics.py   # recomputes the Section 3.1 figures next to the released values
+```
+
+The script checks Table 1 column by column, the three review configurations and their shares, the chi-square tests with Cramer's V over agents and task types, the same-system and cross-system shares and the largest reviewer-author pairings, and the account-identification counts.
 
 ---
 
@@ -69,13 +83,17 @@ The study is built on [**AIDev**](https://huggingface.co/datasets/hao-li/AIDev),
 - The four coded strata: `same_system_inline_coded.csv` (364), `cross_system_inline_coded.csv` (357), `same_system_summary_coded.csv` (275), `cross_system_summary_coded.csv` (348) -- 1,344 coded units in total, from the strata sized by Cochran's rule for the four populations (7,005 / 5,130 / 963 / 3,732).
 - Pilot and remaining waves: within each stratum, the first 50 units drawn are the pilot that fixed the codebook and the rest are the remaining units labeled under it; the membership is recorded per unit in the `round` column of the double-coding files.
 - `doublecoding/`: the two blind passes, the per-unit wave, the adjudicated final per stratum, and the log of all 79 disagreements with a one-line reason each (see the README in that directory).
+- `full_corpus_inline_rule_coded.csv`: every inline comment linked to a review event (26,443), rule-coded, with the reviewer type and the PR's authoring agent; the rule-coded corpus behind the composition robustness check.
 - `rq2_sample_shares.json`: the per-stratum function shares; `rq2_kappa_redrawn_samples.json`: the agreement figures.
 
 **Reproduce.**
 
 ```bash
-python3 scripts/rq2/coding_agreement.py    # prints per-stratum and wave kappa next to the released values
+python3 scripts/rq2/coding_agreement.py             # prints per-stratum and wave kappa next to the released values
+python3 scripts/rq2/characteristics_statistics.py   # recomputes the Section 3.2 figures next to the released values
 ```
+
+`characteristics_statistics.py` covers the review forms (Table 2), the comment and summary length statistics, the arrival-time statistics, the five-function taxonomy with its ten leaves, the per-type comparisons with their chi-square tests, and the composition robustness checks (per-agent shares and the rule-coded full-corpus contrast).
 
 ---
 
@@ -91,7 +109,10 @@ python3 scripts/rq2/coding_agreement.py    # prints per-stratum and wave kappa n
 ```bash
 python3 scripts/rq3/reply_roles_agreement.py   # agreement rounds and the pilot/remaining split
 python3 scripts/rq3/presence_regression.py     # Table 3 (repository-clustered SEs) and the task-control test
+python3 scripts/rq3/human_loop_statistics.py   # recomputes the Section 3.3 figures next to the released values
 ```
+
+`human_loop_statistics.py` covers human presence, the verdict counts (Table 4), the merge outcomes, the timing statistics, and the reply roles with their textual checks (code spans, handles, question marks, addressee).
 
 ---
 
@@ -103,7 +124,7 @@ The three codebooks are the instruments behind the coded samples. The paper's fi
 
 ## Software Requirements
 
-- **Python 3.9+** with `pandas`, `numpy` and `scipy` for the agreement scripts.
+- **Python 3.9+** with `pandas`, `numpy` and `scipy` for the statistics and agreement scripts.
 - `statsmodels` for the Table 3 regression (`scripts/rq3/presence_regression.py`).
 
 ---
@@ -111,6 +132,6 @@ The three codebooks are the instruments behind the coded samples. The paper's fi
 ## Notes
 
 - **Text policy.** Review and comment text is not redistributed, except the short human-reply bodies carried by one role-coding worksheet (`data/rq3/doublecoding/roles_blind_full.csv`), which are needed to interpret the role labels; third-party account names inside those bodies are replaced by pseudonyms. The excerpts quoted in the paper are reproduced for research purposes with the repliers' names pseudonymized.
-- **Identifiers only.** Comments appear as identifiers with lengths and reply flags; no names, email addresses or other personal data are included.
+- **Identifiers only.** Comments appear as identifiers with lengths and reply flags, and reviews as a summary-text flag with its character count (`review_summary_meta.csv`); no review or comment text is redistributed, and no names, email addresses or other personal data are included.
 - **Source data.** All PRs, reviews and comments come from the AIDev dataset (see above), curated subset: 33,596 PRs from 2,807 repositories with more than 100 stars.
 - **Ethics and data handling.** See `ETHICS.md`.
