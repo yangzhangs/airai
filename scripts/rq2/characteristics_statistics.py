@@ -7,7 +7,7 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-from scipy.stats import chi2_contingency, fisher_exact, kruskal, mannwhitneyu
+from scipy.stats import chi2_contingency, kruskal, mannwhitneyu
 
 DATA = Path(__file__).resolve().parents[2] / 'data'
 
@@ -263,13 +263,5 @@ show('cross code-directed, max deviation from pooled', round(abs(ag['mean'] - po
 cop_cross = ci.merge(cm[['id', 'user']], on='id').query("user == 'Copilot'")
 show('Copilot cross comments (n)', len(cop_cross))
 show('Copilot cross comments code-directed (%)', round((cop_cross.final.map(FUNC) == 'Code-directed').mean() * 100, 1))
-full = pd.read_csv(DATA / 'rq2' / 'full_corpus_inline_rule_coded.csv', comment='#', low_memory=False)
-CD = {'improvement suggestion', 'code-issue feedback', 'workflow/verification report'}
-cop = full[full.authoring_agent == 'Copilot']
-same_n, cross_n = cop[cop.reviewer_type == 'same-system'], cop[cop.reviewer_type == 'cross-system']
-same_cd = int(same_n.code.isin(CD).sum()); cross_cd = int(cross_n.code.isin(CD).sum())
-show('rule-coded Copilot-authored same code-directed (%)', round(same_cd / len(same_n) * 100, 1))
-show('rule-coded Copilot-authored cross code-directed (%)', round(cross_cd / len(cross_n) * 100, 1))
-show('rule-coded Fisher p', fisher_exact([[same_cd, len(same_n) - same_cd], [cross_cd, len(cross_n) - cross_cd]])[1], '{:.1e}')
 
 R.write()

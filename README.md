@@ -30,7 +30,6 @@ This package supports the replication of our empirical study of AI-on-AI review 
 │   │   ├── pairings.csv                 # reviewer-author pairings
 │   │   └── accounts_summary.csv         # account screening counts
 │   ├── rq2/
-│   │   ├── full_corpus_inline_rule_coded.csv # rule-coded inline corpus, 26,443 units
 │   │   ├── rq2_sample_shares.json            # per-stratum function shares
 │   │   ├── rq2_kappa.json                    # agreement per stratum
 │   │   ├── sampling_design.csv               # populations and Cochran sample sizes
@@ -87,7 +86,7 @@ The script writes the result table of each analysis into `data/rq1/`.
 - **Review length** - `review_comments_final.csv` (comment lengths), `review_summary_meta.csv` (summary lengths).
 - **Review arrival time** - `review_events_final.csv` + `curated_pr_metadata.csv` (PR creation times).
 - **Review functions** - the four coded samples, the two function codebooks, `rq2_sample_shares.json`.
-- **Review type comparison and robustness** - the four coded samples plus `full_corpus_inline_rule_coded.csv` (joined to `review_comments_final.csv` for reviewer and authoring agent).
+- **Review type comparison and robustness** - the four coded samples, joined to `review_comments_final.csv` for reviewer and authoring agent.
 - **Double-coding record** - `data/rq2/doublecoding/`: each coded unit with both annotations and the adjudicated final; a disagreement is visible where `pass1` and `pass2` differ.
 
 ```bash
