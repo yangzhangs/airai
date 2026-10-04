@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Logistic regression of human presence on the AI-on-AI reviewed PRs (Table 3):
 review type + authoring agent + task type + log(stars) + calendar month, with
-repository-clustered standard errors; writes data/rq3/table3_regression.csv.
+repository-clustered standard errors.
 
 Run from the package root:  python3 scripts/rq3/presence_regression.py
 """
@@ -12,7 +12,6 @@ import pandas as pd
 import statsmodels.formula.api as smf
 
 DATA = Path(__file__).resolve().parents[2] / 'data' / 'common'
-OUT = Path(__file__).resolve().parents[2] / 'data' / 'rq3'
 
 prof = pd.read_csv(DATA / 'pr_review_profile.csv')
 meta = pd.read_csv(DATA / 'curated_pr_metadata.csv')
@@ -58,13 +57,10 @@ TABLE = [
 print(f"N = {int(m.nobs)} PRs from {d.repo_name.nunique()} repositories")
 print(f"pseudo R2 = {m.prsquared:.2f}   LLR = {2 * (m.llf - m.llnull):,.1f}   df = {int(m.df_model)}")
 print(f"{'Predictor':22s} {'OR':>7s} {'95% CI':>16s} {'SE':>5s} {'z':>6s} {'p':>8s}")
-rows = []
 for name, key in TABLE:
     or_ = float(np.exp(m.params[key]))
     lo, hi = (float(np.exp(v)) for v in m.conf_int().loc[key])
     print(f"{name:22s} {or_:7.2f} [{lo:5.2f}, {hi:5.2f}] {m.bse[key]:5.2f} {m.tvalues[key]:6.2f} {m.pvalues[key]:8.3f}")
-    rows.append((name, round(or_, 2), round(lo, 2), round(hi, 2),
-                 round(float(m.bse[key]), 2), round(float(m.tvalues[key]), 2), round(float(m.pvalues[key]), 3)))
 
 terms = [x for x in m.params.index if x.startswith('C(task_type)')]
 R = np.zeros((len(terms), len(m.params)))
@@ -75,9 +71,3 @@ w = m.wald_test(R, scalar=False)
 cjk = float(np.asarray(w.statistic).squeeze()); pjk = float(np.asarray(w.pvalue).squeeze())
 print(f"task controls, joint: chi2({len(terms)}) = {cjk:.1f}, p = {pjk:.3f}")
 
-note = (f"Table 3 logistic regression; N={int(m.nobs)} PRs from {d.repo_name.nunique()} repositories; "
-        f"pseudo R2={m.prsquared:.2f}; joint task test chi2({len(terms)})={cjk:.1f}, p={pjk:.3f}")
-with open(OUT / 'table3_regression.csv', 'w') as f:
-    f.write(f'# RQ3 | {note}\n')
-    pd.DataFrame(rows, columns=['predictor', 'or', 'ci_low', 'ci_high', 'se', 'z', 'p']).to_csv(f, index=False)
-print('wrote data/rq3/table3_regression.csv')

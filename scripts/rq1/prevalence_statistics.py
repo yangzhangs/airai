@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""RQ1 prevalence statistics; writes the result tables in data/rq1/.
+"""RQ1 prevalence statistics.
 
 Run from the package root:  python3 scripts/rq1/prevalence_statistics.py
 """
@@ -19,35 +19,10 @@ acc = pd.read_csv(DATA / 'rq1' / 'ai_reviewer_accounts.csv', comment='#')
 
 TASKS = [t for t in meta.task_type.dropna().unique() if t not in ('other', 'revert')]
 
-OUT = DATA / 'rq1'
-
-
-class _Result:
-    """One long-format metric/value table per analysis, written on demand."""
-
-    def __init__(self):
-        self.rows = []; self.path = None; self.note = ''
-
-    def start(self, filename, note):
-        self.write()
-        self.path = OUT / filename; self.note = note; self.rows = []
-
-    def write(self):
-        if not self.path:
-            return
-        with open(self.path, 'w') as f:
-            f.write(f'# RQ1 | {self.note}\n')
-            pd.DataFrame(self.rows, columns=['metric', 'value']).to_csv(f, index=False)
-        self.path = None
-
-
-R = _Result()
 
 
 def show(name, value, fmt='{:g}'):
-    v = fmt.format(value)
-    print(f'{name:52s} {v:>14s}')
-    R.rows.append((name, v))
+    print(f'{name:52s} {fmt.format(value):>14s}')
 
 
 def cramers_v(chi2, n, table):
@@ -55,7 +30,6 @@ def cramers_v(chi2, n, table):
 
 
 # ---- corpus ---------------------------------------------------------------
-R.start('corpus_counts.csv', 'corpus size')
 print('== Corpus')
 show('curated PRs', len(meta), '{:,}')
 show('curated repositories', meta.repo_name.nunique(), '{:,}')
@@ -64,7 +38,6 @@ show('reviewed repositories', ev.repo_name.nunique(), '{:,}')
 show('review events', len(ev), '{:,}')
 
 # ---- Table 1: the curated subset and its review activity, by agent --------
-R.start('table1_agent_activity.csv', 'the curated subset and its review activity, by authoring agent')
 print('\n== Table 1 (by authoring agent)')
 sm_tab = pd.read_csv(DATA / 'common' / 'review_summary_meta.csv', low_memory=False)
 cm_tab = pd.read_csv(DATA / 'common' / 'review_comments_final.csv', low_memory=False)
@@ -90,7 +63,6 @@ show('table totals: summaries', int(n_summ.sum()), '{:,}')
 show('table totals: inline comments', int(n_cm.sum()), '{:,}')
 
 # ---- reviewed PRs by configuration ---------------------------------------
-R.start('configuration_analysis.csv', 'review configurations, shares and association tests')
 print('\n== Reviewed PRs (configurations)')
 conf = np.where(prof.review_config.isin(['same', 'cross', 'same+cross']), 'only AI',
                 np.where(prof.review_config == 'human', 'only human', 'both'))
@@ -137,7 +109,6 @@ show('human-only share, build (%)', round(tasks.loc['build', 'only human'], 1))
 show('human-only share, ci (%)', round(tasks.loc['ci', 'only human'], 1))
 
 # ---- AI-on-AI review events ----------------------------------------------
-R.start('review_type_analysis.csv', 'AI-on-AI review types, shares and association tests')
 print('\n== AI-on-AI review types')
 ai_ev = ev[ev.actor.isin(['same-system', 'cross-system'])]
 show('AI-on-AI events', len(ai_ev), '{:,}')
@@ -172,7 +143,6 @@ for t in ['chore', 'ci', 'feat', 'test', 'fix', 'docs']:
     show(f'same-system share, {t} (%)', round(tshares.loc[t, 'same-system'], 1))
 
 # ---- pairings ------------------------------------------------------------
-R.start('pairings.csv', 'reviewer-author pairings')
 print('\n== Review pairings')
 same = ev[ev.actor == 'same-system']
 pairs = same.groupby(['reviewer_system', 'authoring_agent']).size().sort_values(ascending=False)
@@ -199,18 +169,11 @@ show('CodeRabbit share of cross-system (%)', round((cross.reviewer_system == 'Co
 cside = cross.authoring_agent.value_counts(normalize=True) * 100
 for a in ['OpenAI_Codex', 'Devin', 'Cursor', 'Copilot']:
     show(f'cross-system on {a} (%)', round(cside[a], 1))
-for (r, a), v in pairs.items():
-    R.rows.append((f'pairing: {r} -> {a}', int(v)))
-for (r, a), v in cpairs.items():
-    R.rows.append((f'pairing: {r} -> {a}', int(v)))
 
 # ---- account identification ----------------------------------------------
-R.start('accounts_summary.csv', 'AI-account screening counts')
 print('\n== AI-reviewer accounts')
 show('candidates from the platform bot flag', int((acc.source == 'bot flag').sum()))
 show('candidates kept as AI reviewers', int(((acc.source == 'bot flag') & (acc.role == 'AI reviewer')).sum()))
 show('candidates excluded as automation', int((acc.role == 'excluded automation').sum()))
 show('accounts added by name inspection', int((acc.source == 'name inspection').sum()))
 show('AI accounts in total', int((acc.role == 'AI reviewer').sum()))
-
-R.write()

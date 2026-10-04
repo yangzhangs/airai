@@ -1,7 +1,0 @@
-# RQ1 | AI-account screening counts
-metric,value
-candidates from the platform bot flag,40
-candidates kept as AI reviewers,31
-candidates excluded as automation,9
-accounts added by name inspection,1
-AI accounts in total,32

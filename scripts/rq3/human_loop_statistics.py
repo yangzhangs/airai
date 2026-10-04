@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""RQ3 statistics (human presence, verdicts, merge outcomes, timing, reply roles);
-writes the result tables in data/rq3/.
+"""RQ3 statistics (human presence, verdicts, merge outcomes, timing, reply roles).
 
 Run from the package root:  python3 scripts/rq3/human_loop_statistics.py
 """
@@ -27,46 +26,19 @@ E = ev[ev.pr_id.isin(set(AI.pr_id))].copy()
 E['wait'] = wait(E.pr_id.map(meta.created_at).values, E.submitted_at)
 
 
-OUT = DATA / 'rq3'
-
-
-class _Result:
-    """One long-format metric/value table per analysis, written on demand."""
-
-    def __init__(self):
-        self.rows = []; self.path = None; self.note = ''
-
-    def start(self, filename, note):
-        self.write()
-        self.path = OUT / filename; self.note = note; self.rows = []
-
-    def write(self):
-        if not self.path:
-            return
-        with open(self.path, 'w') as f:
-            f.write(f'# RQ3 | {self.note}\n')
-            pd.DataFrame(self.rows, columns=['metric', 'value']).to_csv(f, index=False)
-        self.path = None
-
-
-R = _Result()
 
 
 def show(name, value, fmt='{:g}'):
-    v = fmt.format(value)
-    print(f'{name:52s} {v:>14s}')
-    R.rows.append((name, v))
+    print(f'{name:52s} {fmt.format(value):>14s}')
 
 
 # ---- sampling design ------------------------------------------------------
-R.start('sampling_design.csv', 'the reply frame and its Cochran sample size')
 n0 = 1.96 ** 2 * 0.25 / 0.05 ** 2   # Cochran, as in the RQ2 script
 frame = cm[cm.is_human_reply & cm.pr_id.isin(set(AI.pr_id))]
 show('human replies in the frame', len(frame), '{:,}')
 show('Cochran sample for the reply frame', round(n0 / (1 + (n0 - 1) / len(frame))))
 
 # ---- human presence -------------------------------------------------------
-R.start('presence.csv', 'human presence: counts and shares')
 print('\n== Human presence')
 only_ai = AI[~AI.any_human]
 show('AI-on-AI PRs', len(AI), '{:,}')
@@ -89,7 +61,6 @@ show('AI-only PRs without line-anchored content', int((~only_ai.any_inline).sum(
 show('without line-anchored content share (%)', round((~only_ai.any_inline).mean() * 100, 1))
 
 # ---- verdicts (Table 4) ---------------------------------------------------
-R.start('verdicts.csv', 'review verdicts, Table 4')
 print('\n== Review verdicts')
 va = E.state == 'APPROVED'; vc = E.state == 'CHANGES_REQUESTED'
 for actor in ['same-system', 'cross-system', 'human']:
@@ -114,7 +85,6 @@ show('PRs with an AI verdict', len(aiv))
 show('AI-verdict share of AI-on-AI PRs (%)', round(len(aiv) / len(AI) * 100, 1))
 
 # ---- merge outcomes -------------------------------------------------------
-R.start('merge_outcomes.csv', 'merge outcomes')
 print('\n== Merge outcomes')
 merged = AI.is_merged
 show('approval PRs merged (%)', round(AI[AI.pr_id.isin(hap)].is_merged.mean() * 100, 1))
@@ -148,7 +118,6 @@ show('merged with no human verdict', int((merged.values & no_hv).sum()), '{:,}')
 show('merged with no human verdict share (%)', round((merged.values & no_hv).sum() / merged.values.sum() * 100, 1))
 
 # ---- timing ---------------------------------------------------------------
-R.start('timing.csv', 'event timing: medians, first events, tails')
 print('\n== Timing')
 for a, lab in [('cross-system', 'cross'), ('same-system', 'same'), ('human', 'human')]:
     show(f'event arrival median, {lab} (h)', round(E[E.actor == a].wait.median(), 1))
@@ -174,7 +143,6 @@ for a, lab in [('human', 'human'), ('same-system', 'same'), ('cross-system', 'cr
     show(f'tail >24h, {lab} (%)', round((E[E.actor == a].wait > 24).mean() * 100, 1))
 
 # ---- reply roles ----------------------------------------------------------
-R.start('reply_roles.csv', 'reply roles: shares and textual checks')
 print('\n== Reply roles')
 d = pd.read_csv(DATA / 'rq3' / 'doublecoding' / 'roles_full_coded.csv', comment='#')
 d['agent'] = d.pr_id.map(meta.agent)
@@ -203,5 +171,3 @@ show('decisions answering an AI comment', int(de.parent_review_pairing.ne('human
 show('question units', len(qu))
 show('questions carrying a question mark (%)', round(qu.reply_body.str.contains(r'\?', regex=True).mean() * 100, 1))
 show('brief remark units', len(br))
-
-R.write()
