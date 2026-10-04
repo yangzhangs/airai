@@ -22,10 +22,19 @@ This package supports the replication of our empirical study of AI-on-AI review 
 │   │   ├── review_summary_meta.csv      # 28,714 events: summary-text flag + character count
 │   │   └── pr_review_profile.csv        # 8,047 reviewed PRs: configuration + substance
 │   ├── rq1/
-│   │   └── ai_reviewer_accounts.csv     # 41-row account screening record (32 AI accounts)
+│   │   ├── ai_reviewer_accounts.csv     # 41-row account screening record (32 AI accounts)
+│   │   ├── configurations.csv           # per reviewed PR: agent, task, review configuration
+│   │   └── review_types.csv             # per review event: actor, reviewer system, authoring agent
 │   ├── rq2/
 │   │   ├── rq2_sample_shares.json            # per-stratum function shares
 │   │   ├── rq2_kappa.json                    # agreement per stratum
+│   │   ├── sampling_design.csv               # the four coded populations
+│   │   ├── review_forms.csv                  # per review event: written-form flags
+│   │   ├── comment_lengths.csv               # per inline comment: owner actor, characters
+│   │   ├── summary_lengths.csv               # per summary: actor, characters
+│   │   ├── arrival_times.csv                 # per review event: form flags, arrival hours
+│   │   ├── copilot_comment_arrivals.csv      # per comment on Copilot PRs: arrival hours
+│   │   ├── cross_sample_units.csv            # cross-system sample units with reviewer and agent
 │   │   └── doublecoding/
 │   │       ├── README.md               # the double-coding record and agreement
 │   │       ├── same_inline_coded.csv   # 364 units: both annotations and the adjudicated final
@@ -34,6 +43,12 @@ This package supports the replication of our empirical study of AI-on-AI review 
 │   │       └── cross_summary_coded.csv # 348 units, same columns
 │   └── rq3/
 │       ├── rq3_kappa.json               # agreement over the reply sample
+│       ├── sampling_design.csv          # the human replies in the frame
+│       ├── presence.csv                 # per AI-on-AI PR: presence flags, authoring agent
+│       ├── review_verdicts.csv          # per event on AI-on-AI PRs: actor, verdict, time
+│       ├── merge_outcomes.csv           # per curated PR: group, merge flag, merge time
+│       ├── event_times.csv              # per event on AI-on-AI PRs: actor, arrival hours
+│       ├── presence_regression.csv      # per AI-on-AI PR: outcome, review types, controls
 │       └── doublecoding/
 │           ├── README.md            # the double-coding record and agreement
 │           └── roles_full_coded.csv # 316 replies: bodies, both annotations and the adjudicated final
@@ -50,8 +65,8 @@ This package supports the replication of our empirical study of AI-on-AI review 
 ## RQ1 - Prevalence
 
 - **Account identification** - `data/rq1/ai_reviewer_accounts.csv`: 40 candidates from the platform bot flag (31 kept as AI reviewers, 9 excluded as automation) plus 1 added by name inspection; 32 AI accounts in total.
-- **Reviewed PRs and review configurations (Table 1)** - `curated_pr_metadata.csv`, `pr_review_profile.csv`, and for Table 1 also `review_events_final.csv`, `review_summary_meta.csv`, `review_comments_final.csv`.
-- **AI-on-AI review types and pairings** - `review_events_final.csv`.
+- **Reviewed PRs and review configurations (Table 1)** - `configurations.csv` (per reviewed PR: authoring agent, task type, review configuration); Table 1 reads the common corpus tables.
+- **AI-on-AI review types and pairings** - `review_types.csv` (per review event: actor, reviewer system, authoring agent).
 
 ```bash
 python3 scripts/rq1/prevalence_statistics.py   # RQ1 statistics
@@ -59,12 +74,12 @@ python3 scripts/rq1/prevalence_statistics.py   # RQ1 statistics
 
 ## RQ2 - Characteristics
 
-- **Sampling design** - the four coded samples; the four populations and the Cochran sample sizes recomputed from `review_comments_final.csv` and `review_summary_meta.csv`.
-- **Review form (Table 2)** - `review_events_final.csv` + `review_summary_meta.csv` + `review_comments_final.csv`.
-- **Review length** - `review_comments_final.csv` (comment lengths), `review_summary_meta.csv` (summary lengths).
-- **Review arrival time** - `review_events_final.csv` + `curated_pr_metadata.csv` (PR creation times).
+- **Sampling design** - `sampling_design.csv` (the four coded populations).
+- **Review form (Table 2)** - `review_forms.csv` (per review event: written-form flags).
+- **Review length** - `comment_lengths.csv` (comment lengths), `summary_lengths.csv` (summary lengths).
+- **Review arrival time** - `arrival_times.csv` (event level), `copilot_comment_arrivals.csv` (the Copilot example).
 - **Review functions** - the four coded samples, the two function codebooks, `rq2_sample_shares.json`.
-- **Review type comparison and robustness** - the four coded samples, joined to `review_comments_final.csv` for reviewer and authoring agent.
+- **Review type comparison and robustness** - the four coded samples, plus `cross_sample_units.csv` for the composition checks.
 - **Double-coding record** - `data/rq2/doublecoding/`: each coded unit with both annotations and the adjudicated final; a disagreement is visible where `pass1` and `pass2` differ.
 
 ```bash
@@ -74,10 +89,10 @@ python3 scripts/rq2/characteristics_statistics.py   # RQ2 statistics
 
 ## RQ3 - Human Participation
 
-- **Reply frame and sampling** - `review_comments_final.csv` (reply flag; 1,787 replies).
-- **Human presence, verdicts, merge outcomes and timing (Table 4)** - `pr_review_profile.csv`, `review_events_final.csv`, `curated_pr_metadata.csv` (merge outcomes and timestamps).
-- **Presence regression (Table 3)** - `pr_review_profile.csv` + `curated_pr_metadata.csv` + `review_events_final.csv`.
-- **Reply roles** - `rq3_kappa.json` and `data/rq3/doublecoding/roles_full_coded.csv`: the reply bodies (pseudonymized) with both annotations and the adjudicated final.
+- **Reply frame and sampling** - `sampling_design.csv` (the 1,787 human replies in the frame).
+- **Human presence, verdicts, merge outcomes and timing (Table 4)** - `presence.csv`, `review_verdicts.csv`, `merge_outcomes.csv`, `event_times.csv`.
+- **Presence regression (Table 3)** - `presence_regression.csv`.
+- **Reply roles** - `rq3_kappa.json` and `data/rq3/doublecoding/roles_full_coded.csv`: the reply bodies (pseudonymized) with both annotations, the adjudicated final, and the PR authoring agent.
 - **Role codebook** - `codebooks/reply_roles.md`.
 
 ```bash

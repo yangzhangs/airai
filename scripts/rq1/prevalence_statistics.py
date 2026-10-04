@@ -12,9 +12,9 @@ from scipy.stats import chi2_contingency
 DATA = Path(__file__).resolve().parents[2] / 'data'
 
 meta = pd.read_csv(DATA / 'common' / 'curated_pr_metadata.csv', low_memory=False)
-prof = pd.read_csv(DATA / 'common' / 'pr_review_profile.csv', low_memory=False)
-prof['task_type'] = prof.pr_id.map(meta.set_index('id').task_type)
 ev = pd.read_csv(DATA / 'common' / 'review_events_final.csv', low_memory=False)
+cfg = pd.read_csv(DATA / 'rq1' / 'configurations.csv', comment='#')
+rt = pd.read_csv(DATA / 'rq1' / 'review_types.csv', comment='#')
 acc = pd.read_csv(DATA / 'rq1' / 'ai_reviewer_accounts.csv', comment='#')
 
 TASKS = [t for t in meta.task_type.dropna().unique() if t not in ('other', 'revert')]
@@ -33,7 +33,7 @@ def cramers_v(chi2, n, table):
 print('== Corpus')
 show('curated PRs', len(meta), '{:,}')
 show('curated repositories', meta.repo_name.nunique(), '{:,}')
-show('reviewed PRs', len(prof), '{:,}')
+show('reviewed PRs', len(cfg), '{:,}')
 show('reviewed repositories', ev.repo_name.nunique(), '{:,}')
 show('review events', len(ev), '{:,}')
 
@@ -44,7 +44,7 @@ cm_tab = pd.read_csv(DATA / 'common' / 'review_comments_final.csv', low_memory=F
 EV = ev.merge(sm_tab, on='id')
 CM = cm_tab.assign(authoring_agent=cm_tab.pr_id.map(meta.set_index('id').agent))
 n_pr = meta.groupby('agent').size()
-n_rev = prof.groupby('authoring_agent').size()
+n_rev = cfg.groupby('authoring_agent').size()
 n_events = EV.groupby('authoring_agent').size()
 n_summ = EV[EV.has_summary].groupby('authoring_agent').size()
 n_cm = CM.groupby('authoring_agent').size()
@@ -64,38 +64,38 @@ show('table totals: inline comments', int(n_cm.sum()), '{:,}')
 
 # ---- reviewed PRs by configuration ---------------------------------------
 print('\n== Reviewed PRs (configurations)')
-conf = np.where(prof.review_config.isin(['same', 'cross', 'same+cross']), 'only AI',
-                np.where(prof.review_config == 'human', 'only human', 'both'))
-prof = prof.assign(conf=conf)
-n = len(prof)
-counts = prof.conf.value_counts()
+conf = np.where(cfg.review_config.isin(['same', 'cross', 'same+cross']), 'only AI',
+                np.where(cfg.review_config == 'human', 'only human', 'both'))
+cfg = cfg.assign(conf=conf)
+n = len(cfg)
+counts = cfg.conf.value_counts()
 show('humans alone', int(counts['only human']), '{:,}')
 show('humans and AI together', int(counts['both']), '{:,}')
 show('AI alone', int(counts['only AI']), '{:,}')
-show('with at least one AI review', int(prof.conf.isin(['only AI', 'both']).sum()), '{:,}')
+show('with at least one AI review', int(cfg.conf.isin(['only AI', 'both']).sum()), '{:,}')
 show('AI-only share (%)', round(counts['only AI'] / n * 100, 1))
 show('humans-alone share (%)', round(counts['only human'] / n * 100, 1))
 show('humans-and-AI share (%)', round(counts['both'] / n * 100, 1))
-show('at-least-one-AI share (%)', round(prof.conf.isin(['only AI', 'both']).mean() * 100, 1))
+show('at-least-one-AI share (%)', round(cfg.conf.isin(['only AI', 'both']).mean() * 100, 1))
 
-tab = pd.crosstab(prof.authoring_agent, prof.conf)
+tab = pd.crosstab(cfg.authoring_agent, cfg.conf)
 chi2, p, dof, _ = chi2_contingency(tab)
 show('configuration x agent chi2', round(chi2, 1), '{:,.1f}')
 show('configuration x agent df', dof)
 show('configuration x agent V', round(cramers_v(chi2, n, tab), 2))
 show('configuration x agent p', p, '{:.1e}')
-agents = prof.groupby('authoring_agent').conf.value_counts(normalize=True).unstack(fill_value=0) * 100
+agents = cfg.groupby('authoring_agent').conf.value_counts(normalize=True).unstack(fill_value=0) * 100
 show('AI-only share, Copilot (%)', round(agents.loc['Copilot', 'only AI'], 1))
 show('AI-only share, Codex (%)', round(agents.loc['OpenAI_Codex', 'only AI'], 1))
 show('human-only share, Devin (%)', round(agents.loc['Devin', 'only human'], 1))
-ai_any = prof.assign(ai=prof.conf.isin(['only AI', 'both'])).groupby('authoring_agent').ai.mean() * 100
+ai_any = cfg.assign(ai=cfg.conf.isin(['only AI', 'both'])).groupby('authoring_agent').ai.mean() * 100
 others = ai_any.drop('Devin')
 show('AI-on-AI share, min among four (%)', round(others.min(), 1))
 show('AI-on-AI share, max among four (%)', round(others.max(), 1))
 show('AI-on-AI share, Devin (%)', round(ai_any['Devin'], 1))
 show('with-humans share, Copilot (%)', round(agents.loc['Copilot', 'both'], 1))
 
-sub = prof[prof.task_type.isin(TASKS)]
+sub = cfg[cfg.task_type.isin(TASKS)]
 tab = pd.crosstab(sub.task_type, sub.conf)
 chi2, p, dof, _ = chi2_contingency(tab)
 show('configuration x task chi2', round(chi2, 1), '{:,.1f}')
@@ -110,13 +110,13 @@ show('human-only share, ci (%)', round(tasks.loc['ci', 'only human'], 1))
 
 # ---- AI-on-AI review events ----------------------------------------------
 print('\n== AI-on-AI review types')
-ai_ev = ev[ev.actor.isin(['same-system', 'cross-system'])]
+ai_ev = rt[rt.actor.isin(['same-system', 'cross-system'])]
 show('AI-on-AI events', len(ai_ev), '{:,}')
-show('AI-on-AI share of events (%)', round(len(ai_ev) / len(ev) * 100, 1))
-show('same-system events', int((ev.actor == 'same-system').sum()), '{:,}')
-show('cross-system events', int((ev.actor == 'cross-system').sum()), '{:,}')
-show('same-system share of AI-on-AI (%)', round((ev.actor == 'same-system').sum() / len(ai_ev) * 100, 1))
-show('cross-system share of AI-on-AI (%)', round((ev.actor == 'cross-system').sum() / len(ai_ev) * 100, 1))
+show('AI-on-AI share of events (%)', round(len(ai_ev) / len(rt) * 100, 1))
+show('same-system events', int((rt.actor == 'same-system').sum()), '{:,}')
+show('cross-system events', int((rt.actor == 'cross-system').sum()), '{:,}')
+show('same-system share of AI-on-AI (%)', round((rt.actor == 'same-system').sum() / len(ai_ev) * 100, 1))
+show('cross-system share of AI-on-AI (%)', round((rt.actor == 'cross-system').sum() / len(ai_ev) * 100, 1))
 
 tab = pd.crosstab(ai_ev.authoring_agent, ai_ev.actor)
 chi2, p, dof, _ = chi2_contingency(tab)
@@ -128,7 +128,7 @@ shares = ai_ev.groupby('authoring_agent').actor.value_counts(normalize=True).uns
 show('same-system share, Copilot (%)', round(shares.loc['Copilot', 'same-system'], 1))
 show('same-system share, Cursor (%)', round(shares.loc['Cursor', 'same-system'], 1))
 show('same-system share, Claude (%)', round(shares.loc['Claude_Code', 'same-system'], 1))
-allrev = ev.groupby('authoring_agent').actor.value_counts(normalize=True).unstack(fill_value=0) * 100
+allrev = rt.groupby('authoring_agent').actor.value_counts(normalize=True).unstack(fill_value=0) * 100
 show('human share of Devin PR reviews (%)', round(allrev.loc['Devin', 'human'], 1))
 show('cross share of Codex PR reviews (%)', round(allrev.loc['OpenAI_Codex', 'cross-system'], 1))
 
@@ -144,15 +144,15 @@ for t in ['chore', 'ci', 'feat', 'test', 'fix', 'docs']:
 
 # ---- pairings ------------------------------------------------------------
 print('\n== Review pairings')
-same = ev[ev.actor == 'same-system']
+same = rt[rt.actor == 'same-system']
 pairs = same.groupby(['reviewer_system', 'authoring_agent']).size().sort_values(ascending=False)
 show('Copilot-to-Copilot events', int(pairs.get(('Copilot', 'Copilot'), 0)), '{:,}')
 show('Cursor-to-Cursor events', int(pairs.get(('Cursor', 'Cursor'), 0)), '{:,}')
 show('Claude-to-Claude events', int(pairs.get(('Claude Code', 'Claude_Code'), 0)))
 show('Copilot share of same-system (%)', round(pairs.get(('Copilot', 'Copilot'), 0) / len(same) * 100, 1))
 show('Copilot-to-Copilot share of all AI-on-AI (%)', round(pairs.get(('Copilot', 'Copilot'), 0) / len(ai_ev) * 100, 1))
-show('Claude Code events as reviewer', int((ev.reviewer_system == 'Claude Code').sum()))
-cross = ev[ev.actor == 'cross-system']
+show('Claude Code events as reviewer', int((rt.reviewer_system == 'Claude Code').sum()))
+cross = rt[rt.actor == 'cross-system']
 show('reviewing systems in cross-system', cross.reviewer_system.nunique())
 cpairs = cross.groupby(['reviewer_system', 'authoring_agent']).size().sort_values(ascending=False)
 show('cross-system pairings', len(cpairs))

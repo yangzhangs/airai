@@ -11,18 +11,11 @@ import numpy as np
 import pandas as pd
 import statsmodels.formula.api as smf
 
-DATA = Path(__file__).resolve().parents[2] / 'data' / 'common'
+DATA = Path(__file__).resolve().parents[2] / 'data' / 'rq3'
 
-prof = pd.read_csv(DATA / 'pr_review_profile.csv')
-meta = pd.read_csv(DATA / 'curated_pr_metadata.csv')
-ev = pd.read_csv(DATA / 'review_events_final.csv')
-meta['created_at'] = pd.to_datetime(meta['created_at'], utc=True, format='mixed')
-
-ai_prs = set(ev.loc[ev.actor.str.contains('system'), 'pr_id'])
-d = prof[prof.pr_id.isin(ai_prs)].merge(
-    meta[['id', 'task_type', 'stars', 'created_at', 'repo_name']],
-    left_on='pr_id', right_on='id')
+d = pd.read_csv(DATA / 'presence_regression.csv', comment='#')
 d = d[~d.task_type.isin(['other', 'revert'])].copy()
+d['created_at'] = pd.to_datetime(d['created_at'], utc=True, format='mixed')
 d['human'] = d.any_human.astype(int)
 d['month'] = d.created_at.dt.month
 d['logstars'] = np.log(d.stars.astype(float))

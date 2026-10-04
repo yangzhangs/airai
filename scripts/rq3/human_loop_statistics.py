@@ -12,18 +12,15 @@ from scipy.stats import kruskal, mannwhitneyu
 
 DATA = Path(__file__).resolve().parents[2] / 'data'
 
-prof = pd.read_csv(DATA / 'common' / 'pr_review_profile.csv', low_memory=False)
-meta = pd.read_csv(DATA / 'common' / 'curated_pr_metadata.csv', low_memory=False).set_index('id')
-ev = pd.read_csv(DATA / 'common' / 'review_events_final.csv', low_memory=False)
-cm = pd.read_csv(DATA / 'common' / 'review_comments_final.csv', low_memory=False)
-sub = meta.reindex(prof.pr_id)
-prof['authoring_agent'] = sub.agent.values
-prof['is_merged'] = sub.is_merged.values
-wait = lambda created, later: (pd.to_datetime(later, utc=True) - pd.to_datetime(created, utc=True)).dt.total_seconds() / 3600
+frame = pd.read_csv(DATA / 'rq3' / 'sampling_design.csv', comment='#')
+pres = pd.read_csv(DATA / 'rq3' / 'presence.csv', comment='#')
+rv = pd.read_csv(DATA / 'rq3' / 'review_verdicts.csv', comment='#')
+mo = pd.read_csv(DATA / 'rq3' / 'merge_outcomes.csv', comment='#')
+et = pd.read_csv(DATA / 'rq3' / 'event_times.csv', comment='#').rename(columns={'wait_hours': 'wait'})
 
-AI = prof[prof.any_same | prof.any_cross]
-E = ev[ev.pr_id.isin(set(AI.pr_id))].copy()
-E['wait'] = wait(E.pr_id.map(meta.created_at).values, E.submitted_at)
+ai_mo = mo[mo.group == 'AI-on-AI reviewed'][['pr_id', 'is_merged', 'merged_at']]
+AI = pres.merge(ai_mo, on='pr_id')
+E = rv.merge(et[['id', 'wait']], on='id')
 
 
 
@@ -34,7 +31,6 @@ def show(name, value, fmt='{:g}'):
 
 # ---- sampling design ------------------------------------------------------
 n0 = 1.96 ** 2 * 0.25 / 0.05 ** 2   # Cochran, as in the RQ2 script
-frame = cm[cm.is_human_reply & cm.pr_id.isin(set(AI.pr_id))]
 show('human replies in the frame', len(frame), '{:,}')
 show('Cochran sample for the reply frame', round(n0 / (1 + (n0 - 1) / len(frame))))
 
@@ -49,14 +45,14 @@ show('same-system only', int(((only_ai.any_same) & (~only_ai.any_cross)).sum()),
 show('both types, AI-only', int((only_ai.any_same & only_ai.any_cross).sum()))
 show('human present PRs', int(AI.any_human.sum()), '{:,}')
 show('human present share (%)', round(AI.any_human.mean() * 100, 1))
-same = prof[prof.any_same]; cross = prof[prof.any_cross]
+same = pres[pres.any_same]; cross = pres[pres.any_cross]
 show('PRs with same-system review', len(same), '{:,}')
 show('human present among same-system PRs (%)', round(same.any_human.mean() * 100, 1))
 show('PRs with cross-system review', len(cross), '{:,}')
 show('human present among cross-system PRs (%)', round(cross.any_human.mean() * 100, 1))
 show('AI-only PRs authored by Codex', int((only_ai.authoring_agent == 'OpenAI_Codex').sum()), '{:,}')
-show('PRs with both review types', int((prof.any_same & prof.any_cross).sum()))
-show('both-types share (%)', round((AI.any_same & AI.any_cross).mean() * 100, 1))
+show('PRs with both review types', int((pres.any_same & pres.any_cross).sum()))
+show('both-types share (%)', round((pres.any_same & pres.any_cross).mean() * 100, 1))
 show('AI-only PRs without line-anchored content', int((~only_ai.any_inline).sum()), '{:,}')
 show('without line-anchored content share (%)', round((~only_ai.any_inline).mean() * 100, 1))
 
@@ -100,7 +96,7 @@ show('request-changes with approval merge (%)', round(AI[AI.pr_id.isin(both)].is
 show('request-changes without approval PRs (n)', len(set(hch) - both))
 show('request-changes without approval merge (%)', round(AI[AI.pr_id.isin(set(hch) - both)].is_merged.mean() * 100, 1))
 ap = E[(E.actor == 'human') & va].copy()
-ap['merged_at'] = ap.pr_id.map(meta.merged_at)
+ap['merged_at'] = ap.pr_id.map(AI.set_index('pr_id').merged_at)
 onm = ap[ap.merged_at.notna()]
 show('human approvals before the merge (%)', round((pd.to_datetime(onm.submitted_at, utc=True) < pd.to_datetime(onm.merged_at, utc=True)).mean() * 100, 1))
 show('AI-only PRs merged (%)', round(only_ai.is_merged.mean() * 100, 1))
@@ -109,7 +105,7 @@ byagent = only_ai.groupby('authoring_agent').is_merged.mean() * 100
 show('AI-only merge, Copilot (%)', round(byagent['Copilot'], 1))
 show('AI-only merge, Codex (%)', round(byagent['OpenAI_Codex'], 1))
 show('AI-only merge, agent range', f'{byagent.min():.1f}-{byagent.max():.1f}', '{:s}')
-unrev = meta[~meta.index.isin(set(prof.pr_id))]
+unrev = mo[mo.group == 'unreviewed']
 show('unreviewed curated PRs', len(unrev), '{:,}')
 show('unreviewed curated merge (%)', round(unrev.is_merged.mean() * 100, 1))
 show('merged AI-on-AI PRs', int(merged.sum()), '{:,}')
@@ -127,12 +123,12 @@ show('event arrival Kruskal-Wallis H', round(H.statistic, 1), '{:,.1f}')
 show('event arrival KW p', H.pvalue, '{:.1e}')
 # on a shared first timestamp the human event takes precedence
 E['ai_rank'] = (E.actor != 'human').astype(int)
-first = E.sort_values(['submitted_at', 'ai_rank'], kind='mergesort').groupby('pr_id').first()
+first = E.sort_values(['wait', 'ai_rank'], kind='mergesort').groupby('pr_id').first()
 fs = first.actor.value_counts(normalize=True) * 100
 show('first event cross-system (%)', round(fs['cross-system'], 1))
 show('first event human (%)', round(fs['human'], 1))
 show('first event same-system (%)', round(fs['same-system'], 1))
-fa = E.sort_values('submitted_at', kind='mergesort').groupby(['pr_id', 'actor']).first().reset_index()
+fa = E.sort_values('wait', kind='mergesort').groupby(['pr_id', 'actor']).first().reset_index()
 fm = fa.groupby('actor').wait.median().round(2)
 show('median first event, cross (h)', fm['cross-system'], '{:g}')
 show('median first event, same (h)', round(fm['same-system'], 1))
@@ -145,7 +141,7 @@ for a, lab in [('human', 'human'), ('same-system', 'same'), ('cross-system', 'cr
 # ---- reply roles ----------------------------------------------------------
 print('\n== Reply roles')
 d = pd.read_csv(DATA / 'rq3' / 'doublecoding' / 'roles_full_coded.csv', comment='#')
-d['agent'] = d.pr_id.map(meta.agent)
+d['agent'] = d.authoring_agent
 show('sampled human replies', len(d))
 sh = d.final.value_counts(normalize=True) * 100
 for role in ['code feedback', 'direction to an agent', 'decision', 'brief remark', 'question']:

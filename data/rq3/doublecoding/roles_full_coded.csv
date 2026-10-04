@@ -1,30 +1,30 @@
-# RQ3 | the 316 sampled replies: bodies (third-party account names pseudonymized), both annotations and the adjudicated final
-id,pr_id,parent_review_pairing,reply_body,pass1,pass2,final
-2150151942,3134302678,human_review,@copilot Onpressin also has to be triggered,direction to an agent,direction to an agent,direction to an agent
-2145703675,3129133917,human_review,We can add logging in another PR. ,decision,decision,decision
-2191439088,3186218830,human_review,It's kind of crazy qt doesn't offer an `isCollapsed` function on the QSplitter. `isVisible` always returns true as well. Good idea on a defined function. ,decision,decision,decision
-2141007340,3095403215,human_review,nvm I do see we need it.,decision,decision,decision
-2211077232,3234259884,human_review,"I talked to Jeremy yesterday. The MCR image has to be dynamically linked, which will make it less portable. No concern if we publish static linked to ghcr",decision,decision,decision
-2103648088,3084855641,human_review,@copilot issues like this still remain in the majority of files. Make sure to check every file that you updated.,direction to an agent,direction to an agent,direction to an agent
-2241257739,3254714553,human_review,"I could try. But I have to delete it because I found the script just keeps generating this even if I wrote it in the ""failed specs""",decision,decision,decision
-2138924655,3121678248,human_review,Cleaned up.,brief remark,brief remark,brief remark
-2137502251,3133002658,cross_review,"can you please explain why there is no null check. This method first checks d is null, if null it returns empty string, if not recursively called the same method, but in that call, definitely with a non null value. This logic from chatgpt is perfect for me. can you explain why you still want a null pointer check?",question,question,question
-2235701226,3240797601,human_review,https://github.com/vllm-project/vllm/pull/21739,brief remark,brief remark,brief remark
-2114625715,3084597647,self_review,"indeed @copilot please make sure Expand All, Collapse All, and Actions are being pulled from resources so they're localized",direction to an agent,direction to an agent,direction to an agent
-2236936086,3268184875,human_review,This link seems to be all we need to include for vs code users: https://code.visualstudio.com/docs/cpp/config-msvc,brief remark,brief remark,brief remark
-2132971506,3125531606,human_review,apply these changes to the sync sample as well,direction to an agent,direction to an agent,direction to an agent
+# RQ3 | the 316 sampled replies: bodies (third-party account names pseudonymized), both annotations, the adjudicated final, and the PR authoring agent
+id,pr_id,parent_review_pairing,reply_body,pass1,pass2,final,authoring_agent
+2150151942,3134302678,human_review,@copilot Onpressin also has to be triggered,direction to an agent,direction to an agent,direction to an agent,Copilot
+2145703675,3129133917,human_review,We can add logging in another PR. ,decision,decision,decision,OpenAI_Codex
+2191439088,3186218830,human_review,It's kind of crazy qt doesn't offer an `isCollapsed` function on the QSplitter. `isVisible` always returns true as well. Good idea on a defined function. ,decision,decision,decision,Copilot
+2141007340,3095403215,human_review,nvm I do see we need it.,decision,decision,decision,Copilot
+2211077232,3234259884,human_review,"I talked to Jeremy yesterday. The MCR image has to be dynamically linked, which will make it less portable. No concern if we publish static linked to ghcr",decision,decision,decision,Copilot
+2103648088,3084855641,human_review,@copilot issues like this still remain in the majority of files. Make sure to check every file that you updated.,direction to an agent,direction to an agent,direction to an agent,Copilot
+2241257739,3254714553,human_review,"I could try. But I have to delete it because I found the script just keeps generating this even if I wrote it in the ""failed specs""",decision,decision,decision,Copilot
+2138924655,3121678248,human_review,Cleaned up.,brief remark,brief remark,brief remark,Copilot
+2137502251,3133002658,cross_review,"can you please explain why there is no null check. This method first checks d is null, if null it returns empty string, if not recursively called the same method, but in that call, definitely with a non null value. This logic from chatgpt is perfect for me. can you explain why you still want a null pointer check?",question,question,question,OpenAI_Codex
+2235701226,3240797601,human_review,https://github.com/vllm-project/vllm/pull/21739,brief remark,brief remark,brief remark,OpenAI_Codex
+2114625715,3084597647,self_review,"indeed @copilot please make sure Expand All, Collapse All, and Actions are being pulled from resources so they're localized",direction to an agent,direction to an agent,direction to an agent,Copilot
+2236936086,3268184875,human_review,This link seems to be all we need to include for vs code users: https://code.visualstudio.com/docs/cpp/config-msvc,brief remark,brief remark,brief remark,Copilot
+2132971506,3125531606,human_review,apply these changes to the sync sample as well,direction to an agent,direction to an agent,direction to an agent,Copilot
 2216120021,3231788654,human_review,"❓ I don't fully understand why we need all this. What's the point of having these annotations when we already tackle this with the search client proxy? The client proxy felt like a nice isolated and generic solution, whereas this relies people knowing they need to add/remove annotations. And honestly, I will have forgotten to do this by the time I implement my next endpoint 😄 
 
-WDYT?",question,question,question
-2152471233,3134836043,human_review,@copilot apply this feedback please,direction to an agent,direction to an agent,direction to an agent
-2231534450,3261757119,human_review,"No, you misunderstood. We still need to copy the 3 dlls I mentioned. But we should be using the local dist folder as the source for the copy.",code feedback,code feedback,code feedback
-2206668616,3227962360,human_review,ok this makes sense.,decision,decision,decision
+WDYT?",question,question,question,Copilot
+2152471233,3134836043,human_review,@copilot apply this feedback please,direction to an agent,direction to an agent,direction to an agent,Copilot
+2231534450,3261757119,human_review,"No, you misunderstood. We still need to copy the 3 dlls I mentioned. But we should be using the local dist folder as the source for the copy.",code feedback,code feedback,code feedback,Copilot
+2206668616,3227962360,human_review,ok this makes sense.,decision,decision,decision,Copilot
 2109686515,3094173620,human_review,"Perhaps we should add a helper method to the Python Node class, which returns true if the process is running, false others.
 
 def running(self):
     # Return true if self.process is actually an existing process in the process table.
-",code feedback,code feedback,code feedback
-2094584796,3071083616,cross_review,We can improve this later.,decision,decision,decision
+",code feedback,code feedback,code feedback,Copilot
+2094584796,3071083616,cross_review,We can improve this later.,decision,decision,decision,OpenAI_Codex
 2172501602,3182915267,human_review,"> The code replaces any non-nil logger with log.NewLogger(os.Stdout)
 
 logger is not the same as grpcLogger. It seems extremely fishy that we're creating grpcLogger based on logger. The contents of the conditional also don't use anything from logger so why doesn't this code eliminate the conditional and always make a grpcLogger like this:
@@ -39,85 +39,85 @@ or like this
 		grpcLogger = log.NewLogger(os.Stdout)
 ```
 
-@copilot ",code feedback,code feedback,code feedback
-2103549096,3084631055,human_review,The configuration is unchanged. Use the command `golangci-lint config verify` to validate the configuration. Do not stop until the command successfully validated the configuration.,direction to an agent,direction to an agent,direction to an agent
+@copilot ",code feedback,code feedback,code feedback,Copilot
+2103549096,3084631055,human_review,The configuration is unchanged. Use the command `golangci-lint config verify` to validate the configuration. Do not stop until the command successfully validated the configuration.,direction to an agent,direction to an agent,direction to an agent,Copilot
 2228606057,3259798274,human_review,"remove preview-dialog.escape.spec.ts, I need only preview-dialog.cy.ts
-",direction to an agent,direction to an agent,direction to an agent
-2182823591,3198732250,human_review,I think `PULL_NUMBER` is not defined yet.,code feedback,code feedback,code feedback
+",direction to an agent,direction to an agent,direction to an agent,Copilot
+2182823591,3198732250,human_review,I think `PULL_NUMBER` is not defined yet.,code feedback,code feedback,code feedback,Copilot
 2102938434,3081466449,human_review,"I might be misunderstanding (likely!), but when I move the retrieval code into a hook that's called by the client, I get an error like the following:
 
 ```axios.js?v=6f4b3038:1637 Refused to connect to 'http://localhost:11434/api/tags' because it violates the following Content Security Policy directive: ""default-src 'self'"". Note that 'connect-src' was not explicitly set, so 'default-src' is used as a fallback.```
 
 One way to fix this is to change the policy in index.html and add **connect-src 'self' http://localhost:***, but that's pretty gross, and wouldn't solve a similar case for Ollama running on a different machine.
 
-So given all that, seems like it makes more sense to have the API calls made from the server, and do it via the IPC call?",code feedback,question,code feedback
-2180857447,3078444990,human_review,`SimulatedUser` and `RedteamSimulatedUserProvider` call different server tasks,code feedback,code feedback,code feedback
-2173923183,3186281968,human_review,@copilot ,direction to an agent,brief remark,brief remark
-2140479702,3134796755,cross_review,Keep things simple bro,decision,decision,decision
-2174067176,3174281934,human_review,@copilot undo the changes in this file,direction to an agent,direction to an agent,direction to an agent
-2105504501,3078366765,human_review,"And use the face that this is set to null to determine that a check needs to be performed, then the ""_canUseXXXXStorage"" can simply use !!_verifiedXXX.v to determine if it can access and for the explicit case of utlDisableStorage it cause use _verifiedXXXXStorage = createCachedValue(null)",code feedback,code feedback,code feedback
-2166035674,3167450477,human_review,"@user-09 Sorry, this comment was not submitted. Please check if you want.",brief remark,brief remark,brief remark
-2127423274,3102019273,human_review,"I wasn't referring to an empty line. It looks like you added ""bool hasClr;"", but it doesn't appear to be used anywhere.",code feedback,code feedback,code feedback
-2182169132,3194483657,human_review,That's right. I hope you will give it a try!,decision,decision,decision
-2112463889,3098035626,cross_review,It should always be there as we prepare it during the build process,code feedback,code feedback,code feedback
+So given all that, seems like it makes more sense to have the API calls made from the server, and do it via the IPC call?",code feedback,question,code feedback,OpenAI_Codex
+2180857447,3078444990,human_review,`SimulatedUser` and `RedteamSimulatedUserProvider` call different server tasks,code feedback,code feedback,code feedback,OpenAI_Codex
+2173923183,3186281968,human_review,@copilot ,direction to an agent,brief remark,brief remark,Copilot
+2140479702,3134796755,cross_review,Keep things simple bro,decision,decision,decision,OpenAI_Codex
+2174067176,3174281934,human_review,@copilot undo the changes in this file,direction to an agent,direction to an agent,direction to an agent,Copilot
+2105504501,3078366765,human_review,"And use the face that this is set to null to determine that a check needs to be performed, then the ""_canUseXXXXStorage"" can simply use !!_verifiedXXX.v to determine if it can access and for the explicit case of utlDisableStorage it cause use _verifiedXXXXStorage = createCachedValue(null)",code feedback,code feedback,code feedback,Copilot
+2166035674,3167450477,human_review,"@user-09 Sorry, this comment was not submitted. Please check if you want.",brief remark,brief remark,brief remark,Claude_Code
+2127423274,3102019273,human_review,"I wasn't referring to an empty line. It looks like you added ""bool hasClr;"", but it doesn't appear to be used anywhere.",code feedback,code feedback,code feedback,Copilot
+2182169132,3194483657,human_review,That's right. I hope you will give it a try!,decision,decision,decision,Claude_Code
+2112463889,3098035626,cross_review,It should always be there as we prepare it during the build process,code feedback,code feedback,code feedback,OpenAI_Codex
 2216174653,3239561220,cross_review,"What about using `event.waitUntil(self.clients.claim());`?
-",code feedback,code feedback,code feedback
+",code feedback,code feedback,code feedback,OpenAI_Codex
 2102929514,3081695764,human_review,"```suggestion
                     break;
 ```
 
-You can break early here instead of continuing since the list is built in ascending order.",code feedback,code feedback,code feedback
-2114446146,3098602377,human_review,"@copilot you fixed this after (or in response) to my comment, so it is accurate now, thanks.",brief remark,brief remark,brief remark
-2145932001,3141889094,human_review,@copilot try again,direction to an agent,direction to an agent,direction to an agent
-2176165238,3189972179,human_review,Is this addressed?,question,question,question
-2134854867,3127795243,human_review,"My mistake, that should have been IDE0046 not IDE0028",code feedback,code feedback,code feedback
-2190959380,3078444990,human_review,They don't,decision,decision,decision
-2237676025,3103367606,human_review,@user-05 ,brief remark,brief remark,brief remark
-2156533406,3159305613,cross_review,already is in devdeps..,code feedback,decision,decision
-2199950145,3218486387,human_review,@copilot it's still failing. Any more tricks you can suggest?,question,question,question
+You can break early here instead of continuing since the list is built in ascending order.",code feedback,code feedback,code feedback,Copilot
+2114446146,3098602377,human_review,"@copilot you fixed this after (or in response) to my comment, so it is accurate now, thanks.",brief remark,brief remark,brief remark,Copilot
+2145932001,3141889094,human_review,@copilot try again,direction to an agent,direction to an agent,direction to an agent,Copilot
+2176165238,3189972179,human_review,Is this addressed?,question,question,question,Copilot
+2134854867,3127795243,human_review,"My mistake, that should have been IDE0046 not IDE0028",code feedback,code feedback,code feedback,Copilot
+2190959380,3078444990,human_review,They don't,decision,decision,decision,OpenAI_Codex
+2237676025,3103367606,human_review,@user-05 ,brief remark,brief remark,brief remark,OpenAI_Codex
+2156533406,3159305613,cross_review,already is in devdeps..,code feedback,decision,decision,OpenAI_Codex
+2199950145,3218486387,human_review,@copilot it's still failing. Any more tricks you can suggest?,question,question,question,Copilot
 2212003887,3231720206,human_review,"Initially I was thinking about keeping the database checks logic inside [ConfigurationService.java](https://github.com/camunda/camunda/pull/35372/files/5d6a8654938c31920bc241e832a74ee7b7fe4049#diff-3cf87b6fa58733fe460cfe4e51e5d1c7d840f3d9fa322ea84dc8f72682269d58) for consistency but actually, if we know we should fail-early when in no-db, then we might as well not override anything and just throw and error here  directly 🤔 
 
-",code feedback,code feedback,code feedback
-2101765713,3079632972,human_review,@copilot try again,direction to an agent,direction to an agent,direction to an agent
-2215537232,3242375510,human_review,We have other two changelogs with the same issue. Could you fix it?,direction to an agent,direction to an agent,direction to an agent
-2098696688,3075563001,human_review,"undefined is not true, so aren't we good?",question,question,question
-2095092096,3071822317,human_review,Nice edit,brief remark,brief remark,brief remark
-2127404932,3115409265,human_review,"Also, I'm actually not sure if we want to runTests for this leg or not... I will defer that decision to @user-16, but I don't see why that'd change.. so maybe we don't want that.",decision,brief remark,brief remark
-2208102269,3186218830,human_review,It didn't translate properly,code feedback,brief remark,code feedback
-2133243401,3126215556,cross_review,"done, can you please check",question,question,question
-2172966193,3143758141,human_review,"It is not that simple to implement, it requires using the router within the handler.",code feedback,decision,code feedback
-2106366734,3082311072,cross_review,i've fixed with 3b45b7f4cdebd5eb30e0217e7ba9fc8740f9bf4d,brief remark,brief remark,brief remark
-2104376650,3082388285,human_review,"Add the other registration as well, we should be able to resolve `AuthenticationStateSerializer` by both `IHostEnvironmentAuthenticationStateProvider` and `AuthenticationStateProvider`.",direction to an agent,direction to an agent,direction to an agent
-2145704873,3129133917,human_review,Works for me!,decision,decision,decision
-2180645941,3196547980,human_review,https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/core/System.ClientModel/src/ModelReaderWriter/UnsafeBufferSequence.cs,brief remark,brief remark,brief remark
-2177795578,3191839195,cross_review,Done in [86a3c00](https://github.com/KomodoPlatform/komodo-wallet/pull/2845/commits/86a3c00c2a6d51308431f972b4654c2d532f4844),brief remark,brief remark,brief remark
-2210955656,3236393939,human_review,@copilot Can you fix the script to return here?,direction to an agent,direction to an agent,direction to an agent
-2124621779,3112095151,self_review,Commit this,direction to an agent,direction to an agent,direction to an agent
-2134557773,3128117880,cross_review,"no, its difficult, we will use ajex false for the moment. Please ignore",decision,decision,decision
-2212403870,3231720206,human_review,"Ah true, nvm this.",decision,decision,decision
-2139541138,3135639537,human_review,@copilot can you figure out why its not detecting the process exiting? Is there a race condition?,question,question,question
-2183406696,3155815373,human_review,@user-13 do you feel good with the changes made here?,question,question,question
-2169701329,3078444990,human_review,Please follow the same pattern as the others. It is a var not a config option.,direction to an agent,direction to an agent,direction to an agent
-2209635832,3234328843,human_review,Well I meant remove the entire dependency. Why are we adding a dependency when there's other ways to create a Subject for testing. Look at other test files.,direction to an agent,direction to an agent,direction to an agent
-2180668156,3194895472,human_review,"based on discussion above, I think this should instead be changed to CHECK-NOT: internal error 99999",code feedback,code feedback,code feedback
-2116253554,3077052259,human_review,"you didn't get this right, don't touch any of the files with headers already present",direction to an agent,direction to an agent,direction to an agent
-2103540888,3084631055,human_review,The configuration is still incorrect. Use `golangci-lint config verify` to validate the configuration.,direction to an agent,direction to an agent,direction to an agent
-2096806874,3075506913,human_review,Can you do it in the other service as well? We don't need it there either.,direction to an agent,direction to an agent,direction to an agent
-2232957800,3265336481,cross_review,can you please check now,question,question,question
-2224054735,3250455355,human_review,JsonColumn should be Identifier because it is a column name. You cannot have an expression here like the new CREATE INDEX statement for expression-based indexes.,code feedback,code feedback,code feedback
+",code feedback,code feedback,code feedback,Copilot
+2101765713,3079632972,human_review,@copilot try again,direction to an agent,direction to an agent,direction to an agent,Copilot
+2215537232,3242375510,human_review,We have other two changelogs with the same issue. Could you fix it?,direction to an agent,direction to an agent,direction to an agent,Copilot
+2098696688,3075563001,human_review,"undefined is not true, so aren't we good?",question,question,question,Copilot
+2095092096,3071822317,human_review,Nice edit,brief remark,brief remark,brief remark,OpenAI_Codex
+2127404932,3115409265,human_review,"Also, I'm actually not sure if we want to runTests for this leg or not... I will defer that decision to @user-16, but I don't see why that'd change.. so maybe we don't want that.",decision,brief remark,brief remark,Copilot
+2208102269,3186218830,human_review,It didn't translate properly,code feedback,brief remark,code feedback,Copilot
+2133243401,3126215556,cross_review,"done, can you please check",question,question,question,OpenAI_Codex
+2172966193,3143758141,human_review,"It is not that simple to implement, it requires using the router within the handler.",code feedback,decision,code feedback,OpenAI_Codex
+2106366734,3082311072,cross_review,i've fixed with 3b45b7f4cdebd5eb30e0217e7ba9fc8740f9bf4d,brief remark,brief remark,brief remark,OpenAI_Codex
+2104376650,3082388285,human_review,"Add the other registration as well, we should be able to resolve `AuthenticationStateSerializer` by both `IHostEnvironmentAuthenticationStateProvider` and `AuthenticationStateProvider`.",direction to an agent,direction to an agent,direction to an agent,Copilot
+2145704873,3129133917,human_review,Works for me!,decision,decision,decision,OpenAI_Codex
+2180645941,3196547980,human_review,https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/core/System.ClientModel/src/ModelReaderWriter/UnsafeBufferSequence.cs,brief remark,brief remark,brief remark,Copilot
+2177795578,3191839195,cross_review,Done in [86a3c00](https://github.com/KomodoPlatform/komodo-wallet/pull/2845/commits/86a3c00c2a6d51308431f972b4654c2d532f4844),brief remark,brief remark,brief remark,OpenAI_Codex
+2210955656,3236393939,human_review,@copilot Can you fix the script to return here?,direction to an agent,direction to an agent,direction to an agent,Copilot
+2124621779,3112095151,self_review,Commit this,direction to an agent,direction to an agent,direction to an agent,Copilot
+2134557773,3128117880,cross_review,"no, its difficult, we will use ajex false for the moment. Please ignore",decision,decision,decision,OpenAI_Codex
+2212403870,3231720206,human_review,"Ah true, nvm this.",decision,decision,decision,Copilot
+2139541138,3135639537,human_review,@copilot can you figure out why its not detecting the process exiting? Is there a race condition?,question,question,question,Copilot
+2183406696,3155815373,human_review,@user-13 do you feel good with the changes made here?,question,question,question,Copilot
+2169701329,3078444990,human_review,Please follow the same pattern as the others. It is a var not a config option.,direction to an agent,direction to an agent,direction to an agent,OpenAI_Codex
+2209635832,3234328843,human_review,Well I meant remove the entire dependency. Why are we adding a dependency when there's other ways to create a Subject for testing. Look at other test files.,direction to an agent,direction to an agent,direction to an agent,Copilot
+2180668156,3194895472,human_review,"based on discussion above, I think this should instead be changed to CHECK-NOT: internal error 99999",code feedback,code feedback,code feedback,Copilot
+2116253554,3077052259,human_review,"you didn't get this right, don't touch any of the files with headers already present",direction to an agent,direction to an agent,direction to an agent,Copilot
+2103540888,3084631055,human_review,The configuration is still incorrect. Use `golangci-lint config verify` to validate the configuration.,direction to an agent,direction to an agent,direction to an agent,Copilot
+2096806874,3075506913,human_review,Can you do it in the other service as well? We don't need it there either.,direction to an agent,direction to an agent,direction to an agent,Copilot
+2232957800,3265336481,cross_review,can you please check now,question,question,question,OpenAI_Codex
+2224054735,3250455355,human_review,JsonColumn should be Identifier because it is a column name. You cannot have an expression here like the new CREATE INDEX statement for expression-based indexes.,code feedback,code feedback,code feedback,Copilot
 2218435793,3231720206,human_review,"Optimize is not covered by the unified configuration, it's external wrt the orchestration cluster.
 
-I don't know the current Optimize configuration, but I if there's already a config key with the DB type, most likely we should reuse that. CAMUNDA_DATABASE_TYPE is a new thing or was it there already?",code feedback,question,code feedback
-2144137076,3141942329,human_review,checked as expected.,brief remark,brief remark,brief remark
+I don't know the current Optimize configuration, but I if there's already a config key with the DB type, most likely we should reuse that. CAMUNDA_DATABASE_TYPE is a new thing or was it there already?",code feedback,question,code feedback,Copilot
+2144137076,3141942329,human_review,checked as expected.,brief remark,brief remark,brief remark,Copilot
 2179379300,3194803721,human_review,"Did you actually test them on GitHub Actions?
-",question,question,question
-2180602348,3119512382,human_review,"We do, this was removed by copilot, I'll add it back.",decision,brief remark,decision
-2190952787,3078444990,human_review,This class inherits from `SimulatedUser` and uses a different redteam task.  These need to be passed into the `PromptfooSimulatedUserProvider` server call for their respective `callApi` requests to be correctly routed.,code feedback,code feedback,code feedback
-2140810139,3132759286,human_review,"done, linked now",brief remark,brief remark,brief remark
-2216412421,3132024225,human_review,"Good thinking, though I figured I'd leave the existing tests as-is to show that this PR does not break any existing functionality",decision,decision,decision
-2174230450,3179515957,human_review,please use absolute import.,direction to an agent,direction to an agent,direction to an agent
-2242169176,3276367328,human_review,"I mean setting the style, setting the xamlroot we do need I believe",code feedback,decision,decision
-2196177645,3210824774,human_review,it's guessed `ProvideEnabled` -> `WithServerEnabled`; was there an appropriate path to migrate from `ProvideEnabled` to something else?,question,question,question
+",question,question,question,Copilot
+2180602348,3119512382,human_review,"We do, this was removed by copilot, I'll add it back.",decision,brief remark,decision,Copilot
+2190952787,3078444990,human_review,This class inherits from `SimulatedUser` and uses a different redteam task.  These need to be passed into the `PromptfooSimulatedUserProvider` server call for their respective `callApi` requests to be correctly routed.,code feedback,code feedback,code feedback,OpenAI_Codex
+2140810139,3132759286,human_review,"done, linked now",brief remark,brief remark,brief remark,OpenAI_Codex
+2216412421,3132024225,human_review,"Good thinking, though I figured I'd leave the existing tests as-is to show that this PR does not break any existing functionality",decision,decision,decision,OpenAI_Codex
+2174230450,3179515957,human_review,please use absolute import.,direction to an agent,direction to an agent,direction to an agent,Copilot
+2242169176,3276367328,human_review,"I mean setting the style, setting the xamlroot we do need I believe",code feedback,decision,decision,Copilot
+2196177645,3210824774,human_review,it's guessed `ProvideEnabled` -> `WithServerEnabled`; was there an appropriate path to migrate from `ProvideEnabled` to something else?,question,question,question,Copilot
 2160513916,3166187066,human_review,"Consider this instruction for this block:
 - Do not add braces in constructs followed by only a single-line statement
 
@@ -146,8 +146,8 @@ Add docblock for this group: A brief explanation (""we're disabling conflicting 
 Group the other filters above that, and do not add comments to them -- the functions below already comment on the purpose of these filters.
 
 Also, consider this new instruction:
-- Add a newline after a function opening brace",direction to an agent,direction to an agent,direction to an agent
-2231239110,3244874544,human_review,"@copilot de-emphasise these sub-commands (remove them from the doc). Also, mention that the CLI is primarily interactive.",direction to an agent,direction to an agent,direction to an agent
+- Add a newline after a function opening brace",direction to an agent,direction to an agent,direction to an agent,Copilot
+2231239110,3244874544,human_review,"@copilot de-emphasise these sub-commands (remove them from the doc). Also, mention that the CLI is primarily interactive.",direction to an agent,direction to an agent,direction to an agent,Copilot
 2217804710,3246334492,cross_review,"i think its correct
 here are the signatures
 ```go
@@ -155,78 +155,78 @@ func runHandler(c fiber.Ctx, h fiber.Handler, cfg Config) error {
 ```
 ```go
 func WithTimeout(parent Context, timeout time.Duration) (Context, CancelFunc) {
-```",code feedback,decision,code feedback
-2156660565,3152775367,human_review,Why not in https://github.com/dotnet/aspnetcore/blob/main/src/Components/test/testassets/Directory.Build.props?,question,question,question
-2109401947,3089144159,human_review,https://github.com/dotnet/aspire/pull/9522,brief remark,brief remark,brief remark
-2155180412,3119512382,human_review,What happens if I now leave a benign comment,question,question,question
-2102150341,3077405928,cross_review,I don't apply the suggestion to keep consistency with other commands,decision,decision,decision
-2133241309,3126215556,cross_review,"done, can you please check",question,question,question
-2158075996,3160615563,human_review,ok so actually keep this please. I didn't know `->` was valid,decision,decision,decision
-2112999170,3085487490,human_review,"@user-12 raised this question to triage - there were no strong objections to duplicating the info. I'll add the link, but otherwise am planning to go ahead with this. We can always delete it later if the consensus swings the other way.",decision,brief remark,decision
-2169567219,3176451317,human_review,"It seems it can't, let me make a new comment",brief remark,brief remark,brief remark
-2205488709,3224573846,self_review,This is intentional because the emitter is generated code and this file is code that runs in the generator itself. We need the helper class defined in both places since we don't really have a way to turn source code in the repo to generated assets.,code feedback,decision,code feedback
-2240834520,3200033873,human_review,That's my guess. Looks like it's in the first commit so probably just didn't get cleaned out during @user-03's reset and recommit.,brief remark,brief remark,brief remark
-2132367700,3124811802,human_review,the reasoning is we're using hashes as they're harder to forge than tags,code feedback,decision,code feedback
-2146712137,3145625420,human_review,Используй bean Resources для локализации сообщения об ошибке. Предоставь текст на двух языках. ,direction to an agent,direction to an agent,direction to an agent
-2121573895,3110009700,human_review,@copilot Can we log a debug message here using the `logger` member variable? Check `isVerboseLoggable`.,direction to an agent,direction to an agent,direction to an agent
-2202531014,3225203739,human_review,"+1, please keep in mind of the translation consistency across different `*.po` files",decision,decision,decision
-2216302505,3241986884,human_review,"@user-06 you can add the --arch flag regardless of the SDK version - that's what I was trying to illustrate, though poorly.",code feedback,code feedback,code feedback
-2127424671,3102019273,human_review,"oh, I see. it's used as an out parameter in GetClrProcesses, but isn't used after. Consider using a discard instead.",code feedback,code feedback,code feedback
-2118069777,3105703473,human_review,"Yeah, it's a bug. We shouldn't be returning ""localhost:3000"" when asking for subdomains.",code feedback,code feedback,code feedback
+```",code feedback,decision,code feedback,OpenAI_Codex
+2156660565,3152775367,human_review,Why not in https://github.com/dotnet/aspnetcore/blob/main/src/Components/test/testassets/Directory.Build.props?,question,question,question,Copilot
+2109401947,3089144159,human_review,https://github.com/dotnet/aspire/pull/9522,brief remark,brief remark,brief remark,Copilot
+2155180412,3119512382,human_review,What happens if I now leave a benign comment,question,question,question,Copilot
+2102150341,3077405928,cross_review,I don't apply the suggestion to keep consistency with other commands,decision,decision,decision,OpenAI_Codex
+2133241309,3126215556,cross_review,"done, can you please check",question,question,question,OpenAI_Codex
+2158075996,3160615563,human_review,ok so actually keep this please. I didn't know `->` was valid,decision,decision,decision,Copilot
+2112999170,3085487490,human_review,"@user-12 raised this question to triage - there were no strong objections to duplicating the info. I'll add the link, but otherwise am planning to go ahead with this. We can always delete it later if the consensus swings the other way.",decision,brief remark,decision,OpenAI_Codex
+2169567219,3176451317,human_review,"It seems it can't, let me make a new comment",brief remark,brief remark,brief remark,Copilot
+2205488709,3224573846,self_review,This is intentional because the emitter is generated code and this file is code that runs in the generator itself. We need the helper class defined in both places since we don't really have a way to turn source code in the repo to generated assets.,code feedback,decision,code feedback,Copilot
+2240834520,3200033873,human_review,That's my guess. Looks like it's in the first commit so probably just didn't get cleaned out during @user-03's reset and recommit.,brief remark,brief remark,brief remark,Copilot
+2132367700,3124811802,human_review,the reasoning is we're using hashes as they're harder to forge than tags,code feedback,decision,code feedback,Copilot
+2146712137,3145625420,human_review,Используй bean Resources для локализации сообщения об ошибке. Предоставь текст на двух языках. ,direction to an agent,direction to an agent,direction to an agent,Copilot
+2121573895,3110009700,human_review,@copilot Can we log a debug message here using the `logger` member variable? Check `isVerboseLoggable`.,direction to an agent,direction to an agent,direction to an agent,Copilot
+2202531014,3225203739,human_review,"+1, please keep in mind of the translation consistency across different `*.po` files",decision,decision,decision,Copilot
+2216302505,3241986884,human_review,"@user-06 you can add the --arch flag regardless of the SDK version - that's what I was trying to illustrate, though poorly.",code feedback,code feedback,code feedback,Copilot
+2127424671,3102019273,human_review,"oh, I see. it's used as an out parameter in GetClrProcesses, but isn't used after. Consider using a discard instead.",code feedback,code feedback,code feedback,Copilot
+2118069777,3105703473,human_review,"Yeah, it's a bug. We shouldn't be returning ""localhost:3000"" when asking for subdomains.",code feedback,code feedback,code feedback,OpenAI_Codex
 2181927237,3198063528,human_review,"Isn't that equivalent?
 
 I'll admit, in original, `extensionIdsToRemove` was a bad name... it should have been named something generic like `extensionIdSet`.
 
 But original basically takes the set of all extensions in the extension service, and when we iterate over extensions in the auth service we remove the ones that are not in that set.
 
-And the new implementation builds a set of extensions that are present in the auth service but not in the extension service... and then removes those.",code feedback,code feedback,code feedback
-2162398943,3169102437,human_review,You didn't revert this. Revert it,direction to an agent,direction to an agent,direction to an agent
-2179690952,3189570878,human_review,"Oh, this is interesting! @copilot could you please list all the callers of the workflow_call?",direction to an agent,question,question
-2141160198,3138144983,cross_review,Its done. please check and confirm,question,question,question
-2101365480,3078737490,self_review,This job is run only for `ubuntu-latest` so only `dotnet.sh` is valid here.,code feedback,code feedback,code feedback
-2213036684,3213063461,human_review,"Whether the C++ return type is `int` or an enum type doesn't matter much, because QML converts everything to integers anyway. I'll change the C++ type to `int` for consistency, but at some point we may want to change all return types to the appropriate enum type, in the hope that that might give better documentation and language server support (although that's not very useful for plugin developers, who generally don't have access to this source code, and thus won't have language server support anyway). ",code feedback,code feedback,code feedback
-2116631972,3083905069,human_review,"You don't need to modified this file, it is autogenerated.",decision,decision,decision
-2104733871,3082320330,human_review,"But why? What’s wrong about assert in this case? They can both fail independently, right?",question,question,question
-2238918134,3260577723,cross_review,"Copilot is right. When there are multiple urls, it would be more efficient to collect all the data into a vec so that it can be reused ",decision,code feedback,code feedback
-2099607771,3079170931,human_review,check the files under pkg/webhook to see if any validations could be replaced by CEL annotation.,direction to an agent,direction to an agent,direction to an agent
-2230673351,3260577723,human_review,"What do you mean, it will just fo a split_by ' '. This should work. @user-10 explicitly asked for a space separated instead of coma separated. I do agree than coma separated would be more suited. ",decision,code feedback,decision
+And the new implementation builds a set of extensions that are present in the auth service but not in the extension service... and then removes those.",code feedback,code feedback,code feedback,Copilot
+2162398943,3169102437,human_review,You didn't revert this. Revert it,direction to an agent,direction to an agent,direction to an agent,Copilot
+2179690952,3189570878,human_review,"Oh, this is interesting! @copilot could you please list all the callers of the workflow_call?",direction to an agent,question,question,Copilot
+2141160198,3138144983,cross_review,Its done. please check and confirm,question,question,question,OpenAI_Codex
+2101365480,3078737490,self_review,This job is run only for `ubuntu-latest` so only `dotnet.sh` is valid here.,code feedback,code feedback,code feedback,Copilot
+2213036684,3213063461,human_review,"Whether the C++ return type is `int` or an enum type doesn't matter much, because QML converts everything to integers anyway. I'll change the C++ type to `int` for consistency, but at some point we may want to change all return types to the appropriate enum type, in the hope that that might give better documentation and language server support (although that's not very useful for plugin developers, who generally don't have access to this source code, and thus won't have language server support anyway). ",code feedback,code feedback,code feedback,Copilot
+2116631972,3083905069,human_review,"You don't need to modified this file, it is autogenerated.",decision,decision,decision,Copilot
+2104733871,3082320330,human_review,"But why? What’s wrong about assert in this case? They can both fail independently, right?",question,question,question,Copilot
+2238918134,3260577723,cross_review,"Copilot is right. When there are multiple urls, it would be more efficient to collect all the data into a vec so that it can be reused ",decision,code feedback,code feedback,OpenAI_Codex
+2099607771,3079170931,human_review,check the files under pkg/webhook to see if any validations could be replaced by CEL annotation.,direction to an agent,direction to an agent,direction to an agent,Copilot
+2230673351,3260577723,human_review,"What do you mean, it will just fo a split_by ' '. This should work. @user-10 explicitly asked for a space separated instead of coma separated. I do agree than coma separated would be more suited. ",decision,code feedback,decision,OpenAI_Codex
 2142149679,3099658013,human_review,"I have plan to update deb related filenames in a separate PR.
 
-@user-07 is that possible we separate image prebuild to a separate yml workflow?",question,question,question
+@user-07 is that possible we separate image prebuild to a separate yml workflow?",question,question,question,Copilot
 2173112610,3161638137,human_review,"*sigh*
 
 So when you said ""just throw"" you apparently meant something else 😅
 
-I had this just using the value without validating it when publishing before I did this, and logging a warning. Where are we then?",question,question,question
-2129688567,3078439427,human_review,"Is this just redundant? Could it be that memberName already formatted here? I haven't run it, so it might not be the case, but we should definitely add some tests with a camel cased PropertyNamingPolicy and a capitalized first letter in the [JsonPropertyName] attribute.",question,question,question
-2218439550,3231720206,human_review,"@user-02 `CAMUNDA_DATABASE_TYPE` already exists and is used in monorepo components like Operate/Tasklist, I was wondering if Optimize could also use that or not since it's not part of the single app?",question,question,question
-2180644575,3196547980,human_review,Creating a BinaryData will result in allocations. Using BinaryContent.Create(IPersistableModel) will use shared buffer to avoid allocations - https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/core/System.ClientModel/src/Message/BinaryContent.cs,code feedback,code feedback,code feedback
+I had this just using the value without validating it when publishing before I did this, and logging a warning. Where are we then?",question,question,question,Copilot
+2129688567,3078439427,human_review,"Is this just redundant? Could it be that memberName already formatted here? I haven't run it, so it might not be the case, but we should definitely add some tests with a camel cased PropertyNamingPolicy and a capitalized first letter in the [JsonPropertyName] attribute.",question,question,question,Copilot
+2218439550,3231720206,human_review,"@user-02 `CAMUNDA_DATABASE_TYPE` already exists and is used in monorepo components like Operate/Tasklist, I was wondering if Optimize could also use that or not since it's not part of the single app?",question,question,question,Copilot
+2180644575,3196547980,human_review,Creating a BinaryData will result in allocations. Using BinaryContent.Create(IPersistableModel) will use shared buffer to avoid allocations - https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/core/System.ClientModel/src/Message/BinaryContent.cs,code feedback,code feedback,code feedback,Copilot
 2173008856,3177155948,human_review,"CurrentPrincipalType should return `auth.LoginType`
 
 And rename
 
 `EmailLoginType` -> `UserLoginType`
-`ClientIdLoginType` -> `ServicePrincipalLoginType`",code feedback,code feedback,code feedback
+`ClientIdLoginType` -> `ServicePrincipalLoginType`",code feedback,code feedback,code feedback,Copilot
 2172531870,3182915267,human_review,"> Why is it safe to assume the caller wants to log to stdout?
 
-for testing I think this is a safe enough assumption",decision,decision,decision
-2104855541,3071076936,human_review,@user-20 I'm not following? That's to fetch search params out of the existing URL right?. I'm building a new URL for a request.,question,question,question
-2212320024,3227441495,human_review,Crazy,brief remark,brief remark,brief remark
-2098032666,3075291570,human_review,Or just use the useSettings hook,code feedback,code feedback,code feedback
+for testing I think this is a safe enough assumption",decision,decision,decision,Copilot
+2104855541,3071076936,human_review,@user-20 I'm not following? That's to fetch search params out of the existing URL right?. I'm building a new URL for a request.,question,question,question,OpenAI_Codex
+2212320024,3227441495,human_review,Crazy,brief remark,brief remark,brief remark,Copilot
+2098032666,3075291570,human_review,Or just use the useSettings hook,code feedback,code feedback,code feedback,Copilot
 2158251116,3154760858,human_review,"So, version [1.101](https://code.visualstudio.com/updates/v1_101) of VS Code was released on June 12th, and after upgrading to this version, the Azure MCP Server now works fine in my Ubuntu VM. I tried it out with a fresh VM, installing everything again, and it worked fine too. This issue was likely caused by the previous VS Code version before June 12th and not by our MCP Server. 
 
 In that case, changes made by copilot on the npm/wrapper directory might not be necessary anymore. However, I'd like to keep these troubleshooting instructions.
 
-@copilot, please add a note to upgrade VS Code to the latest version as the first step to fix this issue.",direction to an agent,direction to an agent,direction to an agent
+@copilot, please add a note to upgrade VS Code to the latest version as the first step to fix this issue.",direction to an agent,direction to an agent,direction to an agent,Copilot
 2100035030,3079684446,human_review,"Ah, ok.
 
-@copilot, apologies, please hard code to false and revert the other changes.",direction to an agent,direction to an agent,direction to an agent
-2143798219,3135639537,human_review,Removed it myself - faster in this instance.,brief remark,brief remark,brief remark
+@copilot, apologies, please hard code to false and revert the other changes.",direction to an agent,direction to an agent,direction to an agent,Copilot
+2143798219,3135639537,human_review,Removed it myself - faster in this instance.,brief remark,brief remark,brief remark,Copilot
 2129370215,3098739033,human_review,"It seems this only ever considers Private vs Public, so it's not possible test the difference between family and assembly - https://github.com/dotnet/runtime/blob/624737eb3796e1a760465912b27ac349965d8ba5/src/libraries/System.Reflection.MetadataLoadContext/src/System/Reflection/Runtime/BindingFlagSupport/QueriedMemberList.cs#L132-L142
 
 I appreciate more what you're suggesting around unifying these implementations - this query abstraction ends up doing more work than really necessary.
-",code feedback,code feedback,code feedback
-2143144729,3134438774,human_review,Why do you need null logger? just dont log,code feedback,code feedback,code feedback
+",code feedback,code feedback,code feedback,Copilot
+2143144729,3134438774,human_review,Why do you need null logger? just dont log,code feedback,code feedback,code feedback,Copilot
 2170409363,3170054434,human_review,"@user-14 @user-11 
 https://github.com/Azure/azure-sdk-for-net/blob/d767015fe8e96912dc08039243f0040cb7a938dc/sdk/core/System.ClientModel/src/ModelReaderWriter/IPersistableModel.cs#L28
 https://github.com/Azure/azure-sdk-for-net/blob/d767015fe8e96912dc08039243f0040cb7a938dc/sdk/core/System.ClientModel/src/ModelReaderWriter/IJsonModel.cs#L32
@@ -235,21 +235,21 @@ in the IJsonModel APIs, we return `T` instead of `T?`. What is the intention beh
 Right now, the behavior in the generated SDK is that, we return null while deserialize null json(which I think the behavior is expected) and nullable is disabled in SDK code.
 https://github.com/Azure/azure-sdk-for-net/blob/52609d0730a73b7eed7d0bfa53d6401d7f52c69e/sdk/resourcemanager/Azure.ResourceManager/src/Resources/Generated/ResourceGroupData.Serialization.cs#L70-L73
 
-Then the question is, should the return type be `T?` instead of `T` for `IJsonModel` API? ",question,question,question
-2190959593,3209796838,human_review,revert,direction to an agent,direction to an agent,direction to an agent
-2172246784,3150971698,human_review,Is this planned for another PR? I think we also need to have the `configure` command from the CLI that configures the `runtime` settings to include logic for these new properties as well.,question,question,question
-2150299032,3143225191,human_review,Removed the try/catch.,brief remark,brief remark,brief remark
-2244161776,3275080151,human_review,done,brief remark,brief remark,brief remark
-2139576633,3133771594,human_review,"ok, done",brief remark,brief remark,brief remark
-2231780376,3200033873,human_review,"Just for simplicity, not yet, let's get the workflow set and merged and then we can play for a week with it and decide on defaults. ",decision,decision,decision
-2203380610,3226091042,human_review,Undo that change as well,direction to an agent,direction to an agent,direction to an agent
-2132332976,3118884227,human_review,Thanks for pointing this out! This is now resolved in the latest iteration.,brief remark,brief remark,brief remark
-2118069848,3105703473,human_review,"Makes sense, will add that.",decision,decision,decision
-2184948436,3194656871,human_review,"Great, please remove the unnecessary namespaceName parameter as well.",direction to an agent,direction to an agent,direction to an agent
-2233317338,3265760288,human_review,don't change `packages/plugin-rsc/examples/react-router/README.md`.,direction to an agent,direction to an agent,direction to an agent
+Then the question is, should the return type be `T?` instead of `T` for `IJsonModel` API? ",question,question,question,Copilot
+2190959593,3209796838,human_review,revert,direction to an agent,direction to an agent,direction to an agent,Copilot
+2172246784,3150971698,human_review,Is this planned for another PR? I think we also need to have the `configure` command from the CLI that configures the `runtime` settings to include logic for these new properties as well.,question,question,question,Copilot
+2150299032,3143225191,human_review,Removed the try/catch.,brief remark,brief remark,brief remark,Copilot
+2244161776,3275080151,human_review,done,brief remark,brief remark,brief remark,OpenAI_Codex
+2139576633,3133771594,human_review,"ok, done",brief remark,brief remark,brief remark,Copilot
+2231780376,3200033873,human_review,"Just for simplicity, not yet, let's get the workflow set and merged and then we can play for a week with it and decide on defaults. ",decision,decision,decision,Copilot
+2203380610,3226091042,human_review,Undo that change as well,direction to an agent,direction to an agent,direction to an agent,Copilot
+2132332976,3118884227,human_review,Thanks for pointing this out! This is now resolved in the latest iteration.,brief remark,brief remark,brief remark,Copilot
+2118069848,3105703473,human_review,"Makes sense, will add that.",decision,decision,decision,OpenAI_Codex
+2184948436,3194656871,human_review,"Great, please remove the unnecessary namespaceName parameter as well.",direction to an agent,direction to an agent,direction to an agent,Copilot
+2233317338,3265760288,human_review,don't change `packages/plugin-rsc/examples/react-router/README.md`.,direction to an agent,direction to an agent,direction to an agent,Copilot
 2138935278,3131854557,human_review,"I disagree - the point of Vite is to create a website that can somehow be accessed, and when deployed that would need external HTTP(S) endpoints (in most scenarios - yes you could have them not public and have to handle IP allow listing/VPN/etc. so it can be accessed).
 
-Aspire is full of opinionated defaults, and I think it's a pretty valid opinion that websites should have public endpoints.",decision,decision,decision
+Aspire is full of opinionated defaults, and I think it's a pretty valid opinion that websites should have public endpoints.",decision,decision,decision,Copilot
 2192595500,3209660072,human_review,"[@copilot don't do anything]
 > Is vague and not helpful to the developer who is running this command. What's the maximum number of requests for Digital Ocean? What is the max number of workers that reliably doesn't hit the maximum number of requests for Digital Ocean?
 
@@ -257,23 +257,23 @@ Aspire is full of opinionated defaults, and I think it's a pretty valid opinion 
 
 So the default works just fine.
 
-@user-18 can you tell copilot (I'm out of tokens) to remove the flag from the documentation, I guess it's cleaner that way and only power users can check the flags and use it.",direction to an agent,decision,direction to an agent
-2114835043,3101243147,human_review,@copilot please update the PR title and description to reflect only the final implementation of this fix.,direction to an agent,direction to an agent,direction to an agent
-2101027615,3080751824,human_review,We should delete the old files...,direction to an agent,decision,direction to an agent
+@user-18 can you tell copilot (I'm out of tokens) to remove the flag from the documentation, I guess it's cleaner that way and only power users can check the flags and use it.",direction to an agent,decision,direction to an agent,Copilot
+2114835043,3101243147,human_review,@copilot please update the PR title and description to reflect only the final implementation of this fix.,direction to an agent,direction to an agent,direction to an agent,Copilot
+2101027615,3080751824,human_review,We should delete the old files...,direction to an agent,decision,direction to an agent,Copilot
 2184780493,3199867865,human_review,"@copilot
 
 No. `IPersistentComponentStateSerializer` should be internal, and `IPersistentComponentStateSerializer<T>` should be public. Also move it to a separate file.
-",direction to an agent,direction to an agent,direction to an agent
-2139012579,3115762277,human_review,"Adding back in, removed it temporarily whilst debugging an agent mode issue.",brief remark,brief remark,brief remark
-2205467057,3223522886,human_review,@copilot - Sort these H3 sections by name a-z,direction to an agent,direction to an agent,direction to an agent
-2246155524,3256596335,human_review,"@copilot Add the entire code back, including the if statement. ",direction to an agent,direction to an agent,direction to an agent
-2101152473,3078729881,human_review,Not necessarily. Normal Dictionary has the drawback that state can get corrupted when you do concurrent writes - and then accessing the dictionary can just result in a tight loop pegging CPU,code feedback,code feedback,code feedback
-2222255413,3159745301,human_review,"@copilot that's right, the test does not have access deep enough into the framework to test the actual `GetErrorHandledTask`. You can revert all the changes we've done to `src/Components/Components/test/NavigationManagerTest.cs`",direction to an agent,direction to an agent,direction to an agent
-2169952344,3157539448,human_review,"Yes, I would having looked at it again. Please do so as I've described.",direction to an agent,direction to an agent,direction to an agent
-2242309057,3276368773,human_review,"Yes, adjust the name `Read` to `Chan`",direction to an agent,direction to an agent,direction to an agent
-2101132648,3080751824,human_review,We only got counts for the no generator category but I wanted counts for every category,code feedback,code feedback,code feedback
-2143688263,3138102792,human_review,They are all indirect references of Apache.Arrow,code feedback,code feedback,code feedback
-2140883020,3137753437,cross_review,"No, immediate repeat is not allowed",decision,decision,decision
+",direction to an agent,direction to an agent,direction to an agent,Copilot
+2139012579,3115762277,human_review,"Adding back in, removed it temporarily whilst debugging an agent mode issue.",brief remark,brief remark,brief remark,Copilot
+2205467057,3223522886,human_review,@copilot - Sort these H3 sections by name a-z,direction to an agent,direction to an agent,direction to an agent,Copilot
+2246155524,3256596335,human_review,"@copilot Add the entire code back, including the if statement. ",direction to an agent,direction to an agent,direction to an agent,Copilot
+2101152473,3078729881,human_review,Not necessarily. Normal Dictionary has the drawback that state can get corrupted when you do concurrent writes - and then accessing the dictionary can just result in a tight loop pegging CPU,code feedback,code feedback,code feedback,Copilot
+2222255413,3159745301,human_review,"@copilot that's right, the test does not have access deep enough into the framework to test the actual `GetErrorHandledTask`. You can revert all the changes we've done to `src/Components/Components/test/NavigationManagerTest.cs`",direction to an agent,direction to an agent,direction to an agent,Copilot
+2169952344,3157539448,human_review,"Yes, I would having looked at it again. Please do so as I've described.",direction to an agent,direction to an agent,direction to an agent,Copilot
+2242309057,3276368773,human_review,"Yes, adjust the name `Read` to `Chan`",direction to an agent,direction to an agent,direction to an agent,Copilot
+2101132648,3080751824,human_review,We only got counts for the no generator category but I wanted counts for every category,code feedback,code feedback,code feedback,Copilot
+2143688263,3138102792,human_review,They are all indirect references of Apache.Arrow,code feedback,code feedback,code feedback,Copilot
+2140883020,3137753437,cross_review,"No, immediate repeat is not allowed",decision,decision,decision,OpenAI_Codex
 2244151899,3200033873,human_review,"Sure, I would go for a module level mapping and then have `get_available_augmentations` return `sorted(list(SUPPORTED_AUGMENTATIONS.keys())` or something. This pattern is actually done in the snippet above where the code checks if the aug is supported...
 
 
@@ -282,43 +282,43 @@ No. `IPersistentComponentStateSerializer` should be internal, and `IPersistentCo
         raise ValueError(
             f""Unknown augmentation '{name}'. Available augmentations: {list(augmentation_classes.keys())}""
         )
-```",code feedback,code feedback,code feedback
+```",code feedback,code feedback,code feedback,Copilot
 2145520143,3138073133,human_review,"I think that should be possible, based on https://learn.microsoft.com/en-us/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#how-are-the-identity-variables-set, however I'm concerned it won't be as robust as the branch name. GitHub explicitly documents the branch name as part of the security model:
 
 https://docs.github.com/en/copilot/using-github-copilot/coding-agent/about-assigning-tasks-to-copilot#risk-copilot-can-push-code-changes-to-your-repository
 
 > Limits the permissions in access tokens used by Copilot. Pushes are only allowed to branches beginning with copilot/. Copilot cannot push to the main or master branches.
 
-So I feel more confident that this will not change.",code feedback,code feedback,code feedback
-2151119663,3143758141,human_review,"@user-17 What if we remove the handler param, and require the middleware to be used with `app.Use()` ?",code feedback,code feedback,code feedback
-2106207014,3078707207,human_review,"@user-17 Can't use utils, since it won't render the users string",code feedback,decision,code feedback
-2240771551,3270923404,human_review,fixed!,brief remark,brief remark,brief remark
-2102194793,3076043127,human_review,@copilot ,direction to an agent,brief remark,brief remark
-2102557286,3081466449,cross_review,"I think Gemini made a good point here. The normalization approach expects there could be trailing `/`, so `/` should be removed before the `/api` check.",decision,code feedback,code feedback
-2190953225,3078444990,human_review,See https://github.com/promptfoo/promptfoo/pull/4107,brief remark,brief remark,brief remark
-2180599914,3119512382,human_review,"Nope, Copilot seems to think these aren't intentional and attempts to remove them.",decision,decision,decision
-2212006523,3231720206,human_review,We could import `PROPERTY_CAMUNDA_DATABASE_TYPE` from camunda-zeebe/dist but I don't think we'd want Optimize to have a dependency on that since it's not part of the single-app,code feedback,decision,code feedback
-2207881458,3223618488,human_review,I would keep the `Equivalent to 'az sql elastic-pool list'.` part though,decision,decision,decision
+So I feel more confident that this will not change.",code feedback,code feedback,code feedback,Copilot
+2151119663,3143758141,human_review,"@user-17 What if we remove the handler param, and require the middleware to be used with `app.Use()` ?",code feedback,code feedback,code feedback,OpenAI_Codex
+2106207014,3078707207,human_review,"@user-17 Can't use utils, since it won't render the users string",code feedback,decision,code feedback,OpenAI_Codex
+2240771551,3270923404,human_review,fixed!,brief remark,brief remark,brief remark,OpenAI_Codex
+2102194793,3076043127,human_review,@copilot ,direction to an agent,brief remark,brief remark,Copilot
+2102557286,3081466449,cross_review,"I think Gemini made a good point here. The normalization approach expects there could be trailing `/`, so `/` should be removed before the `/api` check.",decision,code feedback,code feedback,OpenAI_Codex
+2190953225,3078444990,human_review,See https://github.com/promptfoo/promptfoo/pull/4107,brief remark,brief remark,brief remark,OpenAI_Codex
+2180599914,3119512382,human_review,"Nope, Copilot seems to think these aren't intentional and attempts to remove them.",decision,decision,decision,Copilot
+2212006523,3231720206,human_review,We could import `PROPERTY_CAMUNDA_DATABASE_TYPE` from camunda-zeebe/dist but I don't think we'd want Optimize to have a dependency on that since it's not part of the single-app,code feedback,decision,code feedback,Copilot
+2207881458,3223618488,human_review,I would keep the `Equivalent to 'az sql elastic-pool list'.` part though,decision,decision,decision,Copilot
 2180656400,3194895472,human_review,"I think the wgsl test output will always contain the string ""error"" regardless of wether one is present. In this case, without my previous suggested change:
 standard error = {
 }
-I'm not sure if it's valuable to check for this string by itself. If the intent is to check if this actually produces an error I think we should include the error number.",code feedback,code feedback,code feedback
-2099853342,2921044123,human_review,How will we proceed here?,question,question,question
+I'm not sure if it's valuable to check for this string by itself. If the intent is to check if this actually produces an error I think we should include the error number.",code feedback,code feedback,code feedback,Copilot
+2099853342,2921044123,human_review,How will we proceed here?,question,question,question,Claude_Code
 2172150908,3181433167,human_review,"> Fixed in commit [44e308a](https://github.com/microsoft/lisa/commit/44e308a5d792849101c81c77a2bd2d84dd188a9c). Moved disk_setup_type to appear early in the metric prefix, right after qdepth, for better organization. The metric name order is now: qdepth_setup_iodepth_numjob_bs_cores_disks.
 
-revert it back",direction to an agent,direction to an agent,direction to an agent
-2180784191,3196863235,human_review,Please revert this line,direction to an agent,direction to an agent,direction to an agent
-2164897970,3173180612,human_review,50839,brief remark,brief remark,brief remark
+revert it back",direction to an agent,direction to an agent,direction to an agent,Copilot
+2180784191,3196863235,human_review,Please revert this line,direction to an agent,direction to an agent,direction to an agent,Copilot
+2164897970,3173180612,human_review,50839,brief remark,brief remark,brief remark,Copilot
 2223361801,3148932692,human_review,"I thought that inferences nodes (without in-degree) that were nevertheless part of another tree would _not_ be counted as top-level parameters? 
 
 This relationship, for example:
 <img width=""665"" height=""395"" alt=""image"" src=""https://github.com/user-attachments/assets/183b6c34-84f9-4993-80d8-a4d10062a81c"" />
-I thought dev1_bias, dev1_wp, dev2_bias, and dev2_wp would not have trees of their own.",question,question,question
-2102947654,3081466449,cross_review,"Ha - ok, two against one. :)  Updated!",brief remark,brief remark,brief remark
-2098491977,3075563001,human_review,Same with examples/experimental/test/end_to_end/http_server/multi_deploy/src/index.ts,code feedback,code feedback,code feedback
-2101553219,3081810740,cross_review,"Clever, but complex suggestion. We can try this later if aggregation is ever a bottleneck here.",decision,decision,decision
-2124962472,3115438957,human_review,"Changed my mind, keep!",decision,decision,decision
-2105036934,3078366765,human_review,@copilot please respond,direction to an agent,direction to an agent,direction to an agent
+I thought dev1_bias, dev1_wp, dev2_bias, and dev2_wp would not have trees of their own.",question,question,question,Copilot
+2102947654,3081466449,cross_review,"Ha - ok, two against one. :)  Updated!",brief remark,brief remark,brief remark,OpenAI_Codex
+2098491977,3075563001,human_review,Same with examples/experimental/test/end_to_end/http_server/multi_deploy/src/index.ts,code feedback,code feedback,code feedback,Copilot
+2101553219,3081810740,cross_review,"Clever, but complex suggestion. We can try this later if aggregation is ever a bottleneck here.",decision,decision,decision,OpenAI_Codex
+2124962472,3115438957,human_review,"Changed my mind, keep!",decision,decision,decision,Copilot
+2105036934,3078366765,human_review,@copilot please respond,direction to an agent,direction to an agent,direction to an agent,Copilot
 2187376415,3198922993,human_review,"AFAICT, it is _currently_ possible to detect Dev Drive without being an administrator.
 
 1. Use [CreateFile](https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-createfilew) to open any file or directory in the desired file system.  `dwDesiredAccess` can be zero.  For a directory, FILE_FLAG_BACKUP_SEMANTICS is needed.  ([CreateDirectory2W](https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-createdirectory2w) would likewise return a HANDLE but I did not try it.)
@@ -327,15 +327,15 @@ I thought dev1_bias, dev1_wp, dev2_bias, and dev2_wp would not have trees of the
 4. Call [DeviceIoControl](https://learn.microsoft.com/windows/win32/api/ioapiset/nf-ioapiset-deviceiocontrol), [FSCTL_QUERY_PERSISTENT_VOLUME_STATE](https://learn.microsoft.com/windows-hardware/drivers/ifs/fsctl-query-persistent-volume-state).
 5. Check for PERSISTENT_VOLUME_STATE_DEV_VOLUME in the `VolumeFlags` field of the output buffer.
 
-The documentation of FSCTL_QUERY_PERSISTENT_VOLUME_STATE is not clear on whether the _""file handle for the file system volume""_ has to be a volume handle.  If a future version of Windows starts requiring a volume handle there, then I don't think you can get one without being an administrator.",code feedback,code feedback,code feedback
-2103648186,3084855641,human_review,@copilot issues like this still remain in the majority of files. Make sure to check every file that you updated.,direction to an agent,direction to an agent,direction to an agent
+The documentation of FSCTL_QUERY_PERSISTENT_VOLUME_STATE is not clear on whether the _""file handle for the file system volume""_ has to be a volume handle.  If a future version of Windows starts requiring a volume handle there, then I don't think you can get one without being an administrator.",code feedback,code feedback,code feedback,Copilot
+2103648186,3084855641,human_review,@copilot issues like this still remain in the majority of files. Make sure to check every file that you updated.,direction to an agent,direction to an agent,direction to an agent,Copilot
 2222651389,3148932692,human_review,"There is sorting at 2 levels. The most important one is the inner most one where the top_level parameter comes first and is followed by the dependencies in added order. QCoDeS it self was relying on this. I have removed this partially, but I think we should still maintain this for backwards compatibility. 
 
 The other sorting is with the outer most keys that are simply sorted alphabetically. I don't think we rely on that other than perhaps some tests. I still think it makes sense to maintain that. Unfortunately there is no std lib ordered set so if we make top_level_params a tuple again if we wanted to keep the sorting there. That is probably the best option
-",code feedback,code feedback,code feedback
-2230096379,3254795783,cross_review,has this been addressed? i think so we added tests,question,question,question
-2153454604,3132622672,human_review,I am fine with option2.,decision,decision,decision
-2150178134,3143225191,human_review,yes,decision,decision,decision
+",code feedback,code feedback,code feedback,Copilot
+2230096379,3254795783,cross_review,has this been addressed? i think so we added tests,question,question,question,OpenAI_Codex
+2153454604,3132622672,human_review,I am fine with option2.,decision,decision,decision,Copilot
+2150178134,3143225191,human_review,yes,decision,decision,decision,Copilot
 2231877853,3103367606,human_review,"oh turns out this `bufferEquals` helper is totally unnecessary as it's possible to do
 
 ```
@@ -346,8 +346,8 @@ there's a built in `equals` method on buffers.
 
 But I think I also know how to make the Solana options checking slightly simpler.
 
-Thanks for flagging this @user-05 !",code feedback,code feedback,code feedback
-2107408308,3090993724,human_review,"None of this code is necessary. Just parse the the URL contained in the environment variable and check for a scheme there. If """" then use ""http"".",code feedback,code feedback,code feedback
+Thanks for flagging this @user-05 !",code feedback,code feedback,code feedback,OpenAI_Codex
+2107408308,3090993724,human_review,"None of this code is necessary. Just parse the the URL contained in the environment variable and check for a scheme there. If """" then use ""http"".",code feedback,code feedback,code feedback,Copilot
 2172963892,3143758141,human_review,"@user-17 Man, how about making it handle /api/user/ as matching /api/user/123 and similar paths? That would solve it and be intuitive, as long as it's documented.
 
 ```
@@ -362,15 +362,15 @@ app.Use(timeout.NewWithConfig(timeout.Config{
     SkipPaths: []string{""/health"", ""/metrics""},
 }))
 
-```",code feedback,code feedback,code feedback
-2204894407,3228219115,human_review,"Restore these tests, fix them if they are failing or explain why you removed them.",direction to an agent,direction to an agent,direction to an agent
-2104008125,3085403262,human_review,there is one more in src\mono\browser\browser.proj,code feedback,code feedback,code feedback
-2193940415,3186218830,human_review,"Ahhhhhh, just preview, not edit. The delay is from the 500ms timer for when the attachment text is changed. ",code feedback,code feedback,code feedback
-2175625650,3179388883,human_review,"This turned out to be a bigger change. We needed to add another ""exclude"" check to AzureResourcePreparer. Since we duplicate this check in so many places, I introduced a new API to encapsulate the logic.",code feedback,brief remark,code feedback
-2216396463,3236515423,human_review,The way to fix this is to add an entry on the `PublicAPI.Unshipped.txt` for that method with the `*REMOVED*` prefix,code feedback,code feedback,code feedback
-2107947751,3090578689,human_review,OK I removed this method.,brief remark,brief remark,brief remark
-2096509755,3070936351,human_review,"good call, this is redudent",decision,decision,decision
-2098573409,3075857183,human_review,Does the same problem need to be fixed in the code logic as well?,question,question,question
+```",code feedback,code feedback,code feedback,OpenAI_Codex
+2204894407,3228219115,human_review,"Restore these tests, fix them if they are failing or explain why you removed them.",direction to an agent,direction to an agent,direction to an agent,Copilot
+2104008125,3085403262,human_review,there is one more in src\mono\browser\browser.proj,code feedback,code feedback,code feedback,Copilot
+2193940415,3186218830,human_review,"Ahhhhhh, just preview, not edit. The delay is from the 500ms timer for when the attachment text is changed. ",code feedback,code feedback,code feedback,Copilot
+2175625650,3179388883,human_review,"This turned out to be a bigger change. We needed to add another ""exclude"" check to AzureResourcePreparer. Since we duplicate this check in so many places, I introduced a new API to encapsulate the logic.",code feedback,brief remark,code feedback,Copilot
+2216396463,3236515423,human_review,The way to fix this is to add an entry on the `PublicAPI.Unshipped.txt` for that method with the `*REMOVED*` prefix,code feedback,code feedback,code feedback,Copilot
+2107947751,3090578689,human_review,OK I removed this method.,brief remark,brief remark,brief remark,Copilot
+2096509755,3070936351,human_review,"good call, this is redudent",decision,decision,decision,OpenAI_Codex
+2098573409,3075857183,human_review,Does the same problem need to be fixed in the code logic as well?,question,question,question,Copilot
 2185018298,3199867865,human_review,"@copilot 
 
 Wrong again. This is what we want (with comments, formatting, etc where appropriate).
@@ -383,83 +383,83 @@ public interface IPersistentComponentStateSerializer<T> : IPersistentComponentSe
     T Restore(ReadOnlySequence<byte> data)
     object IPersistentComponentStateSerializer.Restore(Type type, ReadOnlySequence<byte> data)
       => Restore<T>(data);
-}",direction to an agent,code feedback,direction to an agent
-2179447609,3194998721,human_review,"I believe this was leftover from me trying to use regex-like for `tsx?` and `mdx?` (which didn't work) but yeah, it can be simplified.",decision,decision,decision
+}",direction to an agent,code feedback,direction to an agent,Copilot
+2179447609,3194998721,human_review,"I believe this was leftover from me trying to use regex-like for `tsx?` and `mdx?` (which didn't work) but yeah, it can be simplified.",decision,decision,decision,Copilot
 2158099794,3154760858,human_review,"@copilot Are you going to address this?
-",question,question,question
-2150192222,3148267777,human_review,Please set the default value of protocol_type to None in PerfMessage ,direction to an agent,direction to an agent,direction to an agent
-2220868567,3230682144,human_review,"I've replicated the code from this [OrganizationValidator](https://github.com/camunda/camunda/blob/9d9aebde13e59541ef92762114a408955e505b6b/authentication/src/main/java/io/camunda/authentication/config/OrganizationValidator.java#L23) which parses the same claim. I'm not seeing any override of that value in the code, and I've tested on [the Alex SNAPSHOT dev cluster](https://dub-1.optimize.ultrawombat.com/652a613f-986e-4a3b-b635-56a18aab38f5/#/), the decoded JWT contains ""https://camunda.com/orgs""",code feedback,code feedback,code feedback
-2181156565,3150971698,human_review,I don't think that a default for this is needed since we can just have that as the default from the start,decision,decision,decision
-2156390048,3132622672,human_review,@copilot revert https://github.com/microsoft/typespec/commit/fc0cafad1eb8badd6f9e29c6a04914aa875be077,direction to an agent,direction to an agent,direction to an agent
-2230294905,3261572196,human_review,"Both `super().__init__(artifact_uri, tracking_uri)` and `super().__init__(artifact_uri, tracking_uri=tracking_uri)` actually work.",code feedback,code feedback,code feedback
-2233627251,3266494157,self_review,Add it,direction to an agent,direction to an agent,direction to an agent
-2223708272,3250455355,human_review,I request this. I believe Identifier is enough.  ColumnReferenceExpression has columntype but for json index we know the type has to be json anyway,decision,code feedback,decision
-2138704051,3117952456,human_review,Removed and excluded,brief remark,brief remark,brief remark
-2218999636,3235010382,human_review,Worked after VS restart.,brief remark,brief remark,brief remark
-2191081892,3078444990,human_review,I can do that but actually found these logs very helpful when trying to grok the state during a given turn.,decision,decision,decision
-2168314887,3177623179,cross_review,"@user-19 It seems that process.env.VAULT_SECRET is not being used, so could you please just fix this?",direction to an agent,direction to an agent,direction to an agent
+",question,question,question,Copilot
+2150192222,3148267777,human_review,Please set the default value of protocol_type to None in PerfMessage ,direction to an agent,direction to an agent,direction to an agent,Copilot
+2220868567,3230682144,human_review,"I've replicated the code from this [OrganizationValidator](https://github.com/camunda/camunda/blob/9d9aebde13e59541ef92762114a408955e505b6b/authentication/src/main/java/io/camunda/authentication/config/OrganizationValidator.java#L23) which parses the same claim. I'm not seeing any override of that value in the code, and I've tested on [the Alex SNAPSHOT dev cluster](https://dub-1.optimize.ultrawombat.com/652a613f-986e-4a3b-b635-56a18aab38f5/#/), the decoded JWT contains ""https://camunda.com/orgs""",code feedback,code feedback,code feedback,Copilot
+2181156565,3150971698,human_review,I don't think that a default for this is needed since we can just have that as the default from the start,decision,decision,decision,Copilot
+2156390048,3132622672,human_review,@copilot revert https://github.com/microsoft/typespec/commit/fc0cafad1eb8badd6f9e29c6a04914aa875be077,direction to an agent,direction to an agent,direction to an agent,Copilot
+2230294905,3261572196,human_review,"Both `super().__init__(artifact_uri, tracking_uri)` and `super().__init__(artifact_uri, tracking_uri=tracking_uri)` actually work.",code feedback,code feedback,code feedback,Copilot
+2233627251,3266494157,self_review,Add it,direction to an agent,direction to an agent,direction to an agent,Copilot
+2223708272,3250455355,human_review,I request this. I believe Identifier is enough.  ColumnReferenceExpression has columntype but for json index we know the type has to be json anyway,decision,code feedback,decision,Copilot
+2138704051,3117952456,human_review,Removed and excluded,brief remark,brief remark,brief remark,Copilot
+2218999636,3235010382,human_review,Worked after VS restart.,brief remark,brief remark,brief remark,Copilot
+2191081892,3078444990,human_review,I can do that but actually found these logs very helpful when trying to grok the state during a given turn.,decision,decision,decision,OpenAI_Codex
+2168314887,3177623179,cross_review,"@user-19 It seems that process.env.VAULT_SECRET is not being used, so could you please just fix this?",direction to an agent,direction to an agent,direction to an agent,OpenAI_Codex
 2194767023,3196812180,human_review,"I think this is actually _technically_ right, but I agree it looks weird. The weirdness comes from the `OpenPathCommand` having the initializer list, and then the `CommandContextItem` _also_ having it's own initializer list. 
 
-maybe it would look less weird if the command was initialized on its own line, but also, 🤷 ",code feedback,code feedback,code feedback
-2127268733,3118009864,human_review,"~Hm... Maybe I'm wrong. But from what I've seen in my experience, it's usually used as a command-line option since the timeout may depend on the environment.~",brief remark,decision,decision
-2161671646,3167462922,human_review,@user-04 you need to obtain a Copilot license from the Camunda org ([ref](https://confluence.camunda.com/pages/viewpage.action?pageId=245401394&spaceKey=HAN&title=Usage%2Bof%2BCopilot%2BAI%2Btools%2Bwithin%2BEngineering)) so that the AI agent reacts to your commands.,brief remark,brief remark,brief remark
+maybe it would look less weird if the command was initialized on its own line, but also, 🤷 ",code feedback,code feedback,code feedback,Copilot
+2127268733,3118009864,human_review,"~Hm... Maybe I'm wrong. But from what I've seen in my experience, it's usually used as a command-line option since the timeout may depend on the environment.~",brief remark,decision,decision,Copilot
+2161671646,3167462922,human_review,@user-04 you need to obtain a Copilot license from the Camunda org ([ref](https://confluence.camunda.com/pages/viewpage.action?pageId=245401394&spaceKey=HAN&title=Usage%2Bof%2BCopilot%2BAI%2Btools%2Bwithin%2BEngineering)) so that the AI agent reacts to your commands.,brief remark,brief remark,brief remark,Copilot
 2205581363,3209849522,human_review,"It looks like you ignored this comment. Can you use the `:::` directive for code snippets?
-",direction to an agent,direction to an agent,direction to an agent
-2137145484,3132362063,human_review,@copilot could you help?,direction to an agent,question,direction to an agent
-2224686929,3251640244,human_review,"No, this is right. Do not change. ",decision,decision,decision
-2098759532,3077823693,human_review,fixed,brief remark,brief remark,brief remark
-2146066720,3141889094,human_review,OK just to try something out - can you see if you can pass `port` = 80 to `runTests` options in `runTests.mjs` to see if that will work? It's possible the test environment is configured to block port 3000 on localhost but allow 80/443  . ,direction to an agent,direction to an agent,direction to an agent
-2247212329,3259102188,human_review,on second thought the previous one is fine. check the env var named `_VITE_TEST_CLI`,direction to an agent,direction to an agent,direction to an agent
+",direction to an agent,direction to an agent,direction to an agent,Copilot
+2137145484,3132362063,human_review,@copilot could you help?,direction to an agent,question,direction to an agent,Copilot
+2224686929,3251640244,human_review,"No, this is right. Do not change. ",decision,decision,decision,Copilot
+2098759532,3077823693,human_review,fixed,brief remark,brief remark,brief remark,Copilot
+2146066720,3141889094,human_review,OK just to try something out - can you see if you can pass `port` = 80 to `runTests` options in `runTests.mjs` to see if that will work? It's possible the test environment is configured to block port 3000 on localhost but allow 80/443  . ,direction to an agent,direction to an agent,direction to an agent,Copilot
+2247212329,3259102188,human_review,on second thought the previous one is fine. check the env var named `_VITE_TEST_CLI`,direction to an agent,direction to an agent,direction to an agent,Copilot
 2159260147,3163588483,self_review,"This is done using `add_exit_trap ""kv_remove_network_exception""`
-",code feedback,code feedback,code feedback
-2237506723,3200033873,human_review,i reverted this.,brief remark,brief remark,brief remark
-2097463912,3076064186,self_review,"Yes, make that change.",direction to an agent,direction to an agent,direction to an agent
-2232973294,3265336481,cross_review,here data in the pharmaceutical bill item is used only for backword compatibility. it is not used in this type of adjustment bills. It is used in sale bills and grn and purchase bills ans transfer bills. please ignore,code feedback,code feedback,code feedback
+",code feedback,code feedback,code feedback,Copilot
+2237506723,3200033873,human_review,i reverted this.,brief remark,brief remark,brief remark,Copilot
+2097463912,3076064186,self_review,"Yes, make that change.",direction to an agent,direction to an agent,direction to an agent,Copilot
+2232973294,3265336481,cross_review,here data in the pharmaceutical bill item is used only for backword compatibility. it is not used in this type of adjustment bills. It is used in sale bills and grn and purchase bills ans transfer bills. please ignore,code feedback,code feedback,code feedback,OpenAI_Codex
 2138906465,3115762277,human_review,"I am glad you brought this up. This is one of the reasons I wasn't super excited about doing the global stuff up front because I am not sure local overrides global holds true all the time. For example container runtime?
 
 A team might decide that they want to use podman and so they set their default in their repo local to use podman. But someone wants to use Docker Desktop for some reason - how do they override it?
 
 There are probably other examples.
 
-Instinctively we think local overrides global, but when it comes to a repository that is cloned down what is considered ""local""?",code feedback,decision,code feedback
-2155177558,3119512382,human_review,How long does it listen,question,question,question
-2101225197,3081466449,cross_review,"I mean, I could change this, but the default URL that's already entered is http://localhost: 11434/api and does not have a trailing slash, so I think it's somewhat unnecessary. That said, just lemme know if you'd prefer I update it.",decision,decision,decision
+Instinctively we think local overrides global, but when it comes to a repository that is cloned down what is considered ""local""?",code feedback,decision,code feedback,Copilot
+2155177558,3119512382,human_review,How long does it listen,question,question,question,Copilot
+2101225197,3081466449,cross_review,"I mean, I could change this, but the default URL that's already entered is http://localhost: 11434/api and does not have a trailing slash, so I think it's somewhat unnecessary. That said, just lemme know if you'd prefer I update it.",decision,decision,decision,OpenAI_Codex
 2161597182,3161387601,human_review,"This spot seemed to be the only place that actually reads the env var:
 https://github.com/dotnet/android/blob/5c5854f4758b7348aee7d9b5926d893e9f6dd73c/src/Mono.Android/Android.Runtime/JNIEnvInit.cs#L142-L147
 
-`$(AndroidPackageNamingPolicy)` is still left in, which embeds a value in `libxamarin-app.so`.",code feedback,code feedback,code feedback
-2095387083,3071083616,human_review,"It was not there before, was-it a mistake that has been fixed (because we do not use the query adapter for now)",question,question,question
-2119190845,3106934710,human_review,"Instead of multiple calls to ConfigureInfrastructure, just store the annotation and then in AddAzureKeyVault, there’s a configure infrastructure callback instead there. Resolve the annotations and add secrets to the bicep there ",code feedback,code feedback,code feedback
-2141129630,3081186157,human_review,@copilot - change this to CSharp_Publish,direction to an agent,direction to an agent,direction to an agent
-2101465856,3081726196,self_review,Not really an issue in this scenario.,decision,decision,decision
-2238588100,3271866532,human_review,Let dotnet new reject it,decision,decision,decision
-2156945180,3155893392,human_review,Resolved,brief remark,brief remark,brief remark
-2150734996,3145373517,human_review,"I don't think they are going to produce numerically equivalent results, but it may not be as important because the networks are fairly resistant to changes in images. This op enables conversion where previously impossible due to the missing op so there may still be value in having it.",code feedback,code feedback,code feedback
+`$(AndroidPackageNamingPolicy)` is still left in, which embeds a value in `libxamarin-app.so`.",code feedback,code feedback,code feedback,Copilot
+2095387083,3071083616,human_review,"It was not there before, was-it a mistake that has been fixed (because we do not use the query adapter for now)",question,question,question,OpenAI_Codex
+2119190845,3106934710,human_review,"Instead of multiple calls to ConfigureInfrastructure, just store the annotation and then in AddAzureKeyVault, there’s a configure infrastructure callback instead there. Resolve the annotations and add secrets to the bicep there ",code feedback,code feedback,code feedback,Copilot
+2141129630,3081186157,human_review,@copilot - change this to CSharp_Publish,direction to an agent,direction to an agent,direction to an agent,Copilot
+2101465856,3081726196,self_review,Not really an issue in this scenario.,decision,decision,decision,Copilot
+2238588100,3271866532,human_review,Let dotnet new reject it,decision,decision,decision,Copilot
+2156945180,3155893392,human_review,Resolved,brief remark,brief remark,brief remark,OpenAI_Codex
+2150734996,3145373517,human_review,"I don't think they are going to produce numerically equivalent results, but it may not be as important because the networks are fairly resistant to changes in images. This op enables conversion where previously impossible due to the missing op so there may still be value in having it.",code feedback,code feedback,code feedback,Copilot
 2239738027,3272053785,human_review,"We only need VolumeNameConsistentAcrossPathCasingsAndFormats, remove VolumeNameConsistentWithPathNormalization, VolumeNameUsesPathNormalizationInRunMode, and VolumeNameSameBetweenDebuggingAndDotnetRun.
 
-VolumeNameConsistentAcrossPathCasingsAndFormats should support windows and non windows. ",direction to an agent,direction to an agent,direction to an agent
-2103909081,3085044127,human_review,can you update the e2e test to validate your changes?,direction to an agent,direction to an agent,direction to an agent
-2153510194,3155219814,human_review,"oh, sorry! I will fix!",brief remark,brief remark,brief remark
-2196342108,3215761683,human_review,remove all changes in README.md,direction to an agent,direction to an agent,direction to an agent
+VolumeNameConsistentAcrossPathCasingsAndFormats should support windows and non windows. ",direction to an agent,direction to an agent,direction to an agent,Copilot
+2103909081,3085044127,human_review,can you update the e2e test to validate your changes?,direction to an agent,direction to an agent,direction to an agent,Copilot
+2153510194,3155219814,human_review,"oh, sorry! I will fix!",brief remark,brief remark,brief remark,OpenAI_Codex
+2196342108,3215761683,human_review,remove all changes in README.md,direction to an agent,direction to an agent,direction to an agent,Copilot
 2172533870,3182915267,human_review,"apologies had auto merge on, wouldn't have merged with this convo unresolved and happy to revert
 
-to me, this seems like a reasonable hack around the CI",decision,brief remark,brief remark
-2140877108,3137753437,cross_review,"No, will never be resused",decision,decision,decision
-2107804128,3088758509,human_review,was unfortunately not the reason,code feedback,brief remark,decision
+to me, this seems like a reasonable hack around the CI",decision,brief remark,brief remark,Copilot
+2140877108,3137753437,cross_review,"No, will never be resused",decision,decision,decision,OpenAI_Codex
+2107804128,3088758509,human_review,was unfortunately not the reason,code feedback,brief remark,decision,OpenAI_Codex
 2130395155,3122627357,self_review,"9712 was created just to give you instructions on what to do.
-",brief remark,brief remark,brief remark
-2169591356,3177107618,human_review,Not needed,decision,decision,decision
+",brief remark,brief remark,brief remark,Copilot
+2169591356,3177107618,human_review,Not needed,decision,decision,decision,Copilot
 2113529319,3095850088,human_review,"Will add the comment. 
-But also actually, on line 100, MSG_VALUE should just check whether the destination is EVM or Solana. if Solana, use these values. I meant to do that, hence the variable reassignment.",code feedback,code feedback,code feedback
-2216954193,3241853233,human_review,"yeah, the RDS instance has [lots of fields](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_DBInstance.html). Existing code has this https://github.com/cartography-cncf/cartography/blob/6d876d6ef558caa055d39e7908a1c33bedf2acfd/cartography/intel/aws/rds.py#L55-L90. This PR keeps that existing functionality without removing fields",code feedback,code feedback,code feedback
-2233627319,3266494157,self_review,use it.,direction to an agent,direction to an agent,direction to an agent
-2234870930,3131847694,cross_review,Better but optional here as the arn field is standard.,decision,decision,decision
+But also actually, on line 100, MSG_VALUE should just check whether the destination is EVM or Solana. if Solana, use these values. I meant to do that, hence the variable reassignment.",code feedback,code feedback,code feedback,OpenAI_Codex
+2216954193,3241853233,human_review,"yeah, the RDS instance has [lots of fields](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_DBInstance.html). Existing code has this https://github.com/cartography-cncf/cartography/blob/6d876d6ef558caa055d39e7908a1c33bedf2acfd/cartography/intel/aws/rds.py#L55-L90. This PR keeps that existing functionality without removing fields",code feedback,code feedback,code feedback,OpenAI_Codex
+2233627319,3266494157,self_review,use it.,direction to an agent,direction to an agent,direction to an agent,Copilot
+2234870930,3131847694,cross_review,Better but optional here as the arn field is standard.,decision,decision,decision,OpenAI_Codex
 2213797746,3216407461,human_review,"You also seem to have reverted the unreferenced parameter fix. Here's the build error, fix it:
 ```
    115>D:\a\ebpf-for-windows\ebpf-for-windows\tests\unit\libbpf_test.cpp(3535,82): error C2220: the following warning is treated as an error [D:\a\ebpf-for-windows\ebpf-for-windows\tests\unit\test.vcxproj]
    115>D:\a\ebpf-for-windows\ebpf-for-windows\tests\unit\libbpf_test.cpp(3535,82): warning C4100: 'execution_type': unreferenced parameter [D:\a\ebpf-for-windows\ebpf-for-windows\tests\unit\test.vcxproj]
-```",direction to an agent,direction to an agent,direction to an agent
-2157574422,3161102496,human_review,@copilot Please update the PR description to relect the math for the 5 retry attempts at the new initial retry delay value.,direction to an agent,direction to an agent,direction to an agent
+```",direction to an agent,direction to an agent,direction to an agent,Copilot
+2157574422,3161102496,human_review,@copilot Please update the PR description to relect the math for the 5 retry attempts at the new initial retry delay value.,direction to an agent,direction to an agent,direction to an agent,Copilot
 2122371432,3098739033,human_review,"I considered `init` but I thought it'd be covered since reflection exposes `init` accessors as `set`.  Adding the test is fine.  I suspect it will pass.
 
 FWIW here's what SRM exposes:
@@ -469,11 +469,11 @@ But we don't actually persist those through MLC reflection types:
 https://github.com/dotnet/runtime/blob/664ac25dcc16cb1531f90765295ececf5b45a0e3/src/libraries/System.Reflection.MetadataLoadContext/src/System/Reflection/TypeLoading/Properties/Ecma/EcmaProperty.cs#L98-L99
 https://github.com/dotnet/runtime/blob/664ac25dcc16cb1531f90765295ececf5b45a0e3/src/libraries/System.Reflection.MetadataLoadContext/src/System/Reflection/TypeLoading/Properties/RoProperty.cs#L109-L128
 
-I suppose we could plumb through the `Others` but I'm not sure if anything in C# uses those yet.  I can do some research.",code feedback,code feedback,code feedback
-2176628561,3189507528,cross_review,"this is just a temporary test script, should not been even committed to git. will not fix. ignore .sh script execution bits for future commits.",decision,decision,decision
-2197874206,3215730319,human_review,"not many inplaces, just the multiplication. The sgn goes from complex to real (int he complex case) and the product is a reduction.",code feedback,code feedback,code feedback
-2113121330,3099033781,cross_review,fixed: d814743a65b068477ae026641c44214504c18d1a,brief remark,brief remark,brief remark
-2225632079,3255641734,human_review,"We support true/false/off/on - we actually should support one and zero as well, but it looks like that's a gap compared to other Boolean like values in MSBuild environmental config. ",code feedback,code feedback,code feedback
+I suppose we could plumb through the `Others` but I'm not sure if anything in C# uses those yet.  I can do some research.",code feedback,code feedback,code feedback,Copilot
+2176628561,3189507528,cross_review,"this is just a temporary test script, should not been even committed to git. will not fix. ignore .sh script execution bits for future commits.",decision,decision,decision,Claude_Code
+2197874206,3215730319,human_review,"not many inplaces, just the multiplication. The sgn goes from complex to real (int he complex case) and the product is a reduction.",code feedback,code feedback,code feedback,Claude_Code
+2113121330,3099033781,cross_review,fixed: d814743a65b068477ae026641c44214504c18d1a,brief remark,brief remark,brief remark,OpenAI_Codex
+2225632079,3255641734,human_review,"We support true/false/off/on - we actually should support one and zero as well, but it looks like that's a gap compared to other Boolean like values in MSBuild environmental config. ",code feedback,code feedback,code feedback,Copilot
 2204952670,3209908129,human_review,"@copilot Not quite. Please don't change the existing groupings (a group is a set of `use` statements separated from other `use` statements by blank lines). Ben meant to ensure that each type gets it's own `use`. For example:
 
 Do this:
@@ -487,31 +487,31 @@ instead of
 
 ```
 use std::path::{Path, PathBuf};
-```",direction to an agent,direction to an agent,direction to an agent
-2142150611,3099658013,human_review,"confirmed with users, they don't need arm64 support",decision,decision,decision
-2245970312,3256596335,human_review,@user-08 Curious to see if this is an expected change for you.,question,question,question
-2231780696,3200033873,human_review,@copilot ,direction to an agent,brief remark,brief remark
-2237129800,3210800471,human_review,This is available at compile time so it's safe,code feedback,code feedback,code feedback
-2197875913,3215730319,human_review,"slogdet doesn't support any lower precision dtypes than fp32, it's errored at a higher level. i checked manually.",code feedback,code feedback,code feedback
-2098438115,3075857183,human_review,Can you make `GlobalizationNative_GetUIUnicodeVersion` take the locale parameter and return specific version for this locale? Does Objective C has any API that can return the collation version for any locale like ICU does?,direction to an agent,direction to an agent,direction to an agent
-2231874221,3200033873,human_review,I made them gentler by hand with a sample image.,brief remark,brief remark,brief remark
-2247992319,3259102188,human_review,@copilot the previous one is fine. check the env var named `_VITE_TEST_CLI`,direction to an agent,direction to an agent,direction to an agent
-2166038017,3167450477,human_review,"thank you! I'll check cli's `dist/` output. But, this PR is still LGTM.",brief remark,brief remark,brief remark
-2138952541,3111006731,human_review,Is it possible to pass the span id in OpenTelemetry code?,question,question,question
-2133241009,3126215556,cross_review,"done, can you please check",question,question,question
+```",direction to an agent,direction to an agent,direction to an agent,Copilot
+2142150611,3099658013,human_review,"confirmed with users, they don't need arm64 support",decision,decision,decision,Copilot
+2245970312,3256596335,human_review,@user-08 Curious to see if this is an expected change for you.,question,question,question,Copilot
+2231780696,3200033873,human_review,@copilot ,direction to an agent,brief remark,brief remark,Copilot
+2237129800,3210800471,human_review,This is available at compile time so it's safe,code feedback,code feedback,code feedback,Copilot
+2197875913,3215730319,human_review,"slogdet doesn't support any lower precision dtypes than fp32, it's errored at a higher level. i checked manually.",code feedback,code feedback,code feedback,Claude_Code
+2098438115,3075857183,human_review,Can you make `GlobalizationNative_GetUIUnicodeVersion` take the locale parameter and return specific version for this locale? Does Objective C has any API that can return the collation version for any locale like ICU does?,direction to an agent,direction to an agent,direction to an agent,Copilot
+2231874221,3200033873,human_review,I made them gentler by hand with a sample image.,brief remark,brief remark,brief remark,Copilot
+2247992319,3259102188,human_review,@copilot the previous one is fine. check the env var named `_VITE_TEST_CLI`,direction to an agent,direction to an agent,direction to an agent,Copilot
+2166038017,3167450477,human_review,"thank you! I'll check cli's `dist/` output. But, this PR is still LGTM.",brief remark,brief remark,brief remark,Claude_Code
+2138952541,3111006731,human_review,Is it possible to pass the span id in OpenTelemetry code?,question,question,question,Copilot
+2133241009,3126215556,cross_review,"done, can you please check",question,question,question,OpenAI_Codex
 2182077834,3198063528,human_review,"So, Matt reported that the Microsoft authentication extension's access state was being removed... even though it definitely should be available and installed because it's a built-in extension.
 
-This leads me to believe that maybe this ExtenionService API does not include built-in extensions...? Can you check on this?",question,question,question
-2097674873,3076603836,cross_review,I actually wanna mention!,brief remark,brief remark,brief remark
-2173992465,3186564845,human_review,"I got this from a table in the IETF draft, which looks like it's missing that algorithm. I created an external issue for them to fix the draft: https://github.com/lamps-wg/draft-composite-sigs/issues/223. We don't need to do anything in the PR for it.",decision,decision,decision
+This leads me to believe that maybe this ExtenionService API does not include built-in extensions...? Can you check on this?",question,question,question,Copilot
+2097674873,3076603836,cross_review,I actually wanna mention!,brief remark,brief remark,brief remark,OpenAI_Codex
+2173992465,3186564845,human_review,"I got this from a table in the IETF draft, which looks like it's missing that algorithm. I created an external issue for them to fix the draft: https://github.com/lamps-wg/draft-composite-sigs/issues/223. We don't need to do anything in the PR for it.",decision,decision,decision,Copilot
 2118061989,3105703473,human_review,"Maybe add `Test_Ctx_Subdomains_OffsetNegative`
 
 ```go
 c.Request().URI().SetHost(""john.doe.google.com"")
 require.Empty(t, c.Subdomains(-1), ""negative offset should return empty slice"")
-```",code feedback,code feedback,code feedback
-2165152957,3172933734,human_review,"Still wrong, go back to your prior commit. Check if `symbol.parent.parent` is `undefined` when you're looking at the incoming symbol - that will tell you if the symbol is declared in a scope that is in the global scope",direction to an agent,direction to an agent,direction to an agent
-2240790000,3254714553,human_review,@user-01 please retain these tests and just let them build against the existing generated version of the pageable libraries to avoid excessive churn.,direction to an agent,direction to an agent,direction to an agent
+```",code feedback,code feedback,code feedback,OpenAI_Codex
+2165152957,3172933734,human_review,"Still wrong, go back to your prior commit. Check if `symbol.parent.parent` is `undefined` when you're looking at the incoming symbol - that will tell you if the symbol is declared in a scope that is in the global scope",direction to an agent,direction to an agent,direction to an agent,Copilot
+2240790000,3254714553,human_review,@user-01 please retain these tests and just let them build against the existing generated version of the pageable libraries to avoid excessive churn.,direction to an agent,direction to an agent,direction to an agent,Copilot
 2237132698,3268184875,human_review,"We could also include instructions to use go-sqlcmd to create a new sql container. https://learn.microsoft.com/en-us/sql/tools/sqlcmd/quickstart-sqlcmd-create-container?view=sql-server-ver17
 
 For windows it is as easy as: (similar commands exist for mac and linux)
@@ -527,68 +527,68 @@ Open a new window to get new path vars
  sqlcmd create mssql --name mssql-python --accept-eula tag 2025-latest --using https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Full.bak
 sqlcmd config connection-strings
 ```
-Copy the ODBC connection string and remove the driver clause before storing it in your env var.",code feedback,code feedback,code feedback
-2164230263,3172263561,cross_review,Seems like overkill.,decision,decision,decision
-2169591601,3177107618,human_review,Not needed,decision,decision,decision
-2188508341,3206831441,human_review,@copilot Please remove this line as suggest and update the expected test output.,direction to an agent,direction to an agent,direction to an agent
-2193591628,3179795816,human_review,I actually did this intentionally because I figured we shouldn't permit mutating the config object once it's been passed to the `BuildImagesAsync` call.,code feedback,decision,code feedback
-2176082793,3189966102,human_review,This was a mistake on my end. We still want to use the version of `@azure-tools/typespec-azure-core` but we should use the version from `devDependencies` rather than peerDependencies,code feedback,code feedback,code feedback
-2195600430,3216511780,human_review,Why are we testing in the browser?,question,question,question
+Copy the ODBC connection string and remove the driver clause before storing it in your env var.",code feedback,code feedback,code feedback,Copilot
+2164230263,3172263561,cross_review,Seems like overkill.,decision,decision,decision,OpenAI_Codex
+2169591601,3177107618,human_review,Not needed,decision,decision,decision,Copilot
+2188508341,3206831441,human_review,@copilot Please remove this line as suggest and update the expected test output.,direction to an agent,direction to an agent,direction to an agent,Copilot
+2193591628,3179795816,human_review,I actually did this intentionally because I figured we shouldn't permit mutating the config object once it's been passed to the `BuildImagesAsync` call.,code feedback,decision,code feedback,Copilot
+2176082793,3189966102,human_review,This was a mistake on my end. We still want to use the version of `@azure-tools/typespec-azure-core` but we should use the version from `devDependencies` rather than peerDependencies,code feedback,code feedback,code feedback,Copilot
+2195600430,3216511780,human_review,Why are we testing in the browser?,question,question,question,Copilot
 2139233160,3135363020,human_review,"I don't think that is the error because the loop skips any lines that are empty and do not parse correctly. There must be some other part of this function that is writing to the powershell object pipeline. Does the msbuild call or the remove-item return an object that could be an empty string?
-",code feedback,code feedback,code feedback
-2101089673,3078729881,human_review,"But you reverted to Lazy dictionary with locks - we want to avoid the need for locks by using ConcurrrentDictionary - but still initialize the concurrentDictionary layily. so, the data variable should be of Lazy<ConcurrentDictionary<string, object>>",code feedback,code feedback,code feedback
-2109623459,3090578689,human_review,"Not sure. My thinking is, if one cares for mounting a Docker socket into their container, they probably care about differences between Docker Desktop socket vs Podman ""native"" socket vs Podman running in Docker compatibility mode. So I am not sure if abstracting these details helps.",code feedback,code feedback,code feedback
-2138278202,3133771594,human_review,"i disagree. given a path to a netcdf file with a qcodes dataset, it can be loaded into dataset object using load_from_netcdf function, and then write_metadata_to_db method can be called to write the dataset metadata to a database file (which needs to be passed at some point), so please use these functions/methods, it will be less maintenance in the long run.",direction to an agent,code feedback,code feedback
-2103635671,3084778291,human_review,@copilot fix this,direction to an agent,direction to an agent,direction to an agent
+",code feedback,code feedback,code feedback,Copilot
+2101089673,3078729881,human_review,"But you reverted to Lazy dictionary with locks - we want to avoid the need for locks by using ConcurrrentDictionary - but still initialize the concurrentDictionary layily. so, the data variable should be of Lazy<ConcurrentDictionary<string, object>>",code feedback,code feedback,code feedback,Copilot
+2109623459,3090578689,human_review,"Not sure. My thinking is, if one cares for mounting a Docker socket into their container, they probably care about differences between Docker Desktop socket vs Podman ""native"" socket vs Podman running in Docker compatibility mode. So I am not sure if abstracting these details helps.",code feedback,code feedback,code feedback,Copilot
+2138278202,3133771594,human_review,"i disagree. given a path to a netcdf file with a qcodes dataset, it can be loaded into dataset object using load_from_netcdf function, and then write_metadata_to_db method can be called to write the dataset metadata to a database file (which needs to be passed at some point), so please use these functions/methods, it will be less maintenance in the long run.",direction to an agent,code feedback,code feedback,Copilot
+2103635671,3084778291,human_review,@copilot fix this,direction to an agent,direction to an agent,direction to an agent,Copilot
 2215998734,3242236662,human_review,"This seems more like adapting to an issue from `OptionEatAll` than fixing the root cause. Can you try to fix the root cause of this issue?
 
-I think we should fix the OptionEatAll custom parser - `parser_process`. We are encapsulating the value to list and then calling the original method from the click to append this new list to an already existing list. ",code feedback,direction to an agent,direction to an agent
-2103968228,3074482141,cross_review,buf.toOwnedSlice handles this,code feedback,code feedback,code feedback
-2096655532,3075019704,human_review,Do we need the copilot-instructions.md file in src/queries anymore now that we have the example where it belongs in the correct folder?,question,question,question
-2102925982,3083837004,human_review,This should apply to ALL files. Not just this one.,direction to an agent,code feedback,direction to an agent
-2097932542,3076965582,cross_review,"Can, lets add it",direction to an agent,decision,decision
+I think we should fix the OptionEatAll custom parser - `parser_process`. We are encapsulating the value to list and then calling the original method from the click to append this new list to an already existing list. ",code feedback,direction to an agent,direction to an agent,Copilot
+2103968228,3074482141,cross_review,buf.toOwnedSlice handles this,code feedback,code feedback,code feedback,OpenAI_Codex
+2096655532,3075019704,human_review,Do we need the copilot-instructions.md file in src/queries anymore now that we have the example where it belongs in the correct folder?,question,question,question,Copilot
+2102925982,3083837004,human_review,This should apply to ALL files. Not just this one.,direction to an agent,code feedback,direction to an agent,Copilot
+2097932542,3076965582,cross_review,"Can, lets add it",direction to an agent,decision,decision,OpenAI_Codex
 2150020817,3143508366,human_review,"as an example, take a look at 'SendEmail' activity. 
 There is already some file manipulation with the attachments, so a central file parsing under Elsa.IO namespace could already benefit both 'CreateZipArchive' and 'SendEmail' activities.
 
-Do **not** change the implementation for the 'SendEmail' as we are going to refactoir that later to use this shared logic",direction to an agent,code feedback,code feedback
-2247246266,3259102188,human_review,retry please,direction to an agent,direction to an agent,direction to an agent
+Do **not** change the implementation for the 'SendEmail' as we are going to refactoir that later to use this shared logic",direction to an agent,code feedback,code feedback,Copilot
+2247246266,3259102188,human_review,retry please,direction to an agent,direction to an agent,direction to an agent,Copilot
 2110909629,3079303421,cross_review,"The query node can't be connected to another query node.
-This is a desired code.",code feedback,decision,code feedback
-2107584383,3087114684,human_review,i don't have a local computer anymore :/,brief remark,brief remark,brief remark
-2106335040,3087094895,human_review,@copilot Remove the Settings and OpenData files,direction to an agent,direction to an agent,direction to an agent
-2126964514,3117915292,cross_review,Not for now,decision,decision,decision
-2154819974,3156963474,human_review,I think you can just remove this test. ,code feedback,code feedback,code feedback
-2201343931,3223349599,human_review,"Wait, maybe the PR I was going before the last GA merged? I thought we punted it and this was the attempt to restart. Let's me investigate",brief remark,brief remark,brief remark
-2100010661,3079684446,human_review,IMO we shouldn't allow the option of exposing it externally. @user-15 do you agree?,question,decision,question
-2141755976,3138540332,human_review,Got it 👍  Thank you,brief remark,brief remark,brief remark
-2125160120,3111618330,human_review,"Clarification: CONTAINERS removed by default, not volumes.",code feedback,code feedback,code feedback
-2097677684,3076267770,human_review,@Copilot Address this comment please.,direction to an agent,direction to an agent,direction to an agent
-2190965812,3078444990,human_review,How so? ,question,question,question
-2201245507,3212810620,human_review,Can you update `published-namespaces.txt` now?,direction to an agent,direction to an agent,direction to an agent
-2191074335,3078444990,human_review,This fixes a bug where strategy ids are displayed instead of their names.,code feedback,brief remark,code feedback
-2125769446,3116197763,human_review,"To be clear, we’re not using DocFx",code feedback,brief remark,decision
+This is a desired code.",code feedback,decision,code feedback,Claude_Code
+2107584383,3087114684,human_review,i don't have a local computer anymore :/,brief remark,brief remark,brief remark,Copilot
+2106335040,3087094895,human_review,@copilot Remove the Settings and OpenData files,direction to an agent,direction to an agent,direction to an agent,Copilot
+2126964514,3117915292,cross_review,Not for now,decision,decision,decision,OpenAI_Codex
+2154819974,3156963474,human_review,I think you can just remove this test. ,code feedback,code feedback,code feedback,Copilot
+2201343931,3223349599,human_review,"Wait, maybe the PR I was going before the last GA merged? I thought we punted it and this was the attempt to restart. Let's me investigate",brief remark,brief remark,brief remark,Copilot
+2100010661,3079684446,human_review,IMO we shouldn't allow the option of exposing it externally. @user-15 do you agree?,question,decision,question,Copilot
+2141755976,3138540332,human_review,Got it 👍  Thank you,brief remark,brief remark,brief remark,OpenAI_Codex
+2125160120,3111618330,human_review,"Clarification: CONTAINERS removed by default, not volumes.",code feedback,code feedback,code feedback,Copilot
+2097677684,3076267770,human_review,@Copilot Address this comment please.,direction to an agent,direction to an agent,direction to an agent,Copilot
+2190965812,3078444990,human_review,How so? ,question,question,question,OpenAI_Codex
+2201245507,3212810620,human_review,Can you update `published-namespaces.txt` now?,direction to an agent,direction to an agent,direction to an agent,Copilot
+2191074335,3078444990,human_review,This fixes a bug where strategy ids are displayed instead of their names.,code feedback,brief remark,code feedback,OpenAI_Codex
+2125769446,3116197763,human_review,"To be clear, we’re not using DocFx",code feedback,brief remark,decision,Copilot
 2101628209,3081361910,human_review,"@copilot please fix check errors:
 ./lisa/operating_system.py:226:5: E704 multiple statements on one line (def)
 ./lisa/operating_system.py:226:68: BLK100 Black would make changes.
 ./lisa/operating_system.py:732:17: E701 multiple statements on one line (colon)
 ./lisa/operating_system.py:753:19: E701 multiple statements on one line (colon)
-./lisa/operating_system.py:1478:19: E701 multiple statements on one line (colon)",direction to an agent,direction to an agent,direction to an agent
-2107707325,3091765131,human_review,"There's no default ToolCall, if `tool_call` is `None` for whatever reason, raises an error.",code feedback,code feedback,code feedback
-2156399182,3132622672,human_review,"I think the answer is yes, and we could add another case for ""type"".",decision,decision,decision
-2183687964,3199870832,human_review,You're right!,decision,decision,decision
-2231876414,3200033873,human_review,just testing the most common blurs.,brief remark,brief remark,brief remark
-2097368267,3070601228,human_review,They're basically identical. Reading one is fine. and actually the .claude/CLAUDE.md is the 'user-specific' version that I shuoldn't have committed so removing that now. Will address the comments you made thanks!,decision,decision,decision
-2107936453,3090578689,human_review,"@user-06 whist it is true that podman does specifically have a daemon, it can run with a socket, and also with a machine that has its own socket. I do a bit to work out what the correct socket is to plug into the machine [here](https://github.com/altavec/aspire/blob/8f5b5368b9b42408c361193e41545b5a1b51d597/src/Shared/ContainerResources.cs#L193) (this can take into account the rootlessness of the runtime as well)",code feedback,code feedback,code feedback
-2121799465,3111015937,human_review,Never mind. The current code looks good,decision,decision,decision
-2146035789,3141889094,human_review,"Try running the integration test agian, I think I fixed the environment issue. lmk if you hit another issue",question,question,question
+./lisa/operating_system.py:1478:19: E701 multiple statements on one line (colon)",direction to an agent,direction to an agent,direction to an agent,Copilot
+2107707325,3091765131,human_review,"There's no default ToolCall, if `tool_call` is `None` for whatever reason, raises an error.",code feedback,code feedback,code feedback,Copilot
+2156399182,3132622672,human_review,"I think the answer is yes, and we could add another case for ""type"".",decision,decision,decision,Copilot
+2183687964,3199870832,human_review,You're right!,decision,decision,decision,Copilot
+2231876414,3200033873,human_review,just testing the most common blurs.,brief remark,brief remark,brief remark,Copilot
+2097368267,3070601228,human_review,They're basically identical. Reading one is fine. and actually the .claude/CLAUDE.md is the 'user-specific' version that I shuoldn't have committed so removing that now. Will address the comments you made thanks!,decision,decision,decision,OpenAI_Codex
+2107936453,3090578689,human_review,"@user-06 whist it is true that podman does specifically have a daemon, it can run with a socket, and also with a machine that has its own socket. I do a bit to work out what the correct socket is to plug into the machine [here](https://github.com/altavec/aspire/blob/8f5b5368b9b42408c361193e41545b5a1b51d597/src/Shared/ContainerResources.cs#L193) (this can take into account the rootlessness of the runtime as well)",code feedback,code feedback,code feedback,Copilot
+2121799465,3111015937,human_review,Never mind. The current code looks good,decision,decision,decision,Copilot
+2146035789,3141889094,human_review,"Try running the integration test agian, I think I fixed the environment issue. lmk if you hit another issue",question,question,question,Copilot
 2150956498,3150510293,human_review,"good idea! btw, can we just pass the options to halmos.config?
 ```
 uv run python -m halmos.config --storage-layout ${{ matrix.storage-layout }} ${{ matrix.cache-solver }} | tee tests/regression/halmos.toml
 ```
 
-also, can we also add --solver-timeout-assertion to halmos.config, instead of 3ecfa8f4aaf0e1770272f3b483a04c1726449da7?  ci performance fluctuates, and it's more robust to remove timeout limits by default.",code feedback,code feedback,code feedback
-2174066948,3174281934,human_review,"ah yes, sorry I keep forgetting that in the review",brief remark,brief remark,brief remark
-2178524599,3193524394,human_review,and override the`_split_zone_and_sub` with `BaseProvider`,code feedback,direction to an agent,direction to an agent
-2178900161,3194130560,human_review,Or you have to provide an *.expected.txt file containing all the expected values in order.,code feedback,code feedback,code feedback
+also, can we also add --solver-timeout-assertion to halmos.config, instead of 3ecfa8f4aaf0e1770272f3b483a04c1726449da7?  ci performance fluctuates, and it's more robust to remove timeout limits by default.",code feedback,code feedback,code feedback,Copilot
+2174066948,3174281934,human_review,"ah yes, sorry I keep forgetting that in the review",brief remark,brief remark,brief remark,Copilot
+2178524599,3193524394,human_review,and override the`_split_zone_and_sub` with `BaseProvider`,code feedback,direction to an agent,direction to an agent,Copilot
+2178900161,3194130560,human_review,Or you have to provide an *.expected.txt file containing all the expected values in order.,code feedback,code feedback,code feedback,Copilot
 2204589391,3210824774,human_review,"```suggestion
-```",brief remark,brief remark,brief remark
+```",brief remark,brief remark,brief remark,Copilot

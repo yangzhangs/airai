@@ -1,0 +1,6 @@
+# RQ2 | the four coded populations (input to Cochran's sample-size rule)
+form,review_type,population
+inline comment,same-system,7005
+inline comment,cross-system,5130
+summary,same-system,963
+summary,cross-system,3732
